@@ -19,7 +19,7 @@ const addNewProduct = (req,res)=>{
 }
 
 const getAllProducts=(req,res)=>{
-    productModel.find({}).then((response)=>{
+    productModel.find({}).populate("comments").then((response)=>{
 res.status(200)
 res.json({ success: true,
     message: "All the products",
@@ -68,10 +68,10 @@ const deleteProductById = (req,res)=>{
         
 }
 
-const updateProductById = (req,res)=>{
-    const productId = req.params.productId
-    const {image,title, description , price ,userId , comments , likes}=req.body
-    productModel.findByIdAndDelete({_id:productId} , req.body , {new:true}).then((response)=>{
+const updateProductById =  (req,res)=>{
+    const _id = req.params.productId;
+    const {image,title, description , price ,userId , comments , likes}=req.body;
+     productModel.findByIdAndUpdate({_id:_id }, {image,title, description , price ,userId , comments , likes},{new:true}).then((response)=>{
         res.status(201)
         res.json({success: true,
             message: "Product updated",
@@ -84,4 +84,4 @@ const updateProductById = (req,res)=>{
             })
         
 }
-module.exports={addNewProduct,getAllProducts,getProductsByUser,deleteProductById}
+module.exports={addNewProduct,getAllProducts,getProductsByUser,deleteProductById,updateProductById}
