@@ -112,8 +112,15 @@ const deleteProductById = (req, res) => {
   productModel
     .findOneAndDelete({ _id: productId })
     .then((response) => {
+        if(response){
       res.status(200);
-      res.json({ success: true, message: "Product deleted" });
+      res.json({ success: true, message: "Product deleted" })};
+      if(!response){
+        res.status(404).json({
+            success: false,
+            message: `The Product: ${_id} is not found`,
+          });
+      }
     })
     .catch((err) => {
       res.status(500);
