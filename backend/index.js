@@ -14,12 +14,14 @@ const userRouter = require("./routes/user")
 const roleRouter=require("./routes/role");
 const loginRouter = require("./routes/login");
 const productRouter = require("./routes/product");
+const favoriteRouter = require("./routes/favorite");
 
 // Routes Middleware
 app.use('/user',userRouter)
 app.use('/role',roleRouter)
 app.use('/login',loginRouter)
 app.use('/product',productRouter)
+app.use("/favorite",favoriteRouter)
 
 
 // Handles any other endpoints [unassigned - endpoints]

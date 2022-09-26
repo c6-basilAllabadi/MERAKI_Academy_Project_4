@@ -21,4 +21,5 @@ productRouter.delete("/:productId",authentication,authorization("delete"),delete
 productRouter.put("/:productId",authentication,authorization("update"),updateProductById)
 productRouter.post("/:productId/comments",authentication,authorization("add"),createNewComment)
 
+
 module.exports=productRouter
