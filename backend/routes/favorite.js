@@ -8,8 +8,8 @@ const deleteFromFavorite =require("../controllers/favorite").deleteFromFavorite
 
 
 
-favoriteRouter.post("/:productId", addToFavorite);
+favoriteRouter.post("/:productId",authentication,authorization("add"),addToFavorite);
 favoriteRouter.get("/",getAllFavorite)
-favoriteRouter.delete("/:favoriteId",deleteFromFavorite)
+favoriteRouter.delete("/:favoriteId",authentication,authorization("delete"),deleteFromFavorite)
 
 module.exports = favoriteRouter;
