@@ -1,4 +1,7 @@
+const { TokenExpiredError } = require("jsonwebtoken");
 const favoriteModel = require("../models/favoriteSchema");
+const userModel = require("../models/userSchema")
+
 
 const addToFavorite = (req, res) => {
   const productId = req.params.productId;
@@ -6,12 +9,18 @@ const addToFavorite = (req, res) => {
   newProduct
     .save()
     .then((response) => {
-      res.status(201);
-      res.json({
-        success: true,
-        message: "Product Added to Favorite Successfully",
-        product: response,
-      });
+        userModel.updateOne({_id:req.token.userId},{ $push: { favorites:newProduct }},{new:true}).then((response)=>{
+            res.status(201);
+            res.json({
+              success: true,
+              message: "Product Added to Favorite Successfully",
+             response : newProduct
+            })}
+        ).catch((err)=>{
+            res.status(500);
+            res.json({ success: false, message: "Server Error", err: err.message });
+        })
+    ;
     })
     .catch((err) => {
       res.status(500);
@@ -20,16 +29,14 @@ const addToFavorite = (req, res) => {
 };
 
 const getAllFavorite = (req, res) => {
-  favoriteModel
-    .find({})
-    .populate("productId")
-    .exec()
+    userModel
+    .find({_id:req.token.userId})
     .then((response) => {
       res.status(200);
       res.json({
         success: true,
         message: "All the favorites",
-        products: response,
+        favorites: response[0].favorites,
       });
     })
     .catch((err) => {
@@ -40,8 +47,8 @@ const getAllFavorite = (req, res) => {
 
 const deleteFromFavorite = (req, res) => {
   const favoriteId = req.params.favoriteId;
-  favoriteModel
-    .findOneAndDelete({ _id: favoriteId })
+  userModel
+  .findOneAndUpdate({_id:req.token.userId},{ $pull: { favorites: favoriteId }})
     .then((response) => {
       if (response) {
         res.status(200);

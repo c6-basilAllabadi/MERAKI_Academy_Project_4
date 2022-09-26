@@ -11,7 +11,8 @@ country:{type:String },
 gender:{type:String },
 role: {type: mongoose.Schema.Types.ObjectId, ref: "Role"},
 dateRegistered:{type:String },
-phoneNumber:{type:String }
+phoneNumber:{type:String },
+favorites:[{type: mongoose.Schema.Types.ObjectId, ref: "Product"}],
 })
 
 userSchema.pre("save",async function(){
