@@ -68,7 +68,7 @@ const getProductsByType =(req,res)=>{
         }
         const getProductsBySearch =(req,res)=>{
             const searchWord = req.params.search
-            productModel.find({"title" : {$regex : `${searchWord}`}}).then((response)=>{
+            productModel.find({"title" : {$regex :`${searchWord}`}}).then((response)=>{
                 res.json({ success: true,
                     message: `${searchWord} products`,
                     products: response})
