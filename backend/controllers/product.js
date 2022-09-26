@@ -1,8 +1,8 @@
 const productModel = require("../models/productSchema")
 
 const addNewProduct = (req,res)=>{
-    const {image,title, description , price ,userId , comments , likes} = req.body
-    const product = new productModel({image,title, description , price ,userId , comments , likes})
+    const {image,title, description , price ,type, status,userId , comments , likes} = req.body
+    const product = new productModel({image,title, description , price ,type, status ,userId , comments , likes})
     product.save().then((response)=>{
         res.status(201)
         res.json({success: true,
@@ -52,6 +52,38 @@ res.json({ success: true,
     })
 }
 
+const getProductsByType =(req,res)=>{
+    const typeCategory = req.params.productType
+    productModel.find({type:typeCategory}).then((response)=>{
+        res.json({ success: true,
+            message: `${typeCategory} products`,
+            products: response})
+            }).catch((err)=>{
+                res.status(500)
+                res.json({success: false,
+                    message: "Server Error",
+                    err: err.message})
+                
+            })
+        }
+        const getProductsBySearch =(req,res)=>{
+            const searchWord = req.params.search
+            productModel.find({"title" : {$regex : `${searchWord}`}}).then((response)=>{
+                res.json({ success: true,
+                    message: `${searchWord} products`,
+                    products: response})
+                    }).catch((err)=>{
+                        res.status(500)
+                        res.json({success: false,
+                            message: "Server Error",
+                            err: err.message})
+                        
+                    })
+                }
+
+
+
+
 
 const deleteProductById = (req,res)=>{
     const productId = req.params.productId
@@ -67,6 +99,7 @@ const deleteProductById = (req,res)=>{
             })
         
 }
+
 
 const updateProductById =  (req,res)=>{
     const _id = req.params.productId;
@@ -84,4 +117,4 @@ const updateProductById =  (req,res)=>{
             })
         
 }
-module.exports={addNewProduct,getAllProducts,getProductsByUser,deleteProductById,updateProductById}
+module.exports={addNewProduct,getAllProducts,getProductsByUser,deleteProductById,updateProductById,getProductsByType,getProductsBySearch}
