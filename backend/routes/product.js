@@ -14,11 +14,11 @@ const authorization = require("../middlewares/authorization").authorization
 
 productRouter.post("/",authentication,authorization("add"),addNewProduct)
 productRouter.get("/",getAllProducts)
-productRouter.get("/search_1",getProductsByUser)
+productRouter.get("/searchUser/:userId",getProductsByUser)
+productRouter.get("/type/:productType",getProductsByType)
+productRouter.get("/search/:search",getProductsBySearch)
 productRouter.delete("/:productId",authentication,authorization("delete"),deleteProductById)
 productRouter.put("/:productId",authentication,authorization("update"),updateProductById)
 productRouter.post("/:productId/comments",authentication,authorization("add"),createNewComment)
-productRouter.get("/:productType",getProductsByType)
-productRouter.get("/search_2/:search",getProductsBySearch)
 
 module.exports=productRouter

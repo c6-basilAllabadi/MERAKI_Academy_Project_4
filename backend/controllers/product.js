@@ -38,7 +38,7 @@ res.json({ success: true,
 
 
 const getProductsByUser = (req,res)=>{
-    const userId1 = req.query.userId
+    const userId1 = req.params.userId
     productModel.find({userId:userId1}).then((response)=>{
 res.json({ success: true,
     message: `${userId1} products`,
@@ -80,9 +80,6 @@ const getProductsByType =(req,res)=>{
                         
                     })
                 }
-
-
-
 
 
 const deleteProductById = (req,res)=>{
