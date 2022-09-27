@@ -7,38 +7,40 @@ import axios from "axios"
 const Dashboard = ()=>{
 const [products , setProducts] = useState("")
 
+const getAllProducts=()=>{
+    axios
+    .get('http://localhost:5000/product')
+    .then((response) => {
+    console.log(response.data.products)
+      setProducts(response.data.products);
+      console.log(products)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
     useEffect(() => {
         getAllProducts();
       }, []);
     
-      const getAllProducts=()=>{
-        axios
-        .get('http://localhost:5000/product')
-        .then((response) => {
-          setProducts(response.data.products);
-          console.log(products)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      }
+      
     return (
         <>
         
-        {/*products.map((elem,index)=>{
+        {products  && products.map((elem,index)=>{
                 return <div>
-                    <h1>{elem.title}</h1>
-                    <h5>{elem.description}</h5>
-                    <p>{elem.price}</p>
-                    <p>{elem.type}</p>
-                    <p>{elem.status}</p>
-                    <p>{elem.userId}</p>
-                    <p>{elem.comments}</p>
-                    <p>{elem.likes}</p>
+                    <h1>Title: {elem.title}</h1>
+                    <h5>Description: {elem.description}</h5>
+                    <p>Price: {elem.price}</p>
+                    <p>Type: {elem.type}</p>
+                    <p>Status: {elem.status}</p>
+                    <p>User: {elem.userId.firstName} {elem.userId.lastName}</p>
+                
+                    <p>Likes: {elem.likes}</p>
 
                 </div>
-            })*/}
+            })}
        
         </>
     )

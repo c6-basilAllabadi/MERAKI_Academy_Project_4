@@ -9,14 +9,21 @@ function App() {
 
   const [loginemail , setLoginEmail]=useState("")
   const [loginpassword , setLoginPassword] = useState("")
-  return (
+  const [dashboardstatus , setDashboardStatus] = useState(true)
+  const [isLoggedIn,setIsLoggedIn]=useState(false) 
+
+   return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn}}>
     <div className="App">
-     <h2><Link to="/login">Login</Link></h2>
-     <h2><Link to="/register">Register</Link></h2>
-   
-      
+     <h2>{!isLoggedIn && <Link to="/login" onClick={()=>{
+      setDashboardStatus(false)
+     }}>Login</Link>}</h2>
+     <h2>{!isLoggedIn && <Link to="/register" onClick={()=>{
+      setDashboardStatus(false)
+     }}>Register</Link>}</h2>
+     {isLoggedIn && <h2> Logout</h2>}
+     {dashboardstatus && <Dashboard/>}
       <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
