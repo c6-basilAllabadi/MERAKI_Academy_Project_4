@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard";
 import UserProducts from "./components/UserProducts";
 import Search from "./components/Search";
 import UpdateProduct from "./components/UpdateProduct/UpdateProduct"
+import ProductsTypes from "./components/ProductsTypes/index"
 export const userContext=createContext()
 function App() {
 
@@ -21,10 +22,11 @@ function App() {
   const [searchProducts, setSearchProducts] = useState("");
   const [searchStatus,setSearchStatus]=useState(false)
   const [updateProduct,setUpdateProduct]=useState("")
+  const [productType,setProductType] = useState("")
 
    return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType}}>
     <div className="App">
      <h2>{!isLoggedIn && <Link to="/login" onClick={()=>{
       setDashboardStatus(false)
@@ -45,6 +47,7 @@ function App() {
         <Route path ="/dashboard" element={<Dashboard/>}/>
         <Route path ="/userProducts" element={<UserProducts/>}/>
         <Route path= "/updateProduct" element={<UpdateProduct/>}/>
+        <Route path="/productsTypes" element = {<ProductsTypes/>}/>
       </Routes>
      
     </div>

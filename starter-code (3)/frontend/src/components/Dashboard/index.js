@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { userContext } from "../../App.js";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import  Search  from "../Search/index";
+
 
 const Dashboard = () => {
   const [products, setProducts] = useState("");
@@ -15,6 +16,9 @@ const Dashboard = () => {
   let setSearchProducts = userContext1.setSearchProducts
   let searchStatus = userContext1.searchStatus
   let setSearchStatus = userContext1.setSearchStatus
+  let productType=userContext1.productType
+  let setProductType = userContext1.setProductType
+
   const [dashboardProductsStatus, setDashboardProductsStatus] = useState(true);
   
   const getAllProducts = () => {
@@ -36,6 +40,18 @@ const Dashboard = () => {
 
   return (
     <>
+    <h2 onClick={()=>{
+      setProductType("car")
+      Navigate("/productsTypes")
+    }}>Cars</h2>
+    <h2 onClick={()=>{
+      setProductType("laptop")
+      Navigate("/productsTypes")
+    }}>Laptops</h2>
+    <h2 onClick={()=>{
+      setProductType("mobile")
+      Navigate("/productsTypes")
+    }}>Mobiles</h2>
       <input
         placeholder="Search"
         onChange={(e) => {
