@@ -18,6 +18,8 @@ const Dashboard = () => {
   let setSearchStatus = userContext1.setSearchStatus
   let productType=userContext1.productType
   let setProductType = userContext1.setProductType
+  let token =userContext1.token
+    let setToken = userContext1.setToken
   const navigate = useNavigate()
   const [dashboardProductsStatus, setDashboardProductsStatus] = useState(true);
 
@@ -83,6 +85,16 @@ const Dashboard = () => {
               </p>
 
               <p>Likes: {elem.likes}</p>
+              <button onClick={()=>{
+                axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
+                  headers: {
+                    authorization: "Bearer " + token,
+                  }}).then((response)=>{
+                  console.log(response.data.message)
+                }).catch((err)=>{
+                  console.log(err.message)
+                })
+              }}>Add to Favorite</button>
             </div>
           );
         })}
