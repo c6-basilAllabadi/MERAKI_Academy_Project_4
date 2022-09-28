@@ -16,10 +16,11 @@ const updateProduct = ()=>{
     const [ editType , setEditType] = useState("")
 const [editStatus,setEditStatus]=useState("")
 const [newTitle,setNewTitle]=useState(updateProduct.title)
-const [newDescription,setNewDescription] = useState("")
-const [newPrice,setNewPrice] = useState("")
-const [newType,setNewType] = useState("")
-const [newStatus,setNewStatus] = useState("")
+const [newDescription,setNewDescription] = useState(updateProduct.description)
+const [newPrice,setNewPrice] = useState(updateProduct.price)
+const [newType,setNewType] = useState(updateProduct.type)
+const [newStatus,setNewStatus] = useState(updateProduct.status)
+const [ updateMessage,setUpdateMessage]=useState("")
 
 
     return (
@@ -80,13 +81,15 @@ const [newStatus,setNewStatus] = useState("")
                   authorization: "Bearer " + token,
                 },
               }).then((response)=>{
-                console.log(response.data)
+                console.log(response.data.message)
+               setUpdateMessage(response.data.message)
 
               }).catch((err)=>{
-                console.log(err.message)
+                setUpdateMessage(err.message)
               })
         }}>Save Updated Values
         </button>
+        {updateMessage}
         
         
         
