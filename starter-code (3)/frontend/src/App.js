@@ -6,6 +6,7 @@ import React , { useState, createContext } from "react";
 import Dashboard from "./components/Dashboard";
 import UserProducts from "./components/UserProducts";
 import Search from "./components/Search";
+import UpdateProduct from "./components/UpdateProduct/UpdateProduct"
 export const userContext=createContext()
 function App() {
 
@@ -19,10 +20,11 @@ function App() {
   const [searchWord, setSearchWord] = useState("");
   const [searchProducts, setSearchProducts] = useState("");
   const [searchStatus,setSearchStatus]=useState(false)
+  const [updateProduct,setUpdateProduct]=useState("")
 
    return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct}}>
     <div className="App">
      <h2>{!isLoggedIn && <Link to="/login" onClick={()=>{
       setDashboardStatus(false)
@@ -42,6 +44,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path ="/dashboard" element={<Dashboard/>}/>
         <Route path ="/userProducts" element={<UserProducts/>}/>
+        <Route path= "/updateProduct" element={<UpdateProduct/>}/>
       </Routes>
      
     </div>
