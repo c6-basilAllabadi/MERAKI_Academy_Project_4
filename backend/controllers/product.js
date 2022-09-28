@@ -42,7 +42,8 @@ const addNewProduct = (req, res) => {
 const getAllProducts = (req, res) => {
   productModel
     .find({})
-    .populate("comments")
+    .populate("userId",`firstName  lastName`)
+    .exec()
     .then((response) => {
       res.status(200);
       res.json({
@@ -60,7 +61,8 @@ const getAllProducts = (req, res) => {
 const getProductsByUser = (req, res) => {
   const userId1 = req.params.userId;
   productModel
-    .find({ userId: userId1 })
+    .find({ userId: userId1 }).populate("userId",`firstName  lastName`)
+    .exec()
     .then((response) => {
       res.json({
         success: true,

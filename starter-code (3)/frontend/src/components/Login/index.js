@@ -11,7 +11,12 @@ const Login = () => {
   let loginpassword = userContext1.loginpassword
   let isLoggedIn = userContext1.isLoggedIn
   let setIsLoggedIn = userContext1.setIsLoggedIn
+  let token =userContext1.token
+  let setToken = userContext1.setToken
+  let user =userContext1.user
+  let setUser=userContext1.setUser
   const [loginMessage,setLoginMessage]=useState("")
+
   const navigate = useNavigate()
 
   return <div>
@@ -23,10 +28,12 @@ const Login = () => {
     <input type="password" placeholder="Enter your Password" onChange={(e)=>{
         setLoginPassword(e.target.value)
     }}></input>
-    <button onClick={()=>{ axios.post('http://localhost:5000/login',{email:loginemail,password:loginpassword}).then((response)=>{
-      console.log(response.data.token)
+    <button onClick={async()=>{ await axios.post('http://localhost:5000/login',{email:loginemail,password:loginpassword}).then((response)=>{
+      console.log(response)
       setLoginMessage("login Success")
       setIsLoggedIn(true)
+      setToken(response.data.token)
+      setUser(response.data.userId)
       navigate("/dashboard")
      
     }).catch((err)=>{
@@ -37,8 +44,8 @@ setLoginMessage(err.response.data.message)
      
 
     }}>Login</button>
-    <div>{loginMessage}</div>
     
+    <div>{loginMessage}</div>
     
     </div>;
 

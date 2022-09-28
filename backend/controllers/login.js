@@ -38,7 +38,7 @@ const login =async (req,res)=>{
     const token = jwt.sign(payload, SECRET, options);
   
     res.status(200)
-      .json({ success: true, massage: "Valid login credentials", token: token });
+      .json({ success: true, massage: "Valid login credentials", token: token,userId:user._id});
   }
 
 module.exports={login,}

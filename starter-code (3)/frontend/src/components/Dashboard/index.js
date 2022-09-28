@@ -2,6 +2,7 @@ import React, { useState ,useEffect} from "react";
 import { userContext } from "../../App.js";
 import { useContext } from "react";
 import { useNavigate }from 'react-router-dom'
+import {Link , Routes , Route} from "react-router-dom"
 import axios from "axios"
 
 const Dashboard = ()=>{
@@ -27,7 +28,7 @@ const getAllProducts=()=>{
       
     return (
         <>
-        
+        <Link to="/userProducts">user products</Link>
         {products  && products.map((elem,index)=>{
                 return <div>
                     <h1>Title: {elem.title}</h1>
