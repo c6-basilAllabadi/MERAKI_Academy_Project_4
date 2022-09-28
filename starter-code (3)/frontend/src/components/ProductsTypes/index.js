@@ -15,6 +15,7 @@ const ProductsTypes = ()=>{
           .get(`http://localhost:5000/product/type/${productType}`)
           .then((response) => {
             setTypeProducts(response.data.products);
+            
           })
           .catch((err) => {
             console.log(err);

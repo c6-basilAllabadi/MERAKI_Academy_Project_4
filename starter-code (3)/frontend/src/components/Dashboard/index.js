@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { userContext } from "../../App.js";
 import { useContext } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate }from 'react-router-dom'
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import  Search  from "../Search/index";
@@ -18,9 +18,10 @@ const Dashboard = () => {
   let setSearchStatus = userContext1.setSearchStatus
   let productType=userContext1.productType
   let setProductType = userContext1.setProductType
-
+  const navigate = useNavigate()
   const [dashboardProductsStatus, setDashboardProductsStatus] = useState(true);
-  
+
+
   const getAllProducts = () => {
     axios
       .get("http://localhost:5000/product")
@@ -42,15 +43,15 @@ const Dashboard = () => {
     <>
     <h2 onClick={()=>{
       setProductType("car")
-      Navigate("/productsTypes")
+      navigate("/productsTypes")
     }}>Cars</h2>
     <h2 onClick={()=>{
       setProductType("laptop")
-      Navigate("/productsTypes")
+      navigate("/productsTypes")
     }}>Laptops</h2>
     <h2 onClick={()=>{
       setProductType("mobile")
-      Navigate("/productsTypes")
+      navigate("/productsTypes")
     }}>Mobiles</h2>
       <input
         placeholder="Search"
