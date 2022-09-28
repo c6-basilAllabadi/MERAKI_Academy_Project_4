@@ -1,10 +1,11 @@
 import "./App.css";
-import {Link , Routes , Route} from "react-router-dom"
+import {Link , Routes , Route, Navigate} from "react-router-dom"
 import Login from "./components/Login"
 import Register from "./components/Register";
 import React , { useState, createContext } from "react";
 import Dashboard from "./components/Dashboard";
 import UserProducts from "./components/UserProducts";
+import Search from "./components/Search";
 export const userContext=createContext()
 function App() {
 
@@ -15,10 +16,13 @@ function App() {
   const [token , setToken] = useState("")
   const [user , setUser]=useState("")
   const [userProducts ,setUserProducts]=useState("")
+  const [searchWord, setSearchWord] = useState("");
+  const [searchProducts, setSearchProducts] = useState("");
+  const [searchStatus,setSearchStatus]=useState(false)
 
    return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus}}>
     <div className="App">
      <h2>{!isLoggedIn && <Link to="/login" onClick={()=>{
       setDashboardStatus(false)
@@ -27,7 +31,12 @@ function App() {
       setDashboardStatus(false)
      }}>Register</Link>}</h2>
      {isLoggedIn && <h2> Logout</h2>}
-     {dashboardstatus && <Dashboard/>}
+     { searchStatus && <Search/>}
+     <h2><Link to="/dashboard" onClick={()=>{
+      setSearchStatus(false)
+      Navigate(Dashboard)
+     }}>Dashboard</Link></h2>
+     
       <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
