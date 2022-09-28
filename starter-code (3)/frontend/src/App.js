@@ -8,6 +8,7 @@ import UserProducts from "./components/UserProducts";
 import Search from "./components/Search";
 import UpdateProduct from "./components/UpdateProduct/UpdateProduct"
 import ProductsTypes from "./components/ProductsTypes/index"
+import Favorites from "./components/Favorites/Favorites"
 export const userContext=createContext()
 function App() {
 
@@ -40,7 +41,7 @@ function App() {
       setSearchStatus(false)
       Navigate(Dashboard)
      }}>Dashboard</Link></h2>
-     
+     <h2><Link to="/favorite">Favorites</Link></h2>
       <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
@@ -48,6 +49,7 @@ function App() {
         <Route path ="/userProducts" element={<UserProducts/>}/>
         <Route path= "/updateProduct" element={<UpdateProduct/>}/>
         <Route path="/productsTypes" element = {<ProductsTypes/>}/>
+        <Route path="/favorite" element ={<Favorites/>}/>
       </Routes>
      
     </div>
