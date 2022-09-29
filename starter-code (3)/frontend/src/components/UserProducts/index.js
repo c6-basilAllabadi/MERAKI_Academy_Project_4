@@ -51,8 +51,8 @@ const UserProducts = () => {
       {userProducts &&
         userProducts.map((elem, index) => {
           return (
-            <div id={index} >
-              <h1 id ={index}>
+            <div key = {index}>
+              <h1>
                 Title: {elem.title} {newTitle}
               
               </h1>

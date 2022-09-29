@@ -30,9 +30,14 @@ const Login = () => {
     }}></input>
     <button onClick={async()=>{ await axios.post('http://localhost:5000/login',{email:loginemail,password:loginpassword}).then((response)=>{
       console.log(response)
+    
+   
+    
       setLoginMessage("login Success")
       setIsLoggedIn(true)
       setToken(response.data.token)
+      localStorage.setItem("Token", JSON.stringify(response.data.token))
+    localStorage.setItem("loggedIn",JSON.stringify(true))
       setUser(response.data.userId)
       navigate("/dashboard")
      

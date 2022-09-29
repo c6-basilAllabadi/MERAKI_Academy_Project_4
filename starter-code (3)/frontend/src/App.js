@@ -11,12 +11,14 @@ import ProductsTypes from "./components/ProductsTypes/index"
 import Favorites from "./components/Favorites/Favorites"
 export const userContext=createContext()
 function App() {
+  let Token = JSON.parse(localStorage.getItem('Token'))
+  let loggedIn = JSON.parse(localStorage.getItem('loggedIn'))
 
   const [loginemail , setLoginEmail]=useState("")
   const [loginpassword , setLoginPassword] = useState("")
   const [dashboardstatus , setDashboardStatus] = useState(true)
-  const [isLoggedIn,setIsLoggedIn]=useState(false) 
-  const [token , setToken] = useState("")
+  const [isLoggedIn,setIsLoggedIn]=useState(loggedIn) 
+  const [token , setToken] = useState(Token)
   const [user , setUser]=useState("")
   const [userProducts ,setUserProducts]=useState("")
   const [searchWord, setSearchWord] = useState("");
@@ -24,6 +26,9 @@ function App() {
   const [searchStatus,setSearchStatus]=useState(false)
   const [updateProduct,setUpdateProduct]=useState("")
   const [productType,setProductType] = useState("")
+  
+
+   
 
    return (
     <>
@@ -42,6 +47,14 @@ function App() {
       Navigate(Dashboard)
      }}>Dashboard</Link></h2>
      <h2><Link to="/favorite">Favorites</Link></h2>
+     <button onClick={()=>{
+      setToken(null)
+      setIsLoggedIn(false)
+  
+      localStorage.setItem("Token", JSON.stringify(null))
+      localStorage.setItem("loggedIn",JSON.stringify(false))
+
+     }}>Logout</button>
       <Routes>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>

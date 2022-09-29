@@ -74,7 +74,7 @@ const Dashboard = () => {
       {products &&
         products.map((elem, index) => {
           return (
-            <div>
+            <div key ={index}>
               <h1>Title: {elem.title}</h1>
               <h5>Description: {elem.description}</h5>
               <p>Price: {elem.price}</p>
