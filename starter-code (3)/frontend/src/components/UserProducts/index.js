@@ -25,6 +25,7 @@ const UserProducts = () => {
   const [newProductType, setNewProductType] = useState("");
   const [addNewProductMessage, setAddNewProductMessage] = useState("");
   const [deleteProductMessage, setDeleteProductMessage] = useState("");
+  const [newProductImage, setNewProductImage] = useState("");
   const [newTitle, setNewTitle] = useState("");
   let updateProduct = userContext1.updateProduct;
   let setUpdateProduct = userContext1.setUpdateProduct;
@@ -51,27 +52,15 @@ const UserProducts = () => {
       {userProducts &&
         userProducts.map((elem, index) => {
           return (
-            <div key = {index}>
+            <div key={index}>
+              <img src={elem.image}></img>
               <h1>
                 Title: {elem.title} {newTitle}
-              
               </h1>
-              <h5>
-                Description: {elem.description}
-               
-              </h5>
-              <p>
-                Price: {elem.price}
-             
-              </p>
-              <p>
-                Type: {elem.type}
-                
-              </p>
-              <p>
-                Status: {elem.status}
-                
-              </p>
+              <h5>Description: {elem.description}</h5>
+              <p>Price: {elem.price}</p>
+              <p>Type: {elem.type}</p>
+              <p>Status: {elem.status}</p>
               <p>
                 User: {elem.userId.firstName} {elem.userId.lastName}
               </p>
@@ -89,7 +78,6 @@ const UserProducts = () => {
                     })
                     .catch((err) => {
                       setDeleteProductMessage(response.data);
-                    
                     });
                 }}
               >
@@ -97,18 +85,27 @@ const UserProducts = () => {
               </button>
               {deleteProductMessage}
 
-              <button onClick={() => {
-                setUpdateProduct(elem)
-                console.log(updateProduct)
-                navigate("/updateProduct")
-
-
-              }}>Update This Product</button>
+              <button
+                onClick={() => {
+                  setUpdateProduct(elem);
+                  console.log(updateProduct);
+                  navigate("/updateProduct");
+                }}
+              >
+                Update This Product
+              </button>
             </div>
           );
         })}
 
       <div>add new product</div>
+      <input
+        placeholder="Image"
+        type="text"
+        onChange={(e) => {
+          setNewProductImage(e.target.value);
+        }}
+      ></input>
       <input
         placeholder="Title"
         type="text"
@@ -143,6 +140,7 @@ const UserProducts = () => {
             .post(
               "http://localhost:5000/product/",
               {
+                image: newProductImage,
                 title: newProductTitle,
                 description: newProductDescription,
                 price: newProductPrice,

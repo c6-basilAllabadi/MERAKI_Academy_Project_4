@@ -39,6 +39,7 @@ const Login = () => {
       localStorage.setItem("Token", JSON.stringify(response.data.token))
     localStorage.setItem("loggedIn",JSON.stringify(true))
       setUser(response.data.userId)
+      localStorage.setItem("user1",JSON.stringify(response.data.userId))
       navigate("/dashboard")
      
     }).catch((err)=>{

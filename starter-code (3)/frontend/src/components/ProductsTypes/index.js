@@ -24,7 +24,7 @@ const ProductsTypes = ()=>{
     
       useEffect(() => {
         getTypesProducts();
-      }, []);
+      }, [productType]);
     
     return (
 

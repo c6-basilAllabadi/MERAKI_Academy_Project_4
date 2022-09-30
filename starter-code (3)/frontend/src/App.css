@@ -1,3 +1,34 @@
 .App {
   text-align: center;
 }
+
+*{
+  font-family: sans-serif;
+}
+
+.navbar{
+  width:1000px;
+  height:60px;
+  display:grid;
+  grid-template-columns: repeat(10,1fr);
+  background-color: grey;
+}
+  .navbar_login{
+    grid-column: 1;
+
+  }
+  .navbar_register{
+    grid-column: 2;
+
+  }
+.navbar_dashboard{
+  grid-column: 4;
+
+}
+  .navbar_favorite{
+    grid-column: 7;
+
+  }
+.navbar_logout{
+  grid-column: 8;
+}

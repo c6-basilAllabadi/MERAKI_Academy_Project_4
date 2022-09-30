@@ -5,10 +5,11 @@ import { useNavigate }from 'react-router-dom'
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import  Search  from "../Search/index";
+import "./style.css"
 
 
 const Dashboard = () => {
-  const [products, setProducts] = useState("");
+
   const userContext1 = useContext(userContext)
   let searchWord= userContext1.searchWord
   let setSearchWord = userContext1.setSearchWord
@@ -20,6 +21,9 @@ const Dashboard = () => {
   let setProductType = userContext1.setProductType
   let token =userContext1.token
     let setToken = userContext1.setToken
+    let user = userContext1.user
+    let products=userContext1. products
+    let setProducts = userContext1.setProducts
   const navigate = useNavigate()
   const [dashboardProductsStatus, setDashboardProductsStatus] = useState(true);
 
@@ -43,49 +47,23 @@ const Dashboard = () => {
 
   return (
     <>
-    <h2 onClick={()=>{
-      setProductType("car")
-      navigate("/productsTypes")
-    }}>Cars</h2>
-    <h2 onClick={()=>{
-      setProductType("laptop")
-      navigate("/productsTypes")
-    }}>Laptops</h2>
-    <h2 onClick={()=>{
-      setProductType("mobile")
-      navigate("/productsTypes")
-    }}>Mobiles</h2>
-      <input
-        placeholder="Search"
-        onChange={(e) => {
-          setSearchWord(e.target.value);
-        }}
-      ></input>
-      <button
-        onClick={() => {
-          setProducts("")
-          setSearchStatus(true)
-        }}
-      >
-        Search
-      </button>
-
-      <Link to="/userProducts">user products</Link>
+    
+      <div className="item_card_dashboard_container">
       {products &&
         products.map((elem, index) => {
           return (
-            <div key ={index}>
-              <h1>Title: {elem.title}</h1>
-              <h5>Description: {elem.description}</h5>
-              <p>Price: {elem.price}</p>
-              <p>Type: {elem.type}</p>
-              <p>Status: {elem.status}</p>
-              <p>
+            <div className ="item_card_dashboard" key ={index}>
+              <img src={elem.image} className="item_card_image_dashboard"></img>
+              <p className="item_card_title_dashboard">Title: {elem.title}</p>
+              <p className="item_card_price_dashboard">Price: {elem.price}</p>
+              <p className="item_card_type_dashboard">Type: {elem.type}</p>
+              <p className="item_card_status_dashboard">Status: {elem.status}</p>
+              <p className="item_card_userName_dashboard">
                 User: {elem.userId.firstName} {elem.userId.lastName}
               </p>
 
-              <p>Likes: {elem.likes}</p>
-              <button onClick={()=>{
+              <p className="item_card_likes_dashboard">Likes: {elem.likes}</p>
+              <button className="item_card_addToFavorite_dashboard" onClick={()=>{
                 axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
                   headers: {
                     authorization: "Bearer " + token,
@@ -98,6 +76,7 @@ const Dashboard = () => {
             </div>
           );
         })}
+        </div>
     </>
   );
 };

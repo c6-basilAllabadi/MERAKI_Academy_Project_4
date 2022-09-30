@@ -9,53 +9,37 @@ import Search from "./components/Search";
 import UpdateProduct from "./components/UpdateProduct/UpdateProduct"
 import ProductsTypes from "./components/ProductsTypes/index"
 import Favorites from "./components/Favorites/Favorites"
+import Navbar from "./components/Navbar/Navbar";
 export const userContext=createContext()
 function App() {
   let Token = JSON.parse(localStorage.getItem('Token'))
   let loggedIn = JSON.parse(localStorage.getItem('loggedIn'))
+  let user1 = JSON.parse(localStorage.getItem('user1'))
 
   const [loginemail , setLoginEmail]=useState("")
   const [loginpassword , setLoginPassword] = useState("")
   const [dashboardstatus , setDashboardStatus] = useState(true)
   const [isLoggedIn,setIsLoggedIn]=useState(loggedIn) 
   const [token , setToken] = useState(Token)
-  const [user , setUser]=useState("")
+  const [user , setUser]=useState(user1)
   const [userProducts ,setUserProducts]=useState("")
   const [searchWord, setSearchWord] = useState("");
   const [searchProducts, setSearchProducts] = useState("");
   const [searchStatus,setSearchStatus]=useState(false)
   const [updateProduct,setUpdateProduct]=useState("")
   const [productType,setProductType] = useState("")
+  const [products, setProducts] = useState("");
   
 
    
 
    return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts}}>
     <div className="App">
-     <h2>{!isLoggedIn && <Link to="/login" onClick={()=>{
-      setDashboardStatus(false)
-     }}>Login</Link>}</h2>
-     <h2>{!isLoggedIn && <Link to="/register" onClick={()=>{
-      setDashboardStatus(false)
-     }}>Register</Link>}</h2>
-     {isLoggedIn && <h2> Logout</h2>}
-     { searchStatus && <Search/>}
-     <h2><Link to="/dashboard" onClick={()=>{
-      setSearchStatus(false)
-      Navigate(Dashboard)
-     }}>Dashboard</Link></h2>
-     <h2><Link to="/favorite">Favorites</Link></h2>
-     <button onClick={()=>{
-      setToken(null)
-      setIsLoggedIn(false)
-  
-      localStorage.setItem("Token", JSON.stringify(null))
-      localStorage.setItem("loggedIn",JSON.stringify(false))
-
-     }}>Logout</button>
+<Navbar/>
       <Routes>
+      <Route path ="/" element={<Dashboard/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path ="/dashboard" element={<Dashboard/>}/>
@@ -63,6 +47,7 @@ function App() {
         <Route path= "/updateProduct" element={<UpdateProduct/>}/>
         <Route path="/productsTypes" element = {<ProductsTypes/>}/>
         <Route path="/favorite" element ={<Favorites/>}/>
+    
       </Routes>
      
     </div>

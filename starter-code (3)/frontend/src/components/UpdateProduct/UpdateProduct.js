@@ -14,12 +14,14 @@ const updateProduct = ()=>{
     const [editDescription , setEditDescription] = useState("")
     const [ editPrice , setEditPrice] = useState("")
     const [ editType , setEditType] = useState("")
+    const [editImage , setEditImage] =useState("")
 const [editStatus,setEditStatus]=useState("")
 const [newTitle,setNewTitle]=useState(updateProduct.title)
 const [newDescription,setNewDescription] = useState(updateProduct.description)
 const [newPrice,setNewPrice] = useState(updateProduct.price)
 const [newType,setNewType] = useState(updateProduct.type)
 const [newStatus,setNewStatus] = useState(updateProduct.status)
+const [newImage , setNewImage]=useState(updateProduct.image)
 const [ updateMessage,setUpdateMessage]=useState("")
 
 
@@ -27,6 +29,16 @@ const [ updateMessage,setUpdateMessage]=useState("")
         <>
 
 <div>
+<h1>
+                Image: {updateProduct.image} <button onClick={()=>{
+                    setEditImage(<input placeholder="New Image" onChange={(e)=>{
+                        setNewImage(e.target.value)
+                    }}></input>)
+                   
+                    
+                }}>Edit</button> {editImage}
+              
+              </h1>
               <h1>
                 Title: {updateProduct.title} <button onClick={()=>{
                     setEditTitle(<input placeholder="New Title" onChange={(e)=>{
@@ -76,7 +88,7 @@ const [ updateMessage,setUpdateMessage]=useState("")
 </div>
         
         <button onClick={()=>{
-            axios.put(`http://localhost:5000/product/${updateProduct._id}`,{title:newTitle,description:newDescription,price:newPrice,type:newType,status:newStatus},{
+            axios.put(`http://localhost:5000/product/${updateProduct._id}`,{image:newImage,title:newTitle,description:newDescription,price:newPrice,type:newType,status:newStatus},{
                 headers: {
                   authorization: "Bearer " + token,
                 },

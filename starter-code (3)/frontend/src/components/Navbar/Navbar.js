@@ -1,0 +1,94 @@
+
+import React, { useState, useEffect } from "react";
+import { userContext } from "../../App.js";
+import { useContext } from "react";
+import { useNavigate }from 'react-router-dom'
+import { Link, Routes, Route } from "react-router-dom";
+import axios from "axios";
+import  Search  from "../Search/index";
+import "./style.css"
+
+
+
+const Navbar=()=>{
+    const userContext1 = useContext(userContext)
+    const navigate = useNavigate()
+    let setDashboardStatus = userContext1.setDashboardStatus
+    let setSearchStatus = userContext1.setSearchStatus
+    let setToken = userContext1.setToken
+    let setIsLoggedIn = userContext1.setIsLoggedIn
+    let isLoggedIn = userContext1.isLoggedIn
+    let searchStatus = userContext1.searchStatus
+    let setProductType = userContext1.setProductType
+    let setSearchWord = userContext1.setSearchWord
+let setProducts = userContext1.setProducts
+
+
+    return(
+
+        <>
+        <div className="navbar_container">
+           <p className="navbar_login">{!isLoggedIn && <Link to="/login" onClick={()=>{
+      setDashboardStatus(false)
+     }}>Login</Link>}</p>
+     <p className="navbar_register">{!isLoggedIn && <Link to="/register" onClick={()=>{
+      setDashboardStatus(false)
+     }}>Register</Link>}</p>
+     {isLoggedIn && <p> Logout</p>}
+     { searchStatus && <Search/>}
+     <p className="navbar_dashboard"><Link to="/dashboard" onClick={()=>{
+      setSearchStatus(false)
+      Navigate(Dashboard)
+     }}>Dashboard</Link></p>
+     <p className="navbar_favorite"><Link to="/favorite">Favorites</Link></p>
+     <button className="navbar_logout"onClick={()=>{
+      setToken(null)
+      setIsLoggedIn(false)
+  
+      localStorage.setItem("Token", JSON.stringify(null))
+      localStorage.setItem("loggedIn",JSON.stringify(false))
+      localStorage.setItem("user1",JSON.stringify(""))
+
+     }}>Logout</button>
+   
+    <p className= "car_productType" onClick={()=>{
+   
+      setProductType("car")
+      navigate("/productsTypes")
+    }}>Cars</p>
+    <p className= "laptop_productType" onClick={()=>{
+    
+      setProductType("laptop")
+      navigate("/productsTypes")
+    }}>Laptops</p>
+    <p className= "mobile_productType" onClick={()=>{
+     
+      setProductType("mobile")
+      navigate("/productsTypes")
+    }}>Mobiles</p>
+      <input className="search_dashboard"
+        placeholder="Search"
+        onChange={(e) => {
+          setSearchWord(e.target.value);
+        }}
+      ></input>
+      <button className="search_dashboard_button"
+        onClick={() => {
+          setProducts("")
+          setSearchStatus(true)
+         
+        }}
+      >
+        Search
+      </button>
+
+      <Link className= "userProducts_productType" to="/userProducts">user products</Link>
+    
+      </div>
+        
+        
+        </>
+    )
+}
+
+export default Navbar
