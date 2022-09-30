@@ -9,12 +9,12 @@ const addToFavorite = (req, res) => {
   newProduct
     .save()
     .then((response) => {
-        userModel.updateOne({_id:req.token.userId},{ $push: { favorites:newProduct }},{new:true}).then((response)=>{
+        userModel.updateOne({_id:req.token.userId},{ $push: { favorites:newProduct.productId }},{new:true}).then((response)=>{
             res.status(201);
             res.json({
               success: true,
               message: "Product Added to Favorite Successfully",
-             response : newProduct
+             response : newProduct.productId
             })}
         ).catch((err)=>{
             res.status(500);
@@ -30,13 +30,13 @@ const addToFavorite = (req, res) => {
 
 const getAllFavorite = (req, res) => {
     userModel
-    .find({_id:req.token.userId})
+    .find({_id:req.token.userId}).populate("favorites")
     .then((response) => {
       res.status(200);
       res.json({
         success: true,
         message: "All the favorites",
-        favorites: response[0].favorites,
+        favorites: response,
       });
     })
     .catch((err) => {

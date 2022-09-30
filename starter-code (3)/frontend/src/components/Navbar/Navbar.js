@@ -35,9 +35,9 @@ let setProducts = userContext1.setProducts
       setDashboardStatus(false)
      }}>Register</Link>}</p>
      {isLoggedIn && <p> Logout</p>}
-     { searchStatus && <Search/>}
+     
      <p className="navbar_dashboard"><Link to="/dashboard" onClick={()=>{
-      setSearchStatus(false)
+     
       Navigate(Dashboard)
      }}>Dashboard</Link></p>
      <p className="navbar_favorite"><Link to="/favorite">Favorites</Link></p>
@@ -75,7 +75,9 @@ let setProducts = userContext1.setProducts
       <button className="search_dashboard_button"
         onClick={() => {
           setProducts("")
-          setSearchStatus(true)
+          navigate("./search")
+          
+       
          
         }}
       >

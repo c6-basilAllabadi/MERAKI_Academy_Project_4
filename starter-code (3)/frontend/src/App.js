@@ -47,6 +47,8 @@ function App() {
         <Route path= "/updateProduct" element={<UpdateProduct/>}/>
         <Route path="/productsTypes" element = {<ProductsTypes/>}/>
         <Route path="/favorite" element ={<Favorites/>}/>
+        <Route path="/search" element = {<Search/>}/>
+     
     
       </Routes>
      

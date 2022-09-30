@@ -1,0 +1,59 @@
+.item_card_search-container  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+ 
+}
+.item_card_search {
+    width:380px;
+    height:120px;
+    border:1px grey solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(10,30px);
+    padding:5px;
+
+    align-items: center;
+    
+}
+.item_card_search *{
+    margin:0px;
+    padding:0px;
+   line-height:1em;
+   text-align: left;
+}
+.item_card_image_search{
+    grid-column: 1;
+    grid-row: 1/5;
+    width:115px;
+    height:100px;
+    margin-right:10px;
+    margin-left:0px;
+}
+.item_card_title_search {
+    
+    grid-column: 2/4;
+}
+
+.item_card_price_search {
+    grid-column: 2;
+}
+
+.item_card_type_search {
+    grid-column: 3;
+}
+
+.item_card_status_search {
+    grid-column: 2;
+}
+.item_card_userName_search {
+    
+}
+
+.item_card_likes_search {
+    grid-column: 2;
+}
+
+
