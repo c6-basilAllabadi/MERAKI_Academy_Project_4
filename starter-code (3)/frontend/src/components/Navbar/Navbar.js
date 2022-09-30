@@ -22,6 +22,12 @@ const Navbar=()=>{
     let setProductType = userContext1.setProductType
     let setSearchWord = userContext1.setSearchWord
 let setProducts = userContext1.setProducts
+let setFilterprice=userContext1.setFilterprice
+let setFilterStatus = userContext1.setFilterStatus
+let setFilterType = userContext1.setFilterType
+let filterPrice = userContext1.filterPrice
+let filterStatus = userContext1.filterStatus
+let fliterType=userContext1.fliterType
 
 
     return(
@@ -88,7 +94,29 @@ let setProducts = userContext1.setProducts
     
       </div>
         
+        <input placeholder="type" onChange={(e)=>{
+
+          setFilterType(e.target.value)
+        }
+
+        }></input>
+       <input placeholder="price"onChange={(e)=>{
+
+setFilterprice(e.target.value)
+}
+
+}></input>
+        <input placeholder="status" onChange={(e)=>{
+
+setFilterStatus(e.target.value)
+}
+
+}></input>
         
+        <button onClick={()=>{
+
+          navigate("/filterProducts")
+        }}>Filter</button>
         </>
     )
 }
