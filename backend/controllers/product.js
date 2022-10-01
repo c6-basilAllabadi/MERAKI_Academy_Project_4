@@ -7,6 +7,15 @@ const addNewProduct = (req, res) => {
     description,
     price,
     type,
+    city,
+    carmake,
+    model,
+    year,
+    transmission,
+    fuel,
+    color,
+    condition,
+    Kilometers,
     status,
     userId,
     comments,
@@ -18,6 +27,15 @@ const addNewProduct = (req, res) => {
     description,
     price,
     type,
+    city,
+    carmake,
+    model,
+    year,
+    transmission,
+    fuel,
+    color,
+    condition,
+    Kilometers,
     status,
     userId,
     comments,
@@ -42,7 +60,7 @@ const addNewProduct = (req, res) => {
 const getAllProducts = (req, res) => {
   productModel
     .find({})
-    .populate("userId",`firstName  lastName`)
+    .populate("userId", `firstName  lastName`)
     .exec()
     .then((response) => {
       res.status(200);
@@ -61,7 +79,8 @@ const getAllProducts = (req, res) => {
 const getProductsByUser = (req, res) => {
   const userId1 = req.params.userId;
   productModel
-    .find({ userId: userId1 }).populate("userId",`firstName  lastName`)
+    .find({ userId: userId1 })
+    .populate("userId", `firstName  lastName`)
     .exec()
     .then((response) => {
       res.json({
@@ -95,7 +114,9 @@ const getProductsByType = (req, res) => {
 const getProductsBySearch = (req, res) => {
   const searchWord = req.params.search;
   productModel
-    .find({ title: { $regex: `${searchWord}` } }).populate("userId",`firstName  lastName`).exec()
+    .find({ title: { $regex: `${searchWord}` } })
+    .populate("userId", `firstName  lastName`)
+    .exec()
     .then((response) => {
       res.json({
         success: true,
@@ -114,14 +135,15 @@ const deleteProductById = (req, res) => {
   productModel
     .findOneAndDelete({ _id: productId })
     .then((response) => {
-        if(response){
-      res.status(200);
-      res.json({ success: true, message: "Product deleted" })};
-      if(!response){
+      if (response) {
+        res.status(200);
+        res.json({ success: true, message: "Product deleted" });
+      }
+      if (!response) {
         res.status(404).json({
-            success: false,
-            message: `The Product: ${_id} is not found`,
-          });
+          success: false,
+          message: `The Product: ${_id} is not found`,
+        });
       }
     })
     .catch((err) => {
@@ -132,12 +154,49 @@ const deleteProductById = (req, res) => {
 
 const updateProductById = (req, res) => {
   const _id = req.params.productId;
-  const { image, title, description, price, userId, comments, likes } =
-    req.body;
+  const {
+    image,
+    title,
+    description,
+    price,
+    type,
+    city,
+    carmake,
+    model,
+    year,
+    transmission,
+    fuel,
+    color,
+    condition,
+    Kilometers,
+    status,
+    userId,
+    comments,
+    likes,
+  } = req.body;
   productModel
     .findByIdAndUpdate(
       { _id: _id },
-      { image, title, description, price, userId, comments, likes },
+      {
+        image,
+        title,
+        description,
+        price,
+        type,
+        city,
+        carmake,
+        model,
+        year,
+        transmission,
+        fuel,
+        color,
+        condition,
+        Kilometers,
+        status,
+        userId,
+        comments,
+        likes,
+      },
       { new: true }
     )
     .then((response) => {
@@ -153,6 +212,31 @@ const updateProductById = (req, res) => {
       res.json({ success: false, message: "Server Error", err: err.message });
     });
 };
+
+const getProductsByFilter = (req, res) => {
+  let newvalue = req.params.value;
+  let newvalue1 = newvalue.split(".");
+  let type = newvalue1[0];
+  let price2 = newvalue1[1];
+  let price1 = price2 * 1;
+  let status = newvalue1[2];
+  productModel
+    .find({ type: type, price: price1, status: status })
+    .populate("userId", `firstName  lastName`)
+    .exec()
+    .then((response) => {
+      res.json({
+        success: true,
+        message: `filtered products`,
+        products: response,
+      });
+    })
+    .catch((err) => {
+      res.status(500);
+      res.json({ success: false, message: "Server Error", err: err.message });
+    });
+};
+
 module.exports = {
   addNewProduct,
   getAllProducts,
@@ -161,4 +245,5 @@ module.exports = {
   updateProductById,
   getProductsByType,
   getProductsBySearch,
+  getProductsByFilter,
 };

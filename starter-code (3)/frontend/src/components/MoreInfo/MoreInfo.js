@@ -17,6 +17,7 @@ const MoreInfo = ()=>{
     return (
 
         <>
+        
        
        <div className ="item_card_moreInfo" >
               <img src={moreInfoProduct.image} className="item_card_image_moreInfo"></img>
@@ -25,11 +26,20 @@ const MoreInfo = ()=>{
               }}>Title: {moreInfoProduct.title}</p>
               <p className="item_card_price_moreInfo">Price:{moreInfoProduct.price}</p>
               <p className="item_card_type_moreInfo">Type: {moreInfoProduct.type}</p>
+              <p className="item_card_city_moreInfo">City: {moreInfoProduct.city}</p>
+              <p className="item_card_carmake_moreInfo">Carmake: {moreInfoProduct.carmake}</p>
+              <p className="item_card_model_moreInfo">Mdel: {moreInfoProduct.model}</p>
+              <p className="item_card_year_moreInfo">Year: {moreInfoProduct.year}</p>
+              <p className="item_card_transmission_moreInfo">Transmission: {moreInfoProduct.transmission}</p>
+              <p className="item_card_fuel_moreInfo">Fuel: {moreInfoProduct.fuel}</p>
+              <p className="item_card_color_moreInfo">Color: {moreInfoProduct.color}</p>
+              <p className="item_card_condition_moreInfo">Condition: {moreInfoProduct.condition}</p>
+              <p className="item_card_Kilometers_moreInfo">Kilometers: {moreInfoProduct.Kilometers}</p>
               <p className="item_card_status_moreInfo">Status: {moreInfoProduct.status}</p>
               <p className="item_card_userName_moreInfo">
                 User: {moreInfoProduct.userId.firstName} {moreInfoProduct.userId.lastName}
               </p>
-<p className="item_card_description_moreInfo"><p>description</p>{moreInfoProduct.description}</p>
+{/*<p className="item_card_description_moreInfo"><p>description</p>{moreInfoProduct.description}</p>*/}
               <p className="item_card_likes_moreInfo">Likes: {moreInfoProduct.likes}</p>
               <button className="item_card_addToFavorite_moreInfo" onClick={()=>{
                 axios.post(`http://localhost:5000/favorite/${moreInfoProduct._id}`,{},{

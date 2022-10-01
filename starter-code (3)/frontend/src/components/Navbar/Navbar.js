@@ -66,12 +66,12 @@ let fliterType=userContext1.fliterType
     
       setProductType("laptop")
       navigate("/productsTypes")
-    }}>Laptops</p>
+    }}>Pickups</p>
     <p className= "mobile_productType" onClick={()=>{
      
       setProductType("mobile")
       navigate("/productsTypes")
-    }}>Mobiles</p>
+    }}>Buses</p>
       <input className="search_dashboard"
         placeholder="Search"
         onChange={(e) => {

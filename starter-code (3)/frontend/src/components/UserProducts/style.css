@@ -1,0 +1,9 @@
+.add_product_container{
+    display: flex;
+    flex-direction: column;
+    width:200px;
+    height: 30px;
+    align-items: center;
+   margin-left: 650px;
+   
+}
