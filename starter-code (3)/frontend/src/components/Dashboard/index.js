@@ -83,7 +83,8 @@ const Dashboard = () => {
         products.map((elem, index) =>{
            console.log(elem)
           const check =()=>{if(arr2.indexOf(elem._id)>=0){
-           return setAddtoFavoriteButton("added to faorite")
+           return setAddtoFavoriteButton("added to faorite");
+           
        }};
     
       
@@ -110,23 +111,35 @@ const Dashboard = () => {
                         authorization: "Bearer " + token,
                       }}).then((response)=>{
                       console.log(response.data.message)
+                      
                     }).catch((err)=>{
                       console.log(err.message)
                     })
                   }}>added to favorite</button>}
                   {!arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
-                    
+                  
                     axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
                       headers: {
                         authorization: "Bearer " + token,
                       }}).then((response)=>{
                       console.log(response.data.message)
+                      
                     }).catch((err)=>{
                       console.log(err.message)
                     })
                   }}>add to favorite</button>}
         
-        
+        <button className="item_card_like_dashboard" onClick={()=>{
+          axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }).then((response)=>{
+            console.log(response)
+          }).catch((err)=>{
+            console.log(err)
+          })
+        }}>Like</button>
             </div>
           );
         })}
