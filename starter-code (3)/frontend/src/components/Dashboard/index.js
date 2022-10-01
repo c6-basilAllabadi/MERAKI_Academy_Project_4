@@ -26,6 +26,8 @@ const Dashboard = () => {
     let setProducts = userContext1.setProducts
   const navigate = useNavigate()
   const [dashboardProductsStatus, setDashboardProductsStatus] = useState(true);
+  let setMoreInfoProduct =userContext1.setMoreInfoProduct
+  let moreInfoProduct = userContext1.moreInfoProduct
 
 
   const getAllProducts = () => {
@@ -54,15 +56,18 @@ const Dashboard = () => {
           return (
             <div className ="item_card_dashboard" key ={index}>
               <img src={elem.image} className="item_card_image_dashboard"></img>
-              <p className="item_card_title_dashboard">Title: {elem.title}</p>
-              <p className="item_card_price_dashboard">Price: {elem.price}</p>
-              <p className="item_card_type_dashboard">Type: {elem.type}</p>
-              <p className="item_card_status_dashboard">Status: {elem.status}</p>
+              <p className="item_card_title_dashboard" onClick={()=>{
+                setMoreInfoProduct(elem)
+                navigate("/moreInfo")
+              }}>{elem.title}</p>
+              <p className="item_card_price_dashboard">{elem.price}$</p>
+              <p className="item_card_type_dashboard">{elem.type}</p>
+              <p className="item_card_status_dashboard">{elem.status}</p>
               <p className="item_card_userName_dashboard">
-                User: {elem.userId.firstName} {elem.userId.lastName}
+                {elem.userId.firstName} {elem.userId.lastName}
               </p>
 
-              <p className="item_card_likes_dashboard">Likes: {elem.likes}</p>
+              <p className="item_card_likes_dashboard">{elem.likes}</p>
               <button className="item_card_addToFavorite_dashboard" onClick={()=>{
                 axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
                   headers: {

@@ -11,6 +11,7 @@ import ProductsTypes from "./components/ProductsTypes/index"
 import Favorites from "./components/Favorites/Favorites"
 import Navbar from "./components/Navbar/Navbar";
 import FilterProducts from "./components/FilterProducts/FilterProducts";
+import MoreInfo from "./components/MoreInfo/MoreInfo";
 export const userContext=createContext()
 function App() {
   let Token = JSON.parse(localStorage.getItem('Token'))
@@ -33,13 +34,14 @@ function App() {
   const [fliterType ,setFilterType]=useState("")
   const [filterPrice,setFilterprice]=useState("")
   const [filterStatus,setFilterStatus]=useState("")
+  const [moreInfoProduct,setMoreInfoProduct] = useState("")
   
 
    
 
    return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct}}>
     <div className="App">
 <Navbar/>
       <Routes>
@@ -53,6 +55,7 @@ function App() {
         <Route path="/favorite" element ={<Favorites/>}/>
         <Route path="/search" element = {<Search/>}/>
         <Route path="/filterProducts" element ={<FilterProducts/>}/>
+        <Route path = "/moreInfo" element= {<MoreInfo/>}/>
      
     
       </Routes>
