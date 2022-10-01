@@ -3,6 +3,7 @@ import { userContext } from "../../App.js";
 import { useContext } from "react";
 import { useNavigate }from 'react-router-dom'
 import axios from "axios"
+import "./style.css"
 const Login = () => {
   const userContext1 = useContext(userContext)
   let setLoginEmail = userContext1.setLoginEmail
@@ -19,7 +20,7 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  return <div>
+  return <div className="login_container">
     
     <input type="email" placeholder="Enter your Email" onChange={(e)=>{
       setLoginEmail(e.target.value)

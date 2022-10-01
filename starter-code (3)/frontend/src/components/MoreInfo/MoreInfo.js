@@ -12,25 +12,26 @@ const MoreInfo = ()=>{
     const userContext1 = useContext(userContext)
     let setMoreInfoProduct =userContext1.setMoreInfoProduct
     let moreInfoProduct = userContext1.moreInfoProduct
+    let token =userContext1.token
 
     return (
 
         <>
        
-       <div className ="item_card_dashboard" >
-              <img src={moreInfoProduct.image} className="item_card_image_dashboard"></img>
-              <p className="item_card_title_dashboard" onClick={()=>{
+       <div className ="item_card_moreInfo" >
+              <img src={moreInfoProduct.image} className="item_card_image_moreInfo"></img>
+              <p className="item_card_title_moreInfo" onClick={()=>{
                
               }}>Title: {moreInfoProduct.title}</p>
-              <p className="item_card_price_dashboard">Price: {moreInfoProduct.price}</p>
-              <p className="item_card_type_dashboard">Type: {moreInfoProduct.type}</p>
-              <p className="item_card_status_dashboard">Status: {moreInfoProduct.status}</p>
-              <p className="item_card_userName_dashboard">
+              <p className="item_card_price_moreInfo">Price:{moreInfoProduct.price}</p>
+              <p className="item_card_type_moreInfo">Type: {moreInfoProduct.type}</p>
+              <p className="item_card_status_moreInfo">Status: {moreInfoProduct.status}</p>
+              <p className="item_card_userName_moreInfo">
                 User: {moreInfoProduct.userId.firstName} {moreInfoProduct.userId.lastName}
               </p>
-
-              <p className="item_card_likes_dashboard">Likes: {moreInfoProduct.likes}</p>
-              <button className="item_card_addToFavorite_dashboard" onClick={()=>{
+<p className="item_card_description_moreInfo"><p>description</p>{moreInfoProduct.description}</p>
+              <p className="item_card_likes_moreInfo">Likes: {moreInfoProduct.likes}</p>
+              <button className="item_card_addToFavorite_moreInfo" onClick={()=>{
                 axios.post(`http://localhost:5000/favorite/${moreInfoProduct._id}`,{},{
                   headers: {
                     authorization: "Bearer " + token,

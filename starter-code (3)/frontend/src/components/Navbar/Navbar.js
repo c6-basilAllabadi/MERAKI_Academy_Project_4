@@ -40,14 +40,14 @@ let fliterType=userContext1.fliterType
      <p className="navbar_register">{!isLoggedIn && <Link to="/register" onClick={()=>{
       setDashboardStatus(false)
      }}>Register</Link>}</p>
-     {isLoggedIn && <p> Logout</p>}
+    
      
      <p className="navbar_dashboard"><Link to="/dashboard" onClick={()=>{
      
       Navigate(Dashboard)
      }}>Dashboard</Link></p>
      <p className="navbar_favorite"><Link to="/favorite">Favorites</Link></p>
-     <button className="navbar_logout"onClick={()=>{
+     {isLoggedIn &&<button className="navbar_logout"onClick={()=>{
       setToken(null)
       setIsLoggedIn(false)
   
@@ -55,7 +55,7 @@ let fliterType=userContext1.fliterType
       localStorage.setItem("loggedIn",JSON.stringify(false))
       localStorage.setItem("user1",JSON.stringify(""))
 
-     }}>Logout</button>
+     }}>Logout</button>}
    
     <p className= "car_productType" onClick={()=>{
    
@@ -90,9 +90,10 @@ let fliterType=userContext1.fliterType
         Search
       </button>
 
-      <Link className= "userProducts_productType" to="/userProducts">user products</Link>
+      {isLoggedIn && <Link className= "userProducts_productType" to="/userProducts">My Products</Link>}
     
-      </div>
+      
+      <div className="navbar_filter">
         
         <input placeholder="type" onChange={(e)=>{
 
@@ -117,6 +118,8 @@ setFilterStatus(e.target.value)
 
           navigate("/filterProducts")
         }}>Filter</button>
+        </div>
+        </div>
         </>
     )
 }

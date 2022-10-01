@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate }from 'react-router-dom'
 import axios from "axios"
+import "./style.css"
 
 const Register = () => {
 
@@ -17,7 +18,7 @@ const Register = () => {
   const navigate = useNavigate()
   return (
   <>
-  <div>Register</div>
+  <div className="register_container">Register
 <input type="text" placeholder="Enter Your First Name" onChange={(e)=>{
   setRegisterFirstName(e.target.value)
 }}></input>
@@ -54,7 +55,7 @@ const Register = () => {
 }} >Register</button>
 <div>{registerMessage}</div>
 
-
+</div>
   </>
 )};
 export default Register;

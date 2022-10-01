@@ -100,7 +100,7 @@ const Dashboard = () => {
               <p className="item_card_status_dashboard">{elem.status}</p>
               <p className="item_card_userName_dashboard">
                 {elem.userId.firstName} {elem.userId.lastName}
-              </p>;
+              </p>
               
               <p className="item_card_likes_dashboard">{elem.likes}</p>
               {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
