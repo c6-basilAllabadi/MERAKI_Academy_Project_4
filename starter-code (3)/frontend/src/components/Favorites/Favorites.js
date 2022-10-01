@@ -19,7 +19,9 @@ import axios from "axios"
     let user =userContext1.user
     let setUser=userContext1.setUser
     const [loginMessage,setLoginMessage]=useState("")
-    const [favoritesProducts,setFavoriteProducts] = useState("")
+
+    let favoritesProducts = userContext1.favoritesProducts
+   let setFavoriteProducts = userContext1.setFavoriteProducts
 
 
     const getFavoritesProducts = () => {

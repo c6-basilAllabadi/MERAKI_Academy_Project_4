@@ -1,5 +1,5 @@
 .navbar_container{
-    width:820px;
+    width:100vw;
     height:120px;
     display:grid;
     grid-template-columns: repeat(10,1fr);
