@@ -3,7 +3,7 @@ import { userContext } from "../../App.js";
 import { useContext } from "react";
 import { useNavigate }from 'react-router-dom'
 import axios from "axios"
-
+import "./style.css"
 
 
   const Favorites = ()=>{
@@ -47,21 +47,33 @@ import axios from "axios"
 return (
 
     <>
+    
     {favoritesProducts &&
         favoritesProducts.map((elem, index) => {
           return (
-            <div key = {index}>
-              <h1>Title: {elem.title}</h1>
-              <h5>Description: {elem.description}</h5>
-              <p>Price: {elem.price}</p>
-              <p>Type: {elem.type}</p>
-              <p>Status: {elem.status}</p>
-              <p>
-                User: {elem.userId.firstName} {elem.userId.lastName}
-              </p>
-
-              <p>Likes: {elem.likes}</p>
-              <button onClick={()=>{
+            <div className ="item_card_moreInfo" >
+            <img src={elem.image} className="item_card_image_moreInfo"></img>
+            <p className="item_card_title_moreInfo" onClick={()=>{
+             
+            }}>Title: {elem.title}</p>
+            <p className="item_card_price_moreInfo">{elem.price} $</p>
+            <p className="item_card_type_moreInfo">Type: {elem.type}</p>
+            <p className="item_card_city_moreInfo">City: {elem.city}</p>
+            <p className="item_card_carmake_moreInfo">Carmake: {elem.carmake}</p>
+            <p className="item_card_model_moreInfo">Mdel: {elem.model}</p>
+            <p className="item_card_year_moreInfo">Year: {elem.year}</p>
+            <p className="item_card_transmission_moreInfo">Transmission: {elem.transmission}</p>
+            <p className="item_card_fuel_moreInfo">Fuel: {elem.fuel}</p>
+            <p className="item_card_color_moreInfo">Color: {elem.color}</p>
+            <p className="item_card_condition_moreInfo">Condition: {elem.condition}</p>
+            <p className="item_card_Kilometers_moreInfo">Kilometers: {elem.Kilometers}</p>
+            <p className="item_card_status_moreInfo">Status: {elem.status}</p>
+            <p className="item_card_userName_moreInfo">
+              User: {elem.userId.firstName} {elem.userId.lastName}
+            </p>
+{/*<p className="item_card_description_moreInfo"><p>description</p>{moreInfoProduct.description}</p>*/}
+            <p className="item_card_likes_moreInfo">Likes: {elem.likes}</p>
+              <button className="item_card_Remove_moreInfo" onClick={()=>{
 
                 axios.put(`http://localhost:5000/favorite/${elem._id}`,{},{
                     headers: {

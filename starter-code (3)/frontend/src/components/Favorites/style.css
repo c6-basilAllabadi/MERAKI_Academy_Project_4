@@ -1,0 +1,23 @@
+
+.item_card_Remove_moreInfo{
+    background-color: rgba(237, 237, 237, 0.379);
+    border: 1px solid rgba(205, 202, 202, 0.511);
+    margin:10px;
+    margin-top: 50px;
+    grid-column: 4;
+    grid-row: 6;
+    width:180px;
+    height:35px;
+    font-size: 8px;
+    font-size: 14px;
+    text-align: center;
+    color:rgb(107, 104, 104);
+  
+}
+
+.item_card_Remove_moreInfo:hover{
+    background-color: #4090d282;
+    border:none;
+    border-radius: 2px;
+    
+}

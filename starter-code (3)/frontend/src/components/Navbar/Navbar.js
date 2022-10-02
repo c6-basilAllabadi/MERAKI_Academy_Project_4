@@ -30,7 +30,8 @@ let setFilterType = userContext1.setFilterType
 let filterPrice = userContext1.filterPrice
 let filterStatus = userContext1.filterStatus
 let fliterType=userContext1.fliterType
-
+ let searchButtonStatus  = userContext1.searchButtonStatus
+let setSearchButtonStatus = userContext1.setSearchButtonStatus
 
     return(
 
@@ -84,9 +85,9 @@ let fliterType=userContext1.fliterType
       <button className="search_dashboard_button"
         onClick={() => {
           setProducts("")
-          navigate("./search")
-          
-       
+          navigate("/search")
+          setSearchButtonStatus(!searchButtonStatus)
+        
          
         }}
       >

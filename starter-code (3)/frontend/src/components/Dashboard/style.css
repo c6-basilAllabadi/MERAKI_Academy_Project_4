@@ -124,6 +124,7 @@
 .item_card_addToFavorite_dashboard:hover{
     background-color: #4090d282;
     border:none;
+    border-radius: 2px;
   
 
 }

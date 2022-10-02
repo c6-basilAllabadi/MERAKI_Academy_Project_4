@@ -13,6 +13,16 @@ const Search = ()=>{
     let setSearchWord = userContext1.setSearchWord
     let searchProducts=userContext1.searchProducts
     let setSearchProducts = userContext1.setSearchProducts
+    let favoritesProducts = userContext1.favoritesProducts
+    let setFavoriteProducts = userContext1.setFavoriteProducts
+    const [addtoFavoriteButton ,setAddtoFavoriteButton] = useState("Add to Favorite")
+    let setMoreInfoProduct =userContext1.setMoreInfoProduct
+  let moreInfoProduct = userContext1.moreInfoProduct
+  let searchButtonStatus  = userContext1.searchButtonStatus
+  let setSearchButtonStatus = userContext1.setSearchButtonStatus
+    let arr1
+    const[arr2,setarr2]=useState("")
+    const navigate=useNavigate()
 
     const getSearchProducts = ()=>{
         axios
@@ -28,35 +38,75 @@ const Search = ()=>{
      useEffect(()=>{
         getSearchProducts()
 
-     },[])
+     },[searchButtonStatus])
 
     return (
 
       <>
-        <div className="item_card_search-container">
-        {searchProducts &&
-            searchProducts.map((elem, index) => {
-              return (
-               
-                <div key ={index} className="item_card_search">
-                   <img src={elem.image} className="item_card_image_search"></img>
-                  <p className="item_card_title_search">Title: {elem.title}</p>
-                  
-                  <p className="item_card_price_search">Price: {elem.price}</p>
-                  <p className="item_card_type_search">Type: {elem.type}</p>
-                  <p className="item_card_status_search">Status: {elem.status}</p>
-                  <p className="item_card_user_search">
-                    User: {elem.userId.firstName} {elem.userId.lastName}
-                  </p>
-
-                  <p className="item_card_likes_search">Likes: {elem.likes}</p>
-                </div>
-              );
-            })
+        <div className="item_card_dashboard_container">
+      {searchProducts &&
+        searchProducts.map((elem, index) =>{
+           console.log(elem)
+          const check =()=>{if(arr2.indexOf(elem._id)>=0){
+           return setAddtoFavoriteButton("added to faorite");
+           
+       }};
+    
       
+          return (
+            
+            <div className ="item_card_dashboard" key ={index}>
+              <img src={elem.image} className="item_card_image_dashboard"></img>
+              <p className="item_card_title_dashboard" onClick={()=>{
+                setMoreInfoProduct(elem)
+                navigate("/moreInfo")
+              }}>{elem.title}</p>
+              <p className="item_card_price_dashboard">{elem.price} $</p>
+              <p className="item_card_city_dashboard"> {elem.city}</p>
+              <p className="item_card_carmake_dashboard"> {elem.type} | {elem.carmake} | {elem.model} | {elem.year}</p>
+             
+              <p className="item_card_userName_dashboard">
+              {elem.userId.firstName} {elem.userId.lastName}</p>
+              {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
+                    
+                    axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
+                      headers: {
+                        authorization: "Bearer " + token,
+                      }}).then((response)=>{
+                      console.log(response.data.message)
+                      
+                    }).catch((err)=>{
+                      console.log(err.message)
+                    })
+                  }}>Added to Favorite</button>}
+                  {!arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
+                  
+                    axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
+                      headers: {
+                        authorization: "Bearer " + token,
+                      }}).then((response)=>{
+                      console.log(response.data.message)
+                      
+                    }).catch((err)=>{
+                      console.log(err.message)
+                    })
+                  }}>Add to Favorite</button>}
         
-    }
-     </div>
+        <button className="item_card_likes_dashboard" onClick={()=>{
+          axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }).then((response)=>{
+            console.log(response)
+          }).catch((err)=>{
+            console.log(err)
+          })
+        }}>Like</button>
+            </div>
+          );
+        })}
+        </div>
 </>)}
        
        export default Search
