@@ -96,14 +96,12 @@ const Dashboard = () => {
                 setMoreInfoProduct(elem)
                 navigate("/moreInfo")
               }}>{elem.title}</p>
-              <p className="item_card_price_dashboard">{elem.price}$</p>
-              <p className="item_card_type_dashboard">{elem.type}</p>
-              <p className="item_card_status_dashboard">{elem.status}</p>
+              <p className="item_card_price_dashboard">{elem.price} $</p>
+              <p className="item_card_city_dashboard"> {elem.city}</p>
+              <p className="item_card_carmake_dashboard"> {elem.type} | {elem.carmake} | {elem.model} | {elem.year}</p>
+             
               <p className="item_card_userName_dashboard">
-                {elem.userId.firstName} {elem.userId.lastName}
-              </p>
-              
-              <p className="item_card_likes_dashboard">{elem.likes}</p>
+              {elem.userId.firstName} {elem.userId.lastName}</p>
               {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
                     
                     axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
@@ -115,7 +113,7 @@ const Dashboard = () => {
                     }).catch((err)=>{
                       console.log(err.message)
                     })
-                  }}>added to favorite</button>}
+                  }}>Added to Favorite</button>}
                   {!arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
                   
                     axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
@@ -127,9 +125,9 @@ const Dashboard = () => {
                     }).catch((err)=>{
                       console.log(err.message)
                     })
-                  }}>add to favorite</button>}
+                  }}>Add to Favorite</button>}
         
-        <button className="item_card_like_dashboard" onClick={()=>{
+        <button className="item_card_likes_dashboard" onClick={()=>{
           axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
             headers: {
               authorization: "Bearer " + token,

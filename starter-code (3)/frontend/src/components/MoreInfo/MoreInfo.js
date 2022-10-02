@@ -24,7 +24,7 @@ const MoreInfo = ()=>{
               <p className="item_card_title_moreInfo" onClick={()=>{
                
               }}>Title: {moreInfoProduct.title}</p>
-              <p className="item_card_price_moreInfo">Price:{moreInfoProduct.price}</p>
+              <p className="item_card_price_moreInfo">{moreInfoProduct.price} $</p>
               <p className="item_card_type_moreInfo">Type: {moreInfoProduct.type}</p>
               <p className="item_card_city_moreInfo">City: {moreInfoProduct.city}</p>
               <p className="item_card_carmake_moreInfo">Carmake: {moreInfoProduct.carmake}</p>

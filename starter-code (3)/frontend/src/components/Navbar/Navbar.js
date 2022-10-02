@@ -7,6 +7,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import  Search  from "../Search/index";
 import "./style.css"
+import ProductsTypes from "../ProductsTypes/index.js";
 
 
 
@@ -22,6 +23,7 @@ const Navbar=()=>{
     let setProductType = userContext1.setProductType
     let setSearchWord = userContext1.setSearchWord
 let setProducts = userContext1.setProducts
+let productType = userContext1.productType
 let setFilterprice=userContext1.setFilterprice
 let setFilterStatus = userContext1.setFilterStatus
 let setFilterType = userContext1.setFilterType
@@ -61,15 +63,16 @@ let fliterType=userContext1.fliterType
    
       setProductType("car")
       navigate("/productsTypes")
+   
     }}>Cars</p>
     <p className= "laptop_productType" onClick={()=>{
     
-      setProductType("laptop")
+      setProductType("pickup")
       navigate("/productsTypes")
     }}>Pickups</p>
     <p className= "mobile_productType" onClick={()=>{
      
-      setProductType("mobile")
+      setProductType("bus")
       navigate("/productsTypes")
     }}>Buses</p>
       <input className="search_dashboard"

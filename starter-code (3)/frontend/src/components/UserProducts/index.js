@@ -58,23 +58,26 @@ const UserProducts = () => {
 
   return (
     <>
+    <div className="item_card_dashboard_container_product">
       {userProducts &&
         userProducts.map((elem, index) => {
           return (
-            <div key={index}>
-              <img src={elem.image}></img>
-              <h1>
-                Title: {elem.title} {newTitle}
-              </h1>
-              <h5>Description: {elem.description}</h5>
-              <p>Price: {elem.price}</p>
-              <p>Type: {elem.type}</p>
-              <p>Status: {elem.status}</p>
-              <p>
-                User: {elem.userId.firstName} {elem.userId.lastName}
-              </p>
+               
+            <div className ="item_card_dashboard_product" key ={index}>
+              <img src={elem.image} className="item_card_image_dashboard"></img>
+              <p className="item_card_title_dashboard" onClick={()=>{
+                setMoreInfoProduct(elem)
+                navigate("/moreInfo")
+              }}>{elem.title}</p>
+              <p className="item_card_price_dashboard">{elem.price} $</p>
+              <p className="item_card_city_dashboard"> {elem.city}</p>
+              <p className="item_card_carmake_dashboard"> {elem.type} | {elem.carmake} | {elem.model} | {elem.year}</p>
+             
+              <p className="item_card_userName_dashboard">
+              {elem.userId.firstName} {elem.userId.lastName}</p>
+           
               <p>Likes: {elem.likes}</p>
-              <button
+              <button className="delete_Product"
                 onClick={() => {
                   axios
                     .delete(`http://localhost:5000/product/${elem._id}`, {
@@ -94,7 +97,7 @@ const UserProducts = () => {
               </button>
               {deleteProductMessage}
 
-              <button
+              <button className="update_Product"
                 onClick={() => {
                   setUpdateProduct(elem);
                   console.log(updateProduct);
@@ -248,6 +251,7 @@ const UserProducts = () => {
           Add New Product
         </button>
         {addNewProductMessage}
+      </div>
       </div>
     </>
   );

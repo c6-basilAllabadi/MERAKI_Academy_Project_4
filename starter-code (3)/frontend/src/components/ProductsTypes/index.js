@@ -9,6 +9,11 @@ const ProductsTypes = ()=>{
     let productType=userContext1.productType
     let setProductType = userContext1.setProductType
     const [typeProducts,setTypeProducts] = useState("")
+    let token =userContext1.token
+     let favoritesProducts = userContext1.favoritesProducts
+  let setFavoriteProducts = userContext1.setFavoriteProducts
+  let arr1
+  const[arr2,setarr2]=useState("")
 
     const getTypesProducts = () => {
         axios
@@ -21,36 +26,102 @@ const ProductsTypes = ()=>{
             console.log(err);
           });
       };
+      const getFavoritesProducts = () => {
+        axios
+          .get(`http://localhost:5000/favorite/`,{
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          })
+          .then((response) => {
+            setFavoriteProducts(response.data.favorites[0].favorites);
+            console.log(response.data.favorites[0].favorites)
+            arr1 =response.data.favorites[0].favorites.map((elem,index)=>{
+              return elem._id
+            })
+            setarr2(arr1)
+            console.log(arr1)
+            
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
     
       useEffect(() => {
         getTypesProducts();
-      }, [productType]);
+        getFavoritesProducts()
+      }, []);
     
     return (
 
-        <>
-        {typeProducts &&
-        typeProducts.map((elem, index) => {
+      <>
+   
+      <div className="item_card_dashboard_container">
+      {typeProducts &&
+        typeProducts.map((elem, index) =>{
+           console.log(elem)
+          const check =()=>{if(arr2.indexOf(elem._id)>=0){
+           return setAddtoFavoriteButton("added to faorite");
+           
+       }};
+    
+      
           return (
-            <div key = {index}>
-              <h1>Title: {elem.title}</h1>
-              <h5>Description: {elem.description}</h5>
-              <p>Price: {elem.price}</p>
-              <p>Type: {elem.type}</p>
-              <p>Status: {elem.status}</p>
-              <p>
-                User: {elem.userId.firstName} {elem.userId.lastName}
-              </p>
-
-              <p>Likes: {elem.likes}</p>
+            
+            <div className ="item_card_dashboard" key ={index}>
+              <img src={elem.image} className="item_card_image_dashboard"></img>
+              <p className="item_card_title_dashboard" onClick={()=>{
+                setMoreInfoProduct(elem)
+                navigate("/moreInfo")
+              }}>{elem.title}</p>
+              <p className="item_card_price_dashboard">{elem.price} $</p>
+              <p className="item_card_city_dashboard"> {elem.city}</p>
+              <p className="item_card_carmake_dashboard"> {elem.type} | {elem.carmake} | {elem.model} | {elem.year}</p>
+             
+              <p className="item_card_userName_dashboard">
+              {elem.userId.firstName} {elem.userId.lastName}</p>
+              {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
+                    
+                    axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
+                      headers: {
+                        authorization: "Bearer " + token,
+                      }}).then((response)=>{
+                      console.log(response.data.message)
+                      
+                    }).catch((err)=>{
+                      console.log(err.message)
+                    })
+                  }}>Added to Favorite</button>}
+                  {!arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
+                  
+                    axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
+                      headers: {
+                        authorization: "Bearer " + token,
+                      }}).then((response)=>{
+                      console.log(response.data.message)
+                      
+                    }).catch((err)=>{
+                      console.log(err.message)
+                    })
+                  }}>Add to Favorite</button>}
+        
+        <button className="item_card_likes_dashboard" onClick={()=>{
+          axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }).then((response)=>{
+            console.log(response)
+          }).catch((err)=>{
+            console.log(err)
+          })
+        }}>Like</button>
             </div>
           );
         })}
-        
-        
-        
-        
-        </>
+        </div>
+    </>
     )
 
 }
