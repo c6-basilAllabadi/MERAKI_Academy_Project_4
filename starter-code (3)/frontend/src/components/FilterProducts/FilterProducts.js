@@ -31,11 +31,13 @@ let setFilterType = userContext1.setFilterType
 let filterPrice = userContext1.filterPrice
 let filterStatus = userContext1.filterStatus
 let fliterType=userContext1.fliterType
+let arr10=[]
 const [ filteredProducts , setFilteredProducts]=useState("")
 
 const getFilteredProducts =()=>{
 
-    axios.get(`http://localhost:5000/product/filter/${fliterType}.${filterPrice}.${filterStatus}`,).then((response)=>{
+    axios.get(`http://localhost:5000/product/`).then((response)=>{
+      console.log(response)
         setFilteredProducts(response.data.products);
         console.log(response.data.products)
     }).catch((err)=>{
@@ -44,15 +46,30 @@ const getFilteredProducts =()=>{
 } 
 useEffect(()=>{
 getFilteredProducts()
-
 },[])
+
+if(fliterType){arr10=filteredProducts&&filteredProducts.filter((elem,index)=>{
+  return elem.type === fliterType 
+})
+}
+else{arr10=filteredProducts};
+
+if(filterStatus){arr10=arr10&&arr10.filter((elem,index)=>{
+  return elem.status === filterStatus
+})
+}
+if(filterPrice){arr10=arr10 && arr10.filter((elem,index)=>{
+  return elem.color === filterPrice
+})}
+
+
 
     return (
 
         <>
         
-        {filteredProducts &&
-        filteredProducts.map((elem, index) => {
+        {arr10 &&
+        arr10.map((elem, index) => {
           return (
             <div key = {index}>
               <h1>Title: {elem.title}</h1>

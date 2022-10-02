@@ -214,23 +214,13 @@ const updateProductById = (req, res) => {
 };
 
 const getProductsByFilter = (req, res) => {
-  let newvalue = req.params.value;
-  let newvalue1 = newvalue.split(".");
-  let type = newvalue1[0];
-  if(type.length===0){
-    type=undefined
-  }
-  let price2 = newvalue1[1];
-  let price1 = price2 * 1;
-  if(price2.length ===0){
-    price1=undefined
-  }
-  let status = newvalue1[2];
-  if (status.length===0){
-    status = undefined
-  }
+  let type = req.query.type
+  let status =req.query.status
+ if (!status){
+ let status =undefined
+ }
   productModel
-    .find({ type: type, price: price1, status: status })
+    .find({ type: type,status: undefined})
     .populate("userId", `firstName  lastName`)
     .exec()
     .then((response) => {
@@ -238,6 +228,8 @@ const getProductsByFilter = (req, res) => {
         success: true,
         message: `filtered products`,
         products: response,
+        type:type,
+      
       });
     })
     .catch((err) => {
