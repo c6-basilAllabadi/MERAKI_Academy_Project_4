@@ -1,10 +1,10 @@
 const userModel = require("../models/userSchema")
 
 const register = async(req,res)=>{
-    const {firstName , lastName , email , password , age , country , gender , role , dateRegistered , phoneNumber} = req.body
+    const {image,firstName , lastName , email , password , age , country , gender , role , dateRegistered , phoneNumber} = req.body
    const user1 =  await userModel.findOne({email:email})
    if(!user1){
-    const user = new userModel ({firstName , lastName , email , password , age , country , gender , role , dateRegistered , phoneNumber})
+    const user = new userModel ({image,firstName , lastName , email , password , age , country , gender , role , dateRegistered , phoneNumber})
     user.save().then((result) => {
         res.status(201).json({
           success: true,

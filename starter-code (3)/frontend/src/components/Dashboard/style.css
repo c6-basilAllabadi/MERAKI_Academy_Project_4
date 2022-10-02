@@ -81,13 +81,17 @@
     font-size: 12px;
 }
 
-.item_card_status_dashboard {
-    grid-column: 2;
-}
 .item_card_userName_dashboard {
     grid-column: 6;
-    grid-row: 3;
-    
+    grid-row:7;
+   
+}
+.item_card_photo_dashboard{
+    border-radius: 2px;
+    width: 60px;
+    height: 60px;
+    grid-column: 6;
+    grid-row:3/6;
 }
 
 .item_card_likes_dashboard {

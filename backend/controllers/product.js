@@ -60,7 +60,7 @@ const addNewProduct = (req, res) => {
 const getAllProducts = (req, res) => {
   productModel
     .find({})
-    .populate("userId", `firstName  lastName`)
+    .populate("userId", `image firstName  lastName`)
     .exec()
     .then((response) => {
       res.status(200);
@@ -80,7 +80,7 @@ const getProductsByUser = (req, res) => {
   const userId1 = req.params.userId;
   productModel
     .find({ userId: userId1 })
-    .populate("userId", `firstName  lastName`)
+    .populate("userId", `image firstName  lastName`)
     .exec()
     .then((response) => {
       res.json({
@@ -98,7 +98,7 @@ const getProductsByUser = (req, res) => {
 const getProductsByType = (req, res) => {
   const typeCategory = req.params.productType;
   productModel
-    .find({ type: typeCategory })
+    .find({ type: typeCategory }).populate("userId", `image firstName  lastName`).exec()
     .then((response) => {
       res.json({
         success: true,
@@ -115,7 +115,7 @@ const getProductsBySearch = (req, res) => {
   const searchWord = req.params.search;
   productModel
     .find({ title: { $regex: `${searchWord}` } })
-    .populate("userId", `firstName  lastName`)
+    .populate("userId", `image firstName  lastName`)
     .exec()
     .then((response) => {
       res.json({

@@ -64,7 +64,7 @@ const Search = ()=>{
               <p className="item_card_price_dashboard">{elem.price} $</p>
               <p className="item_card_city_dashboard"> {elem.city}</p>
               <p className="item_card_carmake_dashboard"> {elem.type} | {elem.carmake} | {elem.model} | {elem.year}</p>
-             
+              <img src ={elem.userId.image} className="item_card_photo_dashboard"></img>
               <p className="item_card_userName_dashboard">
               {elem.userId.firstName} {elem.userId.lastName}</p>
               {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
@@ -90,7 +90,7 @@ const Search = ()=>{
                     }).catch((err)=>{
                       console.log(err.message)
                     })
-                  }}><i class='fas fa-star' ></i> Add to Favorite</button>}
+                  }}><i className='fas fa-star' ></i> Add to Favorite</button>}
         
         <button className="item_card_likes_dashboard" onClick={()=>{
           axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
@@ -102,7 +102,7 @@ const Search = ()=>{
           }).catch((err)=>{
             console.log(err)
           })
-        }}><i class='fas fa-thumbs-up'></i> Like </button>
+        }}><i className='fas fa-thumbs-up'></i> Like </button>
             </div>
           );
         })}

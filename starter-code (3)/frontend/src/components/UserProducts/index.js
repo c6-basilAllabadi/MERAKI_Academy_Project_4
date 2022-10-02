@@ -76,7 +76,7 @@ const UserProducts = () => {
               <p className="item_card_userName_dashboard">
               {elem.userId.firstName} {elem.userId.lastName}</p>
            
-              <p>Likes: {elem.likes}</p>
+         
               <button className="delete_Product"
                 onClick={() => {
                   axios

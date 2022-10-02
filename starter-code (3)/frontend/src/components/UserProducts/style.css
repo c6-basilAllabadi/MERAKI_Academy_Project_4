@@ -105,7 +105,10 @@ margin : 5px;
 }
 .item_card_userName_dashboard {
     grid-column: 6;
-    grid-row: 3;
+    grid-row:6;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
     
 }
 

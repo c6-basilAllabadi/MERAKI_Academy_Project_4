@@ -15,10 +15,14 @@ const Register = () => {
   const [registerGender , setRegisterGender]=useState("")
   const [RegisterPhoneNumber , setRegisterPhoneNumber ] = useState("")
   const [registerMessage,setRegisterMessage] =useState("")
+  const [registerImage,setRegisterImage]=useState("")
   const navigate = useNavigate()
   return (
   <>
   <div className="register_container">Register
+  <input type="text" placeholder="Enter Your Image Link" onChange={(e)=>{
+  setRegisterImage(e.target.value)
+}}></input>
 <input type="text" placeholder="Enter Your First Name" onChange={(e)=>{
   setRegisterFirstName(e.target.value)
 }}></input>
@@ -44,12 +48,11 @@ const Register = () => {
   setRegisterPhoneNumber(e.target.value)
 }}></input>
 <button onClick={()=>{
-  axios.post('http://localhost:5000/user',{firstName:registerFirstName,lastName:RegisterLastName,email:registeremail,password:RegisterPassword,age:registerAge,country:RegisterCountry,gender:registerGender,role:"633093bb93da1efda1bded0e",phoneNumber:RegisterPhoneNumber}).then((response)=>{
+  axios.post('http://localhost:5000/user',{image:registerImage,firstName:registerFirstName,lastName:RegisterLastName,email:registeremail,password:RegisterPassword,age:registerAge,country:RegisterCountry,gender:registerGender,role:"633093bb93da1efda1bded0e",phoneNumber:RegisterPhoneNumber}).then((response)=>{
     console.log(response.data)
     setRegisterMessage(response.data.message)
     navigate("/login")
   }).catch((err)=>{
-    console.log(err.response.data.message)
     setRegisterMessage(err.response.data.message)
   })
 }} >Register</button>

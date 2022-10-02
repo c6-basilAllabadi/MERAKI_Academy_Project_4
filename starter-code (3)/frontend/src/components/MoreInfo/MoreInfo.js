@@ -36,6 +36,7 @@ const MoreInfo = ()=>{
               <p className="item_card_condition_moreInfo">Condition: {moreInfoProduct.condition}</p>
               <p className="item_card_Kilometers_moreInfo">Kilometers: {moreInfoProduct.Kilometers}</p>
               <p className="item_card_status_moreInfo">Status: {moreInfoProduct.status}</p>
+              <img src ={moreInfoProduct.userId.image} className="item_card_photo_moreInfo"></img>
               <p className="item_card_userName_moreInfo">
                 User: {moreInfoProduct.userId.firstName} {moreInfoProduct.userId.lastName}
               </p>

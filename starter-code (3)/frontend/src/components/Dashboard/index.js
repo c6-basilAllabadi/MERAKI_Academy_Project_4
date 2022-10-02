@@ -39,9 +39,9 @@ const Dashboard = () => {
     axios
       .get("http://localhost:5000/product")
       .then((response) => {
-        console.log(response.data.products);
+       
         setProducts(response.data.products);
-        console.log(products);
+     
       })
       .catch((err) => {
         console.log(err);
@@ -56,12 +56,12 @@ const Dashboard = () => {
       })
       .then((response) => {
         setFavoriteProducts(response.data.favorites[0].favorites);
-        console.log(response.data.favorites[0].favorites)
+  
         arr1 =response.data.favorites[0].favorites.map((elem,index)=>{
           return elem._id
         })
         setarr2(arr1)
-        console.log(arr1)
+  
         
       })
       .catch((err) => {
@@ -81,7 +81,7 @@ const Dashboard = () => {
       <div className="item_card_dashboard_container">
       {products &&
         products.map((elem, index) =>{
-           console.log(elem)
+         
           const check =()=>{if(arr2.indexOf(elem._id)>=0){
            return setAddtoFavoriteButton("added to faorite");
            
@@ -100,6 +100,8 @@ const Dashboard = () => {
               <p className="item_card_city_dashboard"> {elem.city}</p>
               <p className="item_card_carmake_dashboard"> {elem.type} | {elem.carmake} | {elem.model} | {elem.year}</p>
              
+              
+              <img src ={elem.userId.image} className="item_card_photo_dashboard"></img>
               <p className="item_card_userName_dashboard">
               {elem.userId.firstName} {elem.userId.lastName}</p>
               {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
@@ -108,7 +110,7 @@ const Dashboard = () => {
                       headers: {
                         authorization: "Bearer " + token,
                       }}).then((response)=>{
-                      console.log(response.data.message)
+                     
                       
                     }).catch((err)=>{
                       console.log(err.message)
@@ -120,12 +122,12 @@ const Dashboard = () => {
                       headers: {
                         authorization: "Bearer " + token,
                       }}).then((response)=>{
-                      console.log(response.data.message)
+                  
                       
                     }).catch((err)=>{
                       console.log(err.message)
                     })
-                  }}><i class='fas fa-star' ></i>   Add to Favorite  </button>}
+                  }}><i className='fas fa-star' ></i>   Add to Favorite  </button>}
         
         <button className="item_card_likes_dashboard" onClick={()=>{
           axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
@@ -133,11 +135,11 @@ const Dashboard = () => {
               authorization: "Bearer " + token,
             },
           }).then((response)=>{
-            console.log(response)
+         
           }).catch((err)=>{
             console.log(err)
           })
-        }}> <i class='fas fa-thumbs-up'></i>    Like</button>
+        }}> <i className='fas fa-thumbs-up'></i>    Like</button>
        
             </div>
             
