@@ -63,10 +63,22 @@ const MoreInfo = ()=>{
             console.log(err)
           })
         }}>Like</button>
-            </div>
-
-       
+         
+<div className="comment_container">
+  <p>Comments</p>
+       {moreInfoProduct.comments.map((elem,index)=>{
+        return <div key ={index} className="Comment">
+         <p>{elem.comment}</p>
+          
+        </div>
         
+       })}
+        
+       <input placeholder="Add comment"></input>
+        </div>
+            </div>
+            <i className='far fa-comment'></i>
+
         </>
     )
 }

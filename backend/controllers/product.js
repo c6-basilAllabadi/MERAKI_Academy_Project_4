@@ -60,7 +60,7 @@ const addNewProduct = (req, res) => {
 const getAllProducts = (req, res) => {
   productModel
     .find({})
-    .populate("userId", `image firstName  lastName`)
+    .populate("userId", `image firstName  lastName`).populate("comments")
     .exec()
     .then((response) => {
       res.status(200);
