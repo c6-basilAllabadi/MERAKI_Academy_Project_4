@@ -71,9 +71,12 @@ const Dashboard = () => {
       });
   };
 
-
   useEffect(() => {
     getAllProducts();
+  
+  }, []);
+ 
+  useEffect(() => {
     getFavoritesProducts();
   }, [favoritesProducts]);
  
@@ -101,7 +104,7 @@ const Dashboard = () => {
               <img src ={elem.userId.image} className="item_card_photo_dashboard"></img>
               <p className="item_card_userName_dashboard">
               {elem.userId.firstName} {elem.userId.lastName}</p>
-              {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" >Added to Favorite</button>}
+              {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" ><i className='fas fa-star' ></i> Added to Favorite</button>}
                   {!arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
                     axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
                       headers: {
@@ -121,11 +124,13 @@ const Dashboard = () => {
               authorization: "Bearer " + token,
             },
           }).then((response)=>{
+         elem.likes = elem.likes+1
+         console.log(products)
          
           }).catch((err)=>{
             console.log(err)
           })
-        }}> <i className='fas fa-thumbs-up'></i>    Like</button>
+        }}> <i className='fas fa-thumbs-up'></i>    Like {elem.likes}</button>
        
             </div>
             

@@ -217,9 +217,18 @@ const getProductsByFilter = (req, res) => {
   let newvalue = req.params.value;
   let newvalue1 = newvalue.split(".");
   let type = newvalue1[0];
+  if(type.length===0){
+    type=undefined
+  }
   let price2 = newvalue1[1];
   let price1 = price2 * 1;
+  if(price2.length ===0){
+    price1=undefined
+  }
   let status = newvalue1[2];
+  if (status.length===0){
+    status = undefined
+  }
   productModel
     .find({ type: type, price: price1, status: status })
     .populate("userId", `firstName  lastName`)

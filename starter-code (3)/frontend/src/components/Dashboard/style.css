@@ -87,7 +87,8 @@
    
 }
 .item_card_photo_dashboard{
-    border-radius: 2px;
+    border-radius: 7px;
+    border: 2px solid rgba(205, 202, 202, 0.532);
     width: 60px;
     height: 60px;
     grid-column: 6;
@@ -116,7 +117,7 @@
     margin-top: 100px;
     grid-column:4;
     grid-row: 5;
-    width:150px;
+    width:170px;
     height:35px;
     font-size: 8px;
     font-size: 14px;

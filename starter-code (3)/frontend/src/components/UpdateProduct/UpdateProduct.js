@@ -31,7 +31,7 @@ const updateProduct = () => {
   const [newColor, setNewColor] = useState(updateProduct.color);
   const [newCondition, setNewCondition] = useState(updateProduct.condition);
   const [newKilometers, setNewKilometers] = useState(updateProduct.kilometers);
-
+const [newLikes,setNewLikes] = useState(updateProduct.likes)
 
 
 
@@ -45,6 +45,7 @@ const updateProduct = () => {
   const [editColor, setEditColor] = useState("");
   const [editCondition, setEditCondition] = useState("");
   const [editKilometers, setEditKilometers] = useState("");
+  const [editLikes,setEditLikes] = useState("")
   const navigate=useNavigate()
 
   return (
@@ -324,7 +325,22 @@ const updateProduct = () => {
         <p>
           User: {updateProduct.userId.firstName} {updateProduct.userId.lastName}
         </p>
-        <p>Likes: {updateProduct.likes}</p>
+        <p>Likes: {updateProduct.likes}  <button
+            onClick={() => {
+              setEditLikes(
+                <input
+                  placeholder="New Likes"
+                  onChange={(e) => {
+                    setNewLikes(e.target.value);
+                  }}
+                ></input>
+              );
+            }}
+          >
+            Edit
+          </button>{" "}
+          {editLikes}
+        </p>
       </div>
 
       <button

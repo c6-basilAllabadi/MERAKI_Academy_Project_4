@@ -124,7 +124,7 @@
 .comment_container{
     border: 1px solid rgba(205, 202, 202, 0.771);
     background-color: rgb(255, 255, 255);
-    border-radius: 3px;
+    border-radius: 6px;
     grid-column: 6/8;
     grid-row:2/8;
     margin-left: 30px;
@@ -135,6 +135,7 @@
     padding: 5px;
     width:200px;
     border: 1px solid rgba(205, 202, 202, 0.771);
+    background-color: rgba(237, 237, 237, 0.379);
     height: 20px;
     border-radius: 3px;
     align-items: center;

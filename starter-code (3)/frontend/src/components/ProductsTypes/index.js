@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { userContext } from "../../App.js";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import axios from "axios";
 
+
 const ProductsTypes = ()=>{
+  const Params = useParams()
+  console.log(Params)
     const userContext1 = useContext(userContext);
     let productType=userContext1.productType
     let setProductType = userContext1.setProductType
@@ -56,7 +59,12 @@ const ProductsTypes = ()=>{
     
       useEffect(() => {
         getTypesProducts();
-        getFavoritesProducts()
+        
+      }, [typeProducts]);
+    
+      useEffect(() => {
+        getFavoritesProducts();
+        
       }, []);
     
     return (

@@ -246,6 +246,7 @@ const UserProducts = () => {
                   Kilometers: newProductKilometers,
                   status: "in stock",
                   userId: user,
+                  likes:0,
                 },
                 {
                   headers: {
