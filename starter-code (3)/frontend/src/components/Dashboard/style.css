@@ -112,7 +112,7 @@
     margin-top: 100px;
     grid-column:4;
     grid-row: 5;
-    width:120px;
+    width:150px;
     height:35px;
     font-size: 8px;
     font-size: 14px;
@@ -133,4 +133,10 @@
     border:none;
     border-radius: 2px;
     
+}
+ .fa-thumbs-up{
+color:#4091D2;
+}
+.fa-star{
+    color:#4091D2;
 }

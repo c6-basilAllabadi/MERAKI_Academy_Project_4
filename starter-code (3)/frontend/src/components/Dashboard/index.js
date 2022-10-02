@@ -125,7 +125,7 @@ const Dashboard = () => {
                     }).catch((err)=>{
                       console.log(err.message)
                     })
-                  }}>Add to Favorite</button>}
+                  }}><i class='fas fa-star' ></i>   Add to Favorite  </button>}
         
         <button className="item_card_likes_dashboard" onClick={()=>{
           axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
@@ -137,8 +137,10 @@ const Dashboard = () => {
           }).catch((err)=>{
             console.log(err)
           })
-        }}>Like</button>
+        }}> <i class='fas fa-thumbs-up'></i>    Like</button>
+       
             </div>
+            
           );
         })}
         </div>

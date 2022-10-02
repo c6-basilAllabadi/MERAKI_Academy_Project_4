@@ -78,7 +78,7 @@ const Search = ()=>{
                     }).catch((err)=>{
                       console.log(err.message)
                     })
-                  }}>Added to Favorite</button>}
+                  }}><i class='fas fa-star' ></i> Added to Favorite</button>}
                   {!arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
                   
                     axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
@@ -90,7 +90,7 @@ const Search = ()=>{
                     }).catch((err)=>{
                       console.log(err.message)
                     })
-                  }}>Add to Favorite</button>}
+                  }}><i class='fas fa-star' ></i> Add to Favorite</button>}
         
         <button className="item_card_likes_dashboard" onClick={()=>{
           axios.put(`http://localhost:5000/product/${elem._id}`,{likes:`${elem.likes+1}`},{
@@ -102,7 +102,7 @@ const Search = ()=>{
           }).catch((err)=>{
             console.log(err)
           })
-        }}>Like</button>
+        }}><i class='fas fa-thumbs-up'></i> Like </button>
             </div>
           );
         })}

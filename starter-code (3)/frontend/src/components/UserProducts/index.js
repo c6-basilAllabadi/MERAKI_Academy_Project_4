@@ -109,8 +109,10 @@ const UserProducts = () => {
             </div>
           );
         })}
-
+         </div>
+         <h4>Add New Product</h4>
       <div className="add_product_container">
+       
         <input
           placeholder="Image"
           type="text"
@@ -252,7 +254,7 @@ const UserProducts = () => {
         </button>
         {addNewProductMessage}
       </div>
-      </div>
+     
     </>
   );
 };

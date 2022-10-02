@@ -50,7 +50,7 @@ const MoreInfo = ()=>{
                 }).catch((err)=>{
                   console.log(err.message)
                 })
-              }}>Add to Favorite</button>
+              }}>Add to Favorite </button>
                <button className="item_card_like_dashboard" onClick={()=>{
           axios.put(`http://localhost:5000/product/${moreInfoProduct._id}`,{likes:`${moreInfoProduct.likes+1}`},{
             headers: {
