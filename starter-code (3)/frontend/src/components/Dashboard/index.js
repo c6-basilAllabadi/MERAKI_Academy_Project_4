@@ -31,9 +31,11 @@ const Dashboard = () => {
   let favoritesProducts = userContext1.favoritesProducts
   let setFavoriteProducts = userContext1.setFavoriteProducts
   const [addtoFavoriteButton ,setAddtoFavoriteButton] = useState("Add to Favorite")
+  let arr4
   let arr1
+  let arr3
   const[arr2,setarr2]=useState("")
-
+  
 
   const getAllProducts = () => {
     axios
@@ -73,7 +75,7 @@ const Dashboard = () => {
   useEffect(() => {
     getAllProducts();
     getFavoritesProducts();
-  }, []);
+  }, [favoritesProducts]);
  
   return (
     <>
@@ -82,12 +84,7 @@ const Dashboard = () => {
       {products &&
         products.map((elem, index) =>{
          
-          const check =()=>{if(arr2.indexOf(elem._id)>=0){
-           return setAddtoFavoriteButton("added to faorite");
-           
-       }};
     
-      
           return (
             
             <div className ="item_card_dashboard" key ={index}>
@@ -104,26 +101,15 @@ const Dashboard = () => {
               <img src ={elem.userId.image} className="item_card_photo_dashboard"></img>
               <p className="item_card_userName_dashboard">
               {elem.userId.firstName} {elem.userId.lastName}</p>
-              {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
-                    
-                    axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
-                      headers: {
-                        authorization: "Bearer " + token,
-                      }}).then((response)=>{
-                     
-                      
-                    }).catch((err)=>{
-                      console.log(err.message)
-                    })
-                  }}>Added to Favorite</button>}
+              {arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" >Added to Favorite</button>}
                   {!arr2.includes(elem._id)&&<button className="item_card_addToFavorite_dashboard" onClick={()=>{
-                  
                     axios.post(`http://localhost:5000/favorite/${elem._id}`,{},{
                       headers: {
                         authorization: "Bearer " + token,
                       }}).then((response)=>{
-                  
-                      
+                        arr4 = favoritesProducts.concat(elem)
+                        console.log(arr4)
+                        setFavoriteProducts(arr4)
                     }).catch((err)=>{
                       console.log(err.message)
                     })

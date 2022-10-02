@@ -39,6 +39,10 @@ const UserProducts = () => {
   const [newTitle, setNewTitle] = useState("");
   let updateProduct = userContext1.updateProduct;
   let setUpdateProduct = userContext1.setUpdateProduct;
+  let setMoreInfoProduct =userContext1.setMoreInfoProduct
+  let moreInfoProduct = userContext1.moreInfoProduct
+  let arr5
+  let arr6
   const navigate = useNavigate();
   const getUserProducts = () => {
     axios
@@ -86,16 +90,21 @@ const UserProducts = () => {
                       },
                     })
                     .then((response) => {
+                      console.log(response.data.product)
+                      arr5=userProducts.filter((elem,index)=>{
+                        return elem._id !==response.data.product
+                      })
+                      setUserProducts(arr5)
                       setDeleteProductMessage(response.data.message);
                     })
                     .catch((err) => {
-                      setDeleteProductMessage(response.data);
+                      setDeleteProductMessage(err.message);
                     });
                 }}
               >
                 Delete This Product
               </button>
-              {deleteProductMessage}
+              
 
               <button className="update_Product"
                 onClick={() => {
@@ -108,8 +117,9 @@ const UserProducts = () => {
               </button>
             </div>
           );
-        })}
-         </div>
+        })}</div>
+         
+         
          <h4>Add New Product</h4>
       <div className="add_product_container">
        
@@ -245,15 +255,17 @@ const UserProducts = () => {
               )
               .then((response) => {
                 setAddNewProductMessage(response.data.message);
+             let arr6=userProducts.concat(response.data.product)
+             setUserProducts(arr6)
               })
-              .catch(err);
+              .catch((err)=>{
             setAddNewProductMessage(err.response.data.message);
-          }}
+          })}}
         >
           Add New Product
         </button>
         {addNewProductMessage}
-      </div>
+     </div>
      
     </>
   );

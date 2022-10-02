@@ -19,6 +19,7 @@ import "./style.css"
     let user =userContext1.user
     let setUser=userContext1.setUser
     const [loginMessage,setLoginMessage]=useState("")
+    let arr3
 
     let favoritesProducts = userContext1.favoritesProducts
    let setFavoriteProducts = userContext1.setFavoriteProducts
@@ -80,7 +81,10 @@ return (
                       authorization: "Bearer " + token,
                     },
                   }).then((response)=>{
-                    console.log(response.data.message)
+                    arr3 = favoritesProducts.filter((elem,index)=>{
+                      return elem._id !== response.data.product
+                    })
+                    setFavoriteProducts(arr3)
                 }).catch((err)=>{
                     console.log(err.message)
                 })

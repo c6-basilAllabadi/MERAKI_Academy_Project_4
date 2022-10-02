@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { userContext } from "../../App.js";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./style.css"
 
@@ -45,6 +45,7 @@ const updateProduct = () => {
   const [editColor, setEditColor] = useState("");
   const [editCondition, setEditCondition] = useState("");
   const [editKilometers, setEditKilometers] = useState("");
+  const navigate=useNavigate()
 
   return (
     <>
@@ -348,6 +349,7 @@ const updateProduct = () => {
             .then((response) => {
               console.log(response.data.message);
               setUpdateMessage(response.data.message);
+              navigate("/userProducts")
             })
             .catch((err) => {
               setUpdateMessage(err.message);

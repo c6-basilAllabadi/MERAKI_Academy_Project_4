@@ -52,7 +52,7 @@ const deleteFromFavorite = (req, res) => {
     .then((response) => {
       if (response) {
         res.status(200);
-        res.json({ success: true, message: "Product deleted from Favorites" });
+        res.json({ success: true, message: "Product deleted from Favorites",product:favoriteId });
       }
       if (!response) {
         res.status(404).json({

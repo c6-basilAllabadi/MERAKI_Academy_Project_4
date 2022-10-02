@@ -74,7 +74,12 @@ const MoreInfo = ()=>{
         
        })}
         
-       <input placeholder="Add comment"></input>
+       <input placeholder="Add comment" onChange={()=>{
+        setNewComment(e.target.value)
+       }}></input>
+       <button onClick={()=>{
+        axios.post(`http://localhost:5000/product/${moreInfoProduct._id}/comments`,{comment:newco},{})
+       }}>Add New Comment</button>
         </div>
             </div>
             <i className='far fa-comment'></i>

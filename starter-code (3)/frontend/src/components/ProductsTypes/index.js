@@ -8,7 +8,7 @@ const ProductsTypes = ()=>{
     const userContext1 = useContext(userContext);
     let productType=userContext1.productType
     let setProductType = userContext1.setProductType
-    const [typeProducts,setTypeProducts] = useState("")
+  
     let token =userContext1.token
      let favoritesProducts = userContext1.favoritesProducts
   let setFavoriteProducts = userContext1.setFavoriteProducts
@@ -16,19 +16,23 @@ const ProductsTypes = ()=>{
   let moreInfoProduct = userContext1.moreInfoProduct
   let arr1
   const[arr2,setarr2]=useState("")
+  let typeProducts = userContext1.typeProducts
+  let setTypeProducts =userContext1.setTypeProducts
   const navigate = useNavigate()
-
-    const getTypesProducts = () => {
-        axios
-          .get(`http://localhost:5000/product/type/${productType}`)
-          .then((response) => {
-            setTypeProducts(response.data.products);
-            
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
+  const getTypesProducts = () => {
+    axios
+      .get(`http://localhost:5000/product/type/${productType}`)
+      .then((response) => {
+        setTypeProducts(response.data.products);
+        console.log(response.data.products)
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+ 
+  
       const getFavoritesProducts = () => {
         axios
           .get(`http://localhost:5000/favorite/`,{
@@ -38,7 +42,6 @@ const ProductsTypes = ()=>{
           })
           .then((response) => {
             setFavoriteProducts(response.data.favorites[0].favorites);
-            console.log(response.data.favorites[0].favorites)
             arr1 =response.data.favorites[0].favorites.map((elem,index)=>{
               return elem._id
             })
@@ -64,12 +67,6 @@ const ProductsTypes = ()=>{
       {typeProducts &&
         typeProducts.map((elem, index) =>{
         
-          const check =()=>{if(arr2.indexOf(elem._id)>=0){
-           return setAddtoFavoriteButton("added to faorite");
-           
-       }};
-    
-      
           return (
             
             <div className ="item_card_dashboard" key ={index}>
@@ -116,7 +113,7 @@ const ProductsTypes = ()=>{
               authorization: "Bearer " + token,
             },
           }).then((response)=>{
-           
+          
           }).catch((err)=>{
             console.log(err)
           })
