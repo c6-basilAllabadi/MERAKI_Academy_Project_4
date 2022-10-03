@@ -189,7 +189,7 @@
 
 }
 .Comment p{
-    width:200px;
+    width:auto;
     border: 1px solid rgba(205, 202, 202, 0.771);
     background-color: rgba(237, 237, 237, 0.379);
     height: 20px;
@@ -197,6 +197,8 @@
     align-items: center;
     font-size: 14px;
     font-weight: 500;
+    padding-left: 10px;
+    margin:6px
 }
 .Comment input{
     font-size: 20px;

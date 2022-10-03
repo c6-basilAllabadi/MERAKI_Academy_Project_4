@@ -41,13 +41,17 @@ let filterTransmition =userContext1.filterTransmition
 let setFilterTransmition=userContext1.setFilterTransmition
 let filterFuel = userContext1.filterFuel
 let setFilterFuel=userContext1.setFilterFuel
+let setMoreInfoProduct = userContext1.setMoreInfoProduct;
+let moreInfoProduct = userContext1.moreInfoProduct;
+let favoritesProducts = userContext1.favoritesProducts;
+let setFavoriteProducts = userContext1.setFavoriteProducts;
 let arr10=[]
 const[arr2,setarr2]=useState("")
 const [ filteredProducts , setFilteredProducts]=useState("")
-
+const [pagination, setPagination] = useState(10);
 const getFilteredProducts =()=>{
 
-    axios.get(`http://localhost:5000/product/`).then((response)=>{
+    axios.get(`http://localhost:5000/product/${pagination}`).then((response)=>{
       console.log(response)
         setFilteredProducts(response.data.products);
         console.log(response.data.products)

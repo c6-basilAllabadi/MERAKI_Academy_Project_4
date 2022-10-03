@@ -192,13 +192,7 @@ const Dashboard = () => {
       >
         Explore More Results
       </button>
-      <button
-        onClick={() => {
-          myFunction2();
-        }}
-      >
-        hi{" "}
-      </button>
+      
     </>
   );
 };

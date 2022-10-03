@@ -37,6 +37,7 @@ const UserProducts = () => {
   const [newProductCondition, setNewProductCondition] = useState("");
   const [newProductKilometers, setNewProductKilometers] = useState("");
   const [newTitle, setNewTitle] = useState("");
+  const [newStatus, setNewStatus] = useState("");
   let updateProduct = userContext1.updateProduct;
   let setUpdateProduct = userContext1.setUpdateProduct;
   let setMoreInfoProduct =userContext1.setMoreInfoProduct
@@ -223,6 +224,11 @@ const UserProducts = () => {
             setNewProductKilometers(e.target.value);
           }}
         ></input>
+        <input placeholder="Status"
+          type="text"
+          onChange={(e) => {
+            setNewStatus(e.target.value);
+          }}></input>
 
         <button
           onClick={() => {
@@ -244,8 +250,8 @@ const UserProducts = () => {
                   color: newProductColor,
                   condition: newProductCondition,
                   Kilometers: newProductKilometers,
-                  status: "in stock",
-                  userId: user,
+                  status: newStatus,
+                  userId: user, 
                   likes:0,
                 },
                 {
