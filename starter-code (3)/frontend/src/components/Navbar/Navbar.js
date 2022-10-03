@@ -192,19 +192,30 @@ const Navbar = () => {
             <option value="fulfilling">fulfilling</option>
           </select>
         
-          <input
-            placeholder="Year"
-            onChange={(e) => {
-              setFilterYear(e.target.value);
-            }}
-          ></input>
-          
-          <input
-            placeholder="City"
+                    <select
+            id="City"
+        
             onChange={(e) => {
               setFilterCity(e.target.value);
             }}
-          ></input>
+          >
+            <option value="" disabled selected hidden>
+              Choose The City
+            </option>
+            <option value="Amman">Amman</option>
+            <option value="Zarqa">Zarqa</option>
+            <option value="Irbid">Irbid</option>
+            <option value="Ajloun">Ajloun</option>
+            <option value="Aqaba">Aqaba</option>
+            <option value="Mafraq">Mafraq</option>
+            <option value="Madaba">Madaba</option>
+            <option value="As-Salt">As-Salt</option>
+            <option value="Jerash">Jerash</option>
+            <option value="Ma'an">Ma'an</option>
+            <option value="Karak">Karak</option>
+            <option value="Tafilah">Tafilah</option>
+            <option value="Karak">Karak</option>
+          </select>
         
              <select
             id="Transmition"
@@ -233,6 +244,7 @@ const Navbar = () => {
             </option>
             <option value="Gasoline">Gasoline</option>
             <option value="Diesel">Diesel</option>
+            <option value="Electric">Electric</option>
             
           </select>
         

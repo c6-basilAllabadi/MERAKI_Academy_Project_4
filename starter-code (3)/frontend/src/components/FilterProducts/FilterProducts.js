@@ -70,15 +70,11 @@ if(filterStatus){arr10=arr10&&arr10.filter((elem,index)=>{
   return elem.status === filterStatus
 })
 }
-if(filterPrice){arr10=arr10 && arr10.filter((elem,index)=>{
-  return elem.color === filterPrice
-})}
+
 if(filterCondition){arr10=arr10 && arr10.filter((elem,index)=>{
   return elem.condition=== filterCondition
 })}
-if(filterYear){arr10=arr10 && arr10.filter((elem,index)=>{
-  return elem.year == filterYear
-})}
+
 if(filterCity){arr10=arr10 && arr10.filter((elem,index)=>{
   return elem.city === filterCity
 })}

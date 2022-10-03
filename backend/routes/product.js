@@ -15,7 +15,7 @@ const authorization = require("../middlewares/authorization").authorization
 
 
 productRouter.post("/",authentication,authorization("add"),addNewProduct)
-productRouter.get("/",getAllProducts)
+productRouter.get("/:limit",getAllProducts)
 productRouter.get("/searchUser/:userId",getProductsByUser)
 productRouter.get("/type/:productType",getProductsByType)
 productRouter.get("/search/:search",getProductsBySearch)

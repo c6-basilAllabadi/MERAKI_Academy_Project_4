@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { userContext } from "../../App.js";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Search from "../Search/index";
@@ -16,7 +16,9 @@ const MoreInfo = () => {
   let setUser = userContext1.setUser;
   const [newComment, setNewComment] = useState("");
   const [user1, setuser1] = useState(user);
-
+  const navigate = useNavigate()
+  let userNameMoreInfo = userContext1.userNameMoreInfo
+let setUserNameMoreInfo = userContext1.setUserNameMoreInfo
   return (
     <>
       <div className="item_card_moreInfo">
@@ -24,10 +26,10 @@ const MoreInfo = () => {
           src={moreInfoProduct.image}
           className="item_card_image_moreInfo"
         ></img>
-        <p className="item_card_title_moreInfo" onClick={() => {}}>
+        <h3 className="item_card_title_moreInfo" onClick={() => {}}>
           Title: {moreInfoProduct.title}
-        </p>
-        <p className="item_card_price_moreInfo">{moreInfoProduct.price} $</p>
+        </h3>
+        <h3 className="item_card_price_moreInfo">{moreInfoProduct.price} $</h3>
         <p className="item_card_type_moreInfo">Type: {moreInfoProduct.type}</p>
         <p className="item_card_city_moreInfo">City: {moreInfoProduct.city}</p>
         <p className="item_card_carmake_moreInfo">
@@ -56,7 +58,10 @@ const MoreInfo = () => {
         <img
           src={moreInfoProduct.userId.image}
           className="item_card_photo_moreInfo"
-        ></img>
+      onClick={()=>{
+        setUserNameMoreInfo(userId)
+        navigate("./userMoreInfo")
+      }} ></img>
         <p className="item_card_userName_moreInfo">
           User: {moreInfoProduct.userId.firstName}{" "}
           {moreInfoProduct.userId.lastName}
@@ -128,8 +133,7 @@ const MoreInfo = () => {
               setNewComment(e.target.value);
             }}
           ></input>
-          <button
-            onClick={() => {
+             <i className="far fa-comment" onClick={() => {
               axios
                 .post(
                   `http://localhost:5000/product/comments/${moreInfoProduct._id}`,
@@ -149,12 +153,17 @@ const MoreInfo = () => {
                   console.log(err);
                 });
             }}
-          >
-            Add New Comment
-          </button>
+          ></i> 
+        
+           
+          
+       
+          
         </div>
+        
       </div>
-      <i className="far fa-comment"></i>
+     
+     
     </>
   );
 };

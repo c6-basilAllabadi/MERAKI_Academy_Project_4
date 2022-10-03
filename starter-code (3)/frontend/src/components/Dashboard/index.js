@@ -35,11 +35,11 @@ const Dashboard = () => {
   let arr1
   let arr3
   const[arr2,setarr2]=useState("")
-  
+  const [pagination,setPagination] = useState(10)
 
   const getAllProducts = () => {
     axios
-      .get("http://localhost:5000/product")
+      .get(`http://localhost:5000/product/${pagination}`)
       .then((response) => {
        
         setProducts(response.data.products);
@@ -74,7 +74,7 @@ const Dashboard = () => {
   useEffect(() => {
     getAllProducts();
   
-  }, []);
+  }, [pagination]);
  
   useEffect(() => {
     getFavoritesProducts();
@@ -137,6 +137,9 @@ const Dashboard = () => {
           );
         })}
         </div>
+        <button className="pagination" onClick={()=>{
+          setPagination(pagination+10)
+        }}>Explore More Results</button>
     </>
   );
 };

@@ -54,10 +54,10 @@ return (
           return (
             <div className ="item_card_moreInfo" >
             <img src={elem.image} className="item_card_image_moreInfo"></img>
-            <p className="item_card_title_moreInfo" onClick={()=>{
+            <h3 className="item_card_title_moreInfo" onClick={()=>{
              
-            }}>Title: {elem.title}</p>
-            <p className="item_card_price_moreInfo">{elem.price} $</p>
+            }}>Title: {elem.title}</h3>
+            <h3 className="item_card_price_moreInfo">{elem.price} $</h3>
             <p className="item_card_type_moreInfo">Type: {elem.type}</p>
             <p className="item_card_city_moreInfo">City: {elem.city}</p>
             <p className="item_card_carmake_moreInfo">Carmake: {elem.carmake}</p>

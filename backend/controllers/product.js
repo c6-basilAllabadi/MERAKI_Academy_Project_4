@@ -58,8 +58,9 @@ const addNewProduct = (req, res) => {
 };
 
 const getAllProducts = (req, res) => {
+  let x = req.params.limit
   productModel
-    .find({})
+    .find({}).limit(x)
     .populate("userId", `image firstName  lastName`).populate("comments")
     .exec()
     .then((response) => {

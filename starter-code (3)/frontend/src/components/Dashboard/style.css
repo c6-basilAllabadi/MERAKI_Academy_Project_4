@@ -61,12 +61,12 @@
 }
 
 .item_card_price_dashboard {
-    grid-column: 5/7;
+    grid-column:5/7;
     text-align: right;
     color:#D0021B;
     font-weight: 800;
     font-family: Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .item_card_city_dashboard{
@@ -147,4 +147,7 @@ color:#4091D2;
 }
 .fa-star{
     color:#4091D2;
+}
+.pagination{
+    margin-top:200px;
 }

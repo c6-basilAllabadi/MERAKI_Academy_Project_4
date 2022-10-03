@@ -14,6 +14,17 @@
 .item_card_moreInfo *{
     text-align: left;
     font-size: 14px;
+    font-weight: 600;
+}
+.item_card_moreInfo p{
+    text-align: left;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.item_card_moreInfo p{
+    text-align: left;
+    font-size: 14px;
     font-family: sans-serif;
     font-weight: 600;
 }
@@ -27,7 +38,7 @@
 }
 .item_card_title_moreInfo {
     color:#4091D2;
-    font-size: 20px;
+    font-size: 50px;
     grid-column: 3/7;
     grid-row: 1;
     font-weight: 900;
@@ -143,4 +154,20 @@
     align-items: center;
     font-size: 14px;
     font-weight: 500;
+}
+.Comment input{
+    font-size: 20px;
+}
+.fa-comment{
+    font-size: 20px;
+    font-weight: 200;
+    margin-left: 5px;
+  
+}
+.fa-comment:hover{
+    background-color: #4091D2;
+  
+}
+.item_card_title_moreInfo {
+    font-size: 20px;
 }
