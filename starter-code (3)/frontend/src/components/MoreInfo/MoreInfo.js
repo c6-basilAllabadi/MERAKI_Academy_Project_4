@@ -17,8 +17,8 @@ const MoreInfo = () => {
   const [newComment, setNewComment] = useState("");
   const [user1, setuser1] = useState(user);
   const navigate = useNavigate()
-  let userNameMoreInfo = userContext1.userNameMoreInfo
-let setUserNameMoreInfo = userContext1.setUserNameMoreInfo
+  let userNameMoreInfoId = userContext1.userNameMoreInfoId
+let setUserNameMoreInfoId = userContext1.setUserNameMoreInfoId
   return (
     <>
       <div className="item_card_moreInfo">
@@ -59,8 +59,8 @@ let setUserNameMoreInfo = userContext1.setUserNameMoreInfo
           src={moreInfoProduct.userId.image}
           className="item_card_photo_moreInfo"
       onClick={()=>{
-        setUserNameMoreInfo(userId)
-        navigate("./userMoreInfo")
+        setUserNameMoreInfoId(moreInfoProduct.userId._id)
+        navigate("/userMoreInfo")
       }} ></img>
         <p className="item_card_userName_moreInfo">
           User: {moreInfoProduct.userId.firstName}{" "}
@@ -91,10 +91,10 @@ let setUserNameMoreInfo = userContext1.setUserNameMoreInfo
               });
           }}
         >
-          Add to Favorite{" "}
+          <i className='fas fa-star' ></i> Add to Favorite{" "}
         </button>
         <button
-          className="item_card_like_dashboard"
+          className="item_card_like_moreInfo"
           onClick={() => {
             axios
               .put(
@@ -113,8 +113,7 @@ let setUserNameMoreInfo = userContext1.setUserNameMoreInfo
                 console.log(err);
               });
           }}
-        >
-          Like
+        ><i className='fas fa-thumbs-up'></i>  Like
         </button>
 
         <div className="comment_container">

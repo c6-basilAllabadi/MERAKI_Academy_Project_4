@@ -44,12 +44,12 @@ function App() {
   const [filterCity,setFilterCity]=useState("")
   const [filterTransmition,setFilterTransmition]=useState("")
   const [filterFuel,setFilterFuel]=useState("")
-  const [userNameMoreInfo,setUserNameMoreInfo]=useState("")
+  const [userNameMoreInfoId,setUserNameMoreInfoId]=useState("")
    
 
    return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct,favoritesProducts,setFavoriteProducts ,searchButtonStatus,setSearchButtonStatus,typeProducts,setTypeProducts,filterCondition,setFilterCondition,filterYear,setFilterYear,filterCity,setFilterCity,filterTransmition,setFilterTransmition,filterFuel,setFilterFuel,userNameMoreInfo,setUserNameMoreInfo}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct,favoritesProducts,setFavoriteProducts ,searchButtonStatus,setSearchButtonStatus,typeProducts,setTypeProducts,filterCondition,setFilterCondition,filterYear,setFilterYear,filterCity,setFilterCity,filterTransmition,setFilterTransmition,filterFuel,setFilterFuel,userNameMoreInfoId,setUserNameMoreInfoId}}>
     <div className="App">
 <Navbar/>
       <Routes>
@@ -64,7 +64,7 @@ function App() {
         <Route path="/search" element = {<Search/>}/>
         <Route path="/filterProducts" element ={<FilterProducts/>}/>
         <Route path = "/moreInfo" element= {<MoreInfo/>}/>
-        <Route path="./userMoreInfo" element={<UserMoreInfo/>}/>
+        <Route path="/userMoreInfo" element={<UserMoreInfo/>}/>
      
     
       </Routes>

@@ -149,5 +149,67 @@ color:#4091D2;
     color:#4091D2;
 }
 .pagination{
-    margin-top:200px;
+    margin:10px;
+    margin-top:250px;
+    background-color: rgba(237, 237, 237, 0.379);
+    border: 1px solid rgba(205, 202, 202, 0.511);
+    width:170px;
+    height:35px;
+    font-size: 8px;
+    font-size: 14px;
+    text-align: center;
+    color:rgb(107, 104, 104);
 }
+.pagination:hover{
+    background-color: #4090d282;
+    border:none;
+    border-radius: 2px;
+}
+
+.popup {
+    position: absolute;
+    top:80%;
+    left:40%;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 1;
+  }
+  
+
+  .popup .popuptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  
+
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+
+
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }

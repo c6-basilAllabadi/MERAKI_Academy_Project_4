@@ -1,0 +1,20 @@
+.userInfo{
+ 
+    position: relative;
+    top:200px;
+    left:500px;
+    width:400px;
+    height:400px;
+    background-color: rgba(237, 237, 237, 0.379);
+    border: 2px solid rgba(205, 202, 202, 0.511);
+    padding:20px;
+    text-align: left;
+    
+    
+
+}
+.userInfo img{
+    width:200px;
+    text-align: center;
+    margin-left: 100px;
+}

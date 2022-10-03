@@ -97,7 +97,12 @@ const Navbar = () => {
             Logout
           </button>
         )}
-
+<div class="popup">
+        <span class="popuptext" id="like">Please Login So You Can Like</span>
+      </div>
+      <div class="popup">
+        <span class="popuptext" id="favorite">Please Login So You Can Add To Favorite</span>
+      </div>
         <p
           className="car_productType"
           onClick={() => {

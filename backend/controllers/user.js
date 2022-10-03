@@ -27,5 +27,21 @@ const register = async(req,res)=>{
         });
       }}
   };
+const getUserInfo = (req,res)=>{
+  const userId = req.params.userId
+  userModel.find({_id:userId}).then((response)=>{res.status(200).json({
+    success: true,
+    message: `UserInfo are ready`,
+    userInfo: response,
+  })
 
-  module.exports = {register , }
+  }).catch((err)=>{
+    res.status(500).json({
+      success: false,
+      message: `Server Error`,
+      err: err.message,
+    });
+
+  })
+}
+  module.exports = {register , getUserInfo}
