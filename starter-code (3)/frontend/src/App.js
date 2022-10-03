@@ -38,12 +38,16 @@ function App() {
   const [favoritesProducts,setFavoriteProducts] = useState("")
   const [searchButtonStatus,setSearchButtonStatus] = useState(true)
   const [typeProducts,setTypeProducts] = useState("")
-
+  const [filterCondition,setFilterCondition]=useState("")
+  const [filterYear,setFilterYear]=useState("")
+  const [filterCity,setFilterCity]=useState("")
+  const [filterTransmition,setFilterTransmition]=useState("")
+  const [filterFuel,setFilterFuel]=useState("")
    
 
    return (
     <>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct,favoritesProducts,setFavoriteProducts ,searchButtonStatus,setSearchButtonStatus,typeProducts,setTypeProducts}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct,favoritesProducts,setFavoriteProducts ,searchButtonStatus,setSearchButtonStatus,typeProducts,setTypeProducts,filterCondition,setFilterCondition,filterYear,setFilterYear,filterCity,setFilterCity,filterTransmition,setFilterTransmition,filterFuel,setFilterFuel}}>
     <div className="App">
 <Navbar/>
       <Routes>

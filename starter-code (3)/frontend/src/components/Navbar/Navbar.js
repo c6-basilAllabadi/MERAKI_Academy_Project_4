@@ -27,6 +27,16 @@ const Navbar = () => {
   let filterPrice = userContext1.filterPrice;
   let filterStatus = userContext1.filterStatus;
   let fliterType = userContext1.fliterType;
+  let filterCondition = userContext1.filterCondition;
+  let setFilterCondition = userContext1.setFilterCondition;
+  let filterYear = userContext1.filterYear;
+  let setFilterYear = userContext1.setFilterYear;
+  let filterCity = userContext1.filterCity;
+  let setFilterCity = userContext1.setFilterCity;
+  let filterTransmition = userContext1.filterTransmition;
+  let setFilterTransmition = userContext1.setFilterTransmition;
+  let filterFuel = userContext1.filterFuel;
+  let setFilterFuel = userContext1.setFilterFuel;
   let searchButtonStatus = userContext1.searchButtonStatus;
   let setSearchButtonStatus = userContext1.setSearchButtonStatus;
   let typeProducts = userContext1.typeProducts;
@@ -91,25 +101,25 @@ const Navbar = () => {
         <p
           className="car_productType"
           onClick={() => {
-            setProductType("car");
+            setProductType("Car");
             navigate("/productsTypes");
           }}
         >
           Cars
         </p>
         <p
-          className="laptop_productType"
+          className="pickup_productType"
           onClick={() => {
-            setProductType("pickup");
+            setProductType("Pickup");
             navigate("/productsTypes");
           }}
         >
           Pickups
         </p>
         <p
-          className="mobile_productType"
+          className="bus_productType"
           onClick={() => {
-            setProductType("bus");
+            setProductType("Bus");
             navigate("/productsTypes");
           }}
         >
@@ -140,28 +150,96 @@ const Navbar = () => {
         )}
 
         <div className="navbar_filter">
-          <input
-            placeholder="type"
+          <select
+            id="Type"
             onChange={(e) => {
               setFilterType(e.target.value);
             }}
-          ></input>
-          <input
-            placeholder="price"
+          >
+            <option value="" disabled selected hidden>
+              Choose The Type
+            </option>
+            <option value="Car">Car</option>
+            <option value="Pickup">Pickup</option>
+            <option value="Bus">Bus</option>
+          </select>
+
+          <select
+            id="Condition"
             onChange={(e) => {
-              setFilterprice(e.target.value);
+              setFilterCondition(e.target.value);
             }}
-          ></input>
-          <input
-            placeholder="status"
+          >
+            <option value="" disabled selected hidden>
+              Choose The Condition
+            </option>
+            <option value="New">New</option>
+            <option value="Used">Used</option>
+          </select>
+
+          <select
+            id="Status"
+        
             onChange={(e) => {
               setFilterStatus(e.target.value);
             }}
+          >
+            <option value="" disabled selected hidden>
+              Choose The Status
+            </option>
+            <option value="Great">Great</option>
+            <option value="Good">Good</option>
+            <option value="fulfilling">fulfilling</option>
+          </select>
+        
+          <input
+            placeholder="Year"
+            onChange={(e) => {
+              setFilterYear(e.target.value);
+            }}
           ></input>
+          
+          <input
+            placeholder="City"
+            onChange={(e) => {
+              setFilterCity(e.target.value);
+            }}
+          ></input>
+        
+             <select
+            id="Transmition"
+        
+            onChange={(e) => {
+              setFilterTransmition(e.target.value);
+            }}>
+          <option value="" disabled selected hidden>
+              Choose The Transmition
+            </option>
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+            
+          </select>
+        
+         
 
+<select
+            id="Fuel"
+        
+            onChange={(e) => {
+              setFilterFuel(e.target.value);
+            }}>
+          <option value="" disabled selected hidden>
+              Choose The Fuel
+            </option>
+            <option value="Gasoline">Gasoline</option>
+            <option value="Diesel">Diesel</option>
+            
+          </select>
+        
           <button
             onClick={() => {
               navigate("/filterProducts");
+              console.log(filterCity);
             }}
           >
             Filter

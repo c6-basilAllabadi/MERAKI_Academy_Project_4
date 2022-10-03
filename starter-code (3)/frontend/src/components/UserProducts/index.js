@@ -120,7 +120,7 @@ const UserProducts = () => {
         })}</div>
          
          
-         <h4>Add New Product</h4>
+
       <div className="add_product_container">
        
         <input

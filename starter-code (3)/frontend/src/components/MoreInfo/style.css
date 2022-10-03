@@ -7,6 +7,9 @@
     grid-template-columns: repeat(7,1fr);
     padding:50px;
     margin-left: 50px;
+    position: relative;
+    top:200px;
+  
 }
 .item_card_moreInfo *{
     text-align: left;
@@ -126,13 +129,12 @@
     background-color: rgb(255, 255, 255);
     border-radius: 6px;
     grid-column: 6/8;
-    grid-row:2/8;
+    grid-row:1/8;
     margin-left: 30px;
     padding: 5px;
 
 }
 .Comment p{
-    padding: 5px;
     width:200px;
     border: 1px solid rgba(205, 202, 202, 0.771);
     background-color: rgba(237, 237, 237, 0.379);

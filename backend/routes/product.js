@@ -22,7 +22,7 @@ productRouter.get("/search/:search",getProductsBySearch)
 productRouter.get("/filter",getProductsByFilter)
 productRouter.delete("/:productId",authentication,authorization("delete"),deleteProductById)
 productRouter.put("/:productId",authentication,authorization("update"),updateProductById)
-productRouter.post("/:productId/comments",authentication,authorization("add"),createNewComment)
+productRouter.post("/comments/:productId",authentication,authorization("add"),createNewComment)
 
 
 module.exports=productRouter

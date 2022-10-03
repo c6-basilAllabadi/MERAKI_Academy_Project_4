@@ -11,6 +11,9 @@
     flex-wrap: wrap;
     column-gap: 20px;
     row-gap: 20px;
+    position: relative;
+    top:200px;
+  
  
 }
 .item_card_dashboard {
