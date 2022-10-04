@@ -20,8 +20,12 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  return <div className="login_container">
+  return(
     
+  
+  <div className="login_container">
+    <div className="login_form">
+    <h2>Login</h2>
     <input type="email" placeholder="Enter your Email" onChange={(e)=>{
       setLoginEmail(e.target.value)
 
@@ -53,8 +57,13 @@ setLoginMessage(err.response.data.message)
     }}>Login</button>
     
     <div>{loginMessage}</div>
-    
-    </div>;
+    <p className="register_now_p">Don't Have an Account? <p className ="register_now_botton" onClick={()=>{
+      navigate("/register")
+    }}>Register Now</p> </p>
+    </div>
+    <img className="navbar_logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png"></img>
+
+    </div>)
 
 };
 export default Login;

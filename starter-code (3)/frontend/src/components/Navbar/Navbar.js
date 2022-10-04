@@ -41,34 +41,38 @@ const Navbar = () => {
   let setSearchButtonStatus = userContext1.setSearchButtonStatus;
   let typeProducts = userContext1.typeProducts;
   let setTypeProducts = userContext1.setTypeProducts;
+  const axios = require("axios");
 
   return (
     <>
       <div className="navbar_container">
-        <p className="navbar_login">
-          {!isLoggedIn && (
-            <Link
-              to="/login"
-              onClick={() => {
-                setDashboardStatus(false);
-              }}
-            >
-              Login
-            </Link>
-          )}
-        </p>
-        <p className="navbar_register">
-          {!isLoggedIn && (
-            <Link
-              to="/register"
-              onClick={() => {
-                setDashboardStatus(false);
-              }}
-            >
-              Register
-            </Link>
-          )}
-        </p>
+        <img
+          className="navbar_logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png"
+        ></img>
+        {!isLoggedIn && (
+          <p
+            className="navbar_login"
+            onClick={() => {
+              navigate("/login");
+              setDashboardStatus(false);
+            }}
+          >
+            Login
+          </p>
+        )}
+
+        {!isLoggedIn && (
+          <p
+            className="navbar_register"
+            onClick={() => {
+              navigate("/register");
+              setDashboardStatus(false);
+            }}
+          >
+            Register
+          </p>
+        )}
 
         <p
           className="navbar_dashboard"
@@ -79,11 +83,15 @@ const Navbar = () => {
           Dashboard
         </p>
 
-        <p className="navbar_favorite">
-          <Link to="/favorite">Favorites</Link>
-        </p>
         {isLoggedIn && (
-          <button
+          <p className="navbar_favorite"   onClick={() => {
+            navigate("/favorite");
+          }}>
+        My Favorites
+          </p>
+        )}
+        {isLoggedIn && (
+          <p
             className="navbar_logout"
             onClick={() => {
               setToken(null);
@@ -92,17 +100,22 @@ const Navbar = () => {
               localStorage.setItem("Token", JSON.stringify(null));
               localStorage.setItem("loggedIn", JSON.stringify(false));
               localStorage.setItem("user1", JSON.stringify(""));
+              navigate("/login")
             }}
           >
             Logout
-          </button>
+          </p>
         )}
-<div class="popup">
-        <span class="popuptext" id="like">Please Login So You Can Like</span>
-      </div>
-      <div class="popup">
-        <span class="popuptext" id="favorite">Please Login So You Can Add To Favorite</span>
-      </div>
+        <div class="popup">
+          <span class="popuptext" id="like">
+            Please Login So You Can Like
+          </span>
+        </div>
+        <div class="popup">
+          <span class="popuptext" id="favorite">
+            Please Login So You Can Add To Favorite
+          </span>
+        </div>
         <p
           className="car_productType"
           onClick={() => {
@@ -149,9 +162,14 @@ const Navbar = () => {
         </button>
 
         {isLoggedIn && (
-          <Link className="userProducts_productType" to="/userProducts">
+          <p
+            className="userProducts_productType"
+            onClick={() => {
+              navigate("/userProducts");
+            }}
+          >
             My Products
-          </Link>
+          </p>
         )}
 
         <div className="navbar_filter">
@@ -184,7 +202,6 @@ const Navbar = () => {
 
           <select
             id="Status"
-        
             onChange={(e) => {
               setFilterStatus(e.target.value);
             }}
@@ -196,10 +213,9 @@ const Navbar = () => {
             <option value="Good">Good</option>
             <option value="fulfilling">fulfilling</option>
           </select>
-        
-                    <select
+
+          <select
             id="City"
-        
             onChange={(e) => {
               setFilterCity(e.target.value);
             }}
@@ -221,38 +237,34 @@ const Navbar = () => {
             <option value="Tafilah">Tafilah</option>
             <option value="Karak">Karak</option>
           </select>
-        
-             <select
+
+          <select
             id="Transmition"
-        
             onChange={(e) => {
               setFilterTransmition(e.target.value);
-            }}>
-          <option value="" disabled selected hidden>
+            }}
+          >
+            <option value="" disabled selected hidden>
               Choose The Transmition
             </option>
             <option value="Manual">Manual</option>
             <option value="Automatic">Automatic</option>
-            
           </select>
-        
-         
 
-<select
+          <select
             id="Fuel"
-        
             onChange={(e) => {
               setFilterFuel(e.target.value);
-            }}>
-          <option value="" disabled selected hidden>
+            }}
+          >
+            <option value="" disabled selected hidden>
               Choose The Fuel
             </option>
             <option value="Gasoline">Gasoline</option>
             <option value="Diesel">Diesel</option>
             <option value="Electric">Electric</option>
-            
           </select>
-        
+
           <button
             onClick={() => {
               navigate("/filterProducts");

@@ -79,7 +79,7 @@ const [ filteredProducts , setFilteredProducts]=useState("")
 const [pagination, setPagination] = useState(10);
 const getFilteredProducts =()=>{
 
-    axios.get(`http://localhost:5000/product/${pagination}`).then((response)=>{
+    axios.get(`http://localhost:5000/product/1000`).then((response)=>{
       console.log(response)
         setFilteredProducts(response.data.products);
         console.log(response.data.products)
@@ -139,7 +139,7 @@ useEffect(() => {
 
 arr10=filteredProducts
 if(fliterType){arr10=arr10 && arr10.filter((elem,index)=>{
-  return elem.type === fliterType 
+  return elem.type == fliterType 
 })
 }
 

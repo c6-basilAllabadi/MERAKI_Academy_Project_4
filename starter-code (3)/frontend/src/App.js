@@ -13,6 +13,8 @@ import Navbar from "./components/Navbar/Navbar";
 import FilterProducts from "./components/FilterProducts/FilterProducts";
 import MoreInfo from "./components/MoreInfo/MoreInfo";
 import UserMoreInfo from "./components/UserMoreInfo/index"
+import AddProduct from "./components/AddProduct/index"
+import AdminPanel from "./components/AdminPanel/index"
 export const userContext=createContext()
 function App() {
   let Token = JSON.parse(localStorage.getItem('Token'))
@@ -67,8 +69,9 @@ function App() {
         <Route path="/filterProducts" element ={<FilterProducts/>}/>
         <Route path = "/moreInfo" element= {<MoreInfo/>}/>
         <Route path="/userMoreInfo" element={<UserMoreInfo/>}/>
+        <Route path="/addProduct" element={<AddProduct/>}/>
+        <Route path="/adminPanel" element ={<AdminPanel/>}/>
      
-    
       </Routes>
      
     </div>

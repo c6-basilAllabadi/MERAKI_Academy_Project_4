@@ -27,7 +27,7 @@ let setUserNameMoreInfoId = userContext1.setUserNameMoreInfoId
           className="item_card_image_moreInfo"
         ></img>
         <h3 className="item_card_title_moreInfo" onClick={() => {}}>
-          Title: {moreInfoProduct.title}
+         {moreInfoProduct.title}
         </h3>
         <h3 className="item_card_price_moreInfo">{moreInfoProduct.price} $</h3>
         <p className="item_card_type_moreInfo">Type: {moreInfoProduct.type}</p>
@@ -36,7 +36,7 @@ let setUserNameMoreInfoId = userContext1.setUserNameMoreInfoId
           Carmake: {moreInfoProduct.carmake}
         </p>
         <p className="item_card_model_moreInfo">
-          Mdel: {moreInfoProduct.model}
+          Model: {moreInfoProduct.model}
         </p>
         <p className="item_card_year_moreInfo">Year: {moreInfoProduct.year}</p>
         <p className="item_card_transmission_moreInfo">

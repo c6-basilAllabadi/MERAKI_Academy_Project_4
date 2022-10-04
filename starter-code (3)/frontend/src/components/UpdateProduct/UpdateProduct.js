@@ -343,7 +343,7 @@ const [newLikes,setNewLikes] = useState(updateProduct.likes)
         </p>
       </div>
 
-      <button
+      <button className="save_update"
         onClick={() => {
           axios
             .put(

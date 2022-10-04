@@ -28,7 +28,8 @@ const addNewLike= (req, res) => {
   };
   
   const getAllLikes =(req,res)=>{
-    likesModel.find({}).then((response)=>{
+    const liker = req.params.userId
+    likesModel.find({liker:liker}).then((response)=>{
         console.log(response)
         res.json(response)
     }).catch((err)=>{

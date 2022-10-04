@@ -19,7 +19,9 @@ const Register = () => {
   const navigate = useNavigate()
   return (
   <>
-  <div className="register_container">Register
+  <div className="register_container">
+  <div className="register_form">
+    <h2>Register</h2>
   <input type="text" placeholder="Enter Your Image Link" onChange={(e)=>{
   setRegisterImage(e.target.value)
 }}></input>
@@ -57,6 +59,8 @@ const Register = () => {
   })
 }} >Register</button>
 <div>{registerMessage}</div>
+</div>
+<img className="navbar_logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png"></img>
 
 </div>
   </>

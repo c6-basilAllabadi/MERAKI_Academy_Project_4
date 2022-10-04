@@ -26,7 +26,7 @@ productRouter.delete("/:productId",authentication,authorization("delete"),delete
 productRouter.put("/:productId",authentication,authorization("update"),updateProductById)
 productRouter.post("/comments/:productId",authentication,authorization("add"),createNewComment)
 productRouter.post("/like",authentication,authorization("add"),addNewLike)
-productRouter.get("/like/get",authentication,authorization("add"),getAllLikes)
+productRouter.get("/like/get/:userId",authentication,authorization("add"),getAllLikes)
 
 
 module.exports=productRouter

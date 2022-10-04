@@ -10,12 +10,19 @@
     justify-content: center;
     margin-left: 90px;
     position: relative;
-    top:180px;
+padding-top: 20px;
+padding-bottom: 20px;
+    top:250px;
    
 
 }
-.add_product_container *{
+.add_product_container input{
     height: 20px;
+width : 392px;
+margin : 5px;
+}
+.add_product_container select{
+    height: 26px;
 width : 400px;
 margin : 5px;
 }
@@ -160,4 +167,72 @@ margin : 5px;
     border:none;
     border-radius: 2px;
     
+}
+.add_product_button{
+    position: relative;
+    top:200px;
+    width:100px;
+    height: 40px;
+}
+.add_product{
+    width:300px;
+}
+.add_product_button{
+    background-color: rgba(237, 237, 237, 0.379);
+    border: 1px solid rgba(205, 202, 202, 0.511);
+    margin:10px;
+ 
+    grid-column:4;
+    grid-row: 5;
+    width:170px;
+    height:35px;
+    font-size: 8px;
+    font-size: 14px;
+    text-align: center;
+    color:rgb(107, 104, 104);
+  
+}
+.add_new_product_p{
+    color:#4091D2;
+    width:1000px
+}
+
+.add_product_button:hover{
+    background-color: #4090d282;
+    border:none;
+    border-radius: 2px;
+  
+
+}
+select{
+    
+    color: grey;
+  }
+  select option { color: black; }
+  select option:first-child{
+    color: grey;
+  }
+
+  .add_product{
+    background-color: rgba(237, 237, 237, 0.379);
+    border: 1px solid rgba(205, 202, 202, 0.511);
+    margin:10px;
+ 
+    grid-column:4;
+    grid-row: 5;
+    width:170px;
+    height:35px;
+    font-size: 8px;
+    font-size: 14px;
+    text-align: center;
+    color:rgb(107, 104, 104);
+  
+}
+
+.add_product:hover{
+    background-color: #4090d282;
+    border:none;
+    border-radius: 2px;
+  
+
 }
