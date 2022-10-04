@@ -14,6 +14,7 @@ role: {type: mongoose.Schema.Types.ObjectId, ref: "Role"},
 dateRegistered:{type:String },
 phoneNumber:{type:String },
 favorites:[{type: mongoose.Schema.Types.ObjectId, ref: "Product"}],
+likes:[{type: mongoose.Schema.Types.ObjectId, ref: "Product"}]
 })
 
 userSchema.pre("save",async function(){

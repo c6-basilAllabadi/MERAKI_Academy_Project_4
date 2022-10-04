@@ -10,6 +10,8 @@ const createNewComment = require("../controllers/comment").createNewComment
 const getProductsByType = require("../controllers/product").getProductsByType
 const getProductsBySearch=require("../controllers/product").getProductsBySearch
 const getProductsByFilter = require("../controllers/product").getProductsByFilter
+const addNewLike = require("../controllers/like").addNewLike
+const getAllLikes = require("../controllers/like").getAllLikes
 const authentication = require("../middlewares/authentication").authentication
 const authorization = require("../middlewares/authorization").authorization
 
@@ -23,6 +25,8 @@ productRouter.get("/filter",getProductsByFilter)
 productRouter.delete("/:productId",authentication,authorization("delete"),deleteProductById)
 productRouter.put("/:productId",authentication,authorization("update"),updateProductById)
 productRouter.post("/comments/:productId",authentication,authorization("add"),createNewComment)
+productRouter.post("/like",authentication,authorization("add"),addNewLike)
+productRouter.get("/like/get",authentication,authorization("add"),getAllLikes)
 
 
 module.exports=productRouter

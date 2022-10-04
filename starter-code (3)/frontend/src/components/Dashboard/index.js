@@ -127,7 +127,7 @@ const Dashboard = () => {
                     className="item_card_addToFavorite_dashboard"
                     onClick={() => {
                       !isLoggedIn && myFunction1();
-                      setTimeout(myFunction1 , 8000);
+                      !isLoggedIn && setTimeout(myFunction1 , 8000);
                       axios
                         .post(
                           `http://localhost:5000/favorite/${elem._id}`,
@@ -156,24 +156,46 @@ const Dashboard = () => {
                   className="item_card_likes_dashboard"
                   onClick={() => {
                     !isLoggedIn && myFunction();
-                    setTimeout(myFunction , 8000);
-                    axios
-                      .put(
-                        `http://localhost:5000/product/${elem._id}`,
-                        { likes: `${elem.likes + 1}` },
-                        {
+                    !isLoggedIn && setTimeout(myFunction , 8000);
+                    axios.get(`http://localhost:5000/product/like/get/?product=${elem._id}&liker=${user}`, {
+                      headers: {
+                        authorization: "Bearer " + token,
+                      },
+                    }).then((response)=>{
+                      console.log(response)
+                      if(response.data.length==0){
+                        console.log(response.data.length)
+                        axios.post("http://localhost:5000/product/like/",{"product":`${elem._id}`,"liker":`${user}`},{
                           headers: {
                             authorization: "Bearer " + token,
                           },
-                        }
-                      )
-                      .then((response) => {
-                        elem.likes = elem.likes + 1;
-                        console.log(products);
-                      })
-                      .catch((err) => {
-                        console.log(err);
-                      });
+                        }).then((response)=>{
+                          console.log(response)
+                        }).catch((err)=>{
+                          console.log(err)
+                        })
+                        axios
+                        .put(
+                          `http://localhost:5000/product/${elem._id}`,
+                          { likes: `${elem.likes + 1}` },
+                          {
+                            headers: {
+                              authorization: "Bearer " + token,
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          elem.likes = elem.likes + 1;
+                          
+                        })
+                        .catch((err) => {
+                          console.log(err.message);
+                        });
+                      }
+                    }).catch((err)=>{
+                      console.log(err)
+                    })
+                 
                   }}
                 >
                   {" "}
