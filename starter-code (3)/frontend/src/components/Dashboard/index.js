@@ -29,11 +29,14 @@ const Dashboard = () => {
   let favoritesProducts = userContext1.favoritesProducts;
   let setFavoriteProducts = userContext1.setFavoriteProducts;
   let isLoggedIn = userContext1.isLoggedIn;
+  const [likedProducts,setLikedProducts]=useState("")
   const [addtoFavoriteButton, setAddtoFavoriteButton] =
     useState("Add to Favorite");
   let arr4;
   let arr1;
   let arr3;
+  let arr5;
+  let arr6
   const [arr2, setarr2] = useState("");
   const [pagination, setPagination] = useState(10);
   const myFunction = () => {
@@ -44,12 +47,13 @@ const Dashboard = () => {
     let popup = document.getElementById("favorite");
     popup.classList.toggle("show");
   };
-  
+
   const getAllProducts = () => {
     axios
       .get(`http://localhost:5000/product/${pagination}`)
       .then((response) => {
         setProducts(response.data.products);
+        console.log(response.data.products)
       })
       .catch((err) => {
         console.log(err);
@@ -74,7 +78,22 @@ const Dashboard = () => {
         console.log(err);
       });
   };
-
+  const getLikedProducts = () => {
+    axios.get(`http://localhost:5000/product/like/get/`,{
+      headers: {
+        authorization: "Bearer " + token,
+      },
+    }
+    ).then((response)=>{
+      setLikedProducts(response.data)
+      console.log(response.data)
+      arr5=likedProducts&&likedProducts.map((elem,index)=>{
+        return elem.product
+      })
+      console.log(arr5)
+    }).catch((err)=>{
+      console.log(err)
+    });}
   useEffect(() => {
     getAllProducts();
   }, [pagination]);
@@ -82,6 +101,10 @@ const Dashboard = () => {
   useEffect(() => {
     getFavoritesProducts();
   }, [favoritesProducts]);
+  useEffect(() => {
+    getLikedProducts();
+  }, []);
+  
 
   return (
     <>
@@ -127,7 +150,7 @@ const Dashboard = () => {
                     className="item_card_addToFavorite_dashboard"
                     onClick={() => {
                       !isLoggedIn && myFunction1();
-                      !isLoggedIn && setTimeout(myFunction1 , 8000);
+                      !isLoggedIn && setTimeout(myFunction1, 8000);
                       axios
                         .post(
                           `http://localhost:5000/favorite/${elem._id}`,
@@ -156,49 +179,40 @@ const Dashboard = () => {
                   className="item_card_likes_dashboard"
                   onClick={() => {
                     !isLoggedIn && myFunction();
-                    !isLoggedIn && setTimeout(myFunction , 8000);
-                    axios.get(`http://localhost:5000/product/like/get/?product=${elem._id}&liker=${user}`, {
-                      headers: {
-                        authorization: "Bearer " + token,
-                      },
-                    }).then((response)=>{
-                      console.log(response)
-                      if(response.data.length==0){
-                        console.log(response.data.length)
-                        axios.post("http://localhost:5000/product/like/",{"product":`${elem._id}`,"liker":`${user}`},{
-                          headers: {
-                            authorization: "Bearer " + token,
-                          },
-                        }).then((response)=>{
-                          console.log(response)
-                        }).catch((err)=>{
-                          console.log(err)
-                        })
-                        axios
-                        .put(
-                          `http://localhost:5000/product/${elem._id}`,
-                          { likes: `${elem.likes + 1}` },
-                          {
-                            headers: {
-                              authorization: "Bearer " + token,
-                            },
-                          }
-                        )
-                        .then((response) => {
-                          elem.likes = elem.likes + 1;
-                          
-                        })
-                        .catch((err) => {
-                          console.log(err.message);
-                        });
-                      }
-                    }).catch((err)=>{
-                      console.log(err)
-                    })
-                 
-                  }}
-                >
-                  {" "}
+                    !isLoggedIn && setTimeout(myFunction, 8000);
+                   
+                          axios
+                            .post(
+                              "http://localhost:5000/product/like/",
+                              { product: `${elem._id}`, liker: `${user}` },
+                              {
+                                headers: {
+                                  authorization: "Bearer " + token,
+                                },
+                              }
+                            )
+                            .then((response) => {
+                              console.log(response);
+                            })
+                            .catch((err) => {
+                              console.log(err);
+                            });
+                          axios
+                            .put(
+                              `http://localhost:5000/product/${elem._id}`,
+                              { likes: `${elem.likes + 1}` },
+                              {
+                                headers: {
+                                  authorization: "Bearer " + token,
+                                },
+                              }
+                            )
+                            .then((response) => {
+                              elem.likes = elem.likes + 1;
+                            })
+                            .catch((err) => {
+                              console.log(err.message);
+                            });}}>
                   <i className="fas fa-thumbs-up"></i>Like {elem.likes}
                 </button>
               </div>
@@ -214,9 +228,7 @@ const Dashboard = () => {
       >
         Explore More Results
       </button>
-      
     </>
-  );
-};
+  );}
 
 export default Dashboard;

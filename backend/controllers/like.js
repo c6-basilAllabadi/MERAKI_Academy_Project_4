@@ -2,19 +2,41 @@ const likesModel = require("../models/likesSchema")
 
 
 
-const addNewLike = (req,res)=>{
+const addNewLike= (req, res) => {
     const {product,liker} = req.body
     const newLike = new likesModel({product,liker})
-
-    newLike.save().then((response)=>{
+    newLike
+      .save()
+      .then((response) => {
+          userModel.updateOne({_id:req.token.userId},{ $push: { likes:newLike.product }},{new:true}).then((response)=>{
+              res.status(201);
+              res.json({
+                success: true,
+                message: "Product Added to Liked Successfully",
+               response : newLike.product
+              })}
+          ).catch((err)=>{
+              res.status(500);
+              res.json({ success: false, message: "Server Error", err: err.message });
+          })
+      ;
+      })
+      .catch((err) => {
+        res.status(500);
+        res.json({ success: false, message: "Server Error", err: err.message });
+      });
+  };
+  
+  const getAllLikes =(req,res)=>{
+    likesModel.find({}).then((response)=>{
         console.log(response)
         res.json(response)
     }).catch((err)=>{
-        console.log(err)
+        res.json(err.message)
     })
+  }
 
-}
-const getAllLikes = (req,res)=>{
+const getUserLikes = (req,res)=>{
     const product = req.query.product
     const liker = req.query.liker
  
@@ -29,4 +51,4 @@ const getAllLikes = (req,res)=>{
 
 
 
-module.exports={addNewLike,getAllLikes}
+module.exports={addNewLike,getAllLikes,getUserLikes}
