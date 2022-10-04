@@ -29,7 +29,8 @@ const Dashboard = () => {
   let favoritesProducts = userContext1.favoritesProducts;
   let setFavoriteProducts = userContext1.setFavoriteProducts;
   let isLoggedIn = userContext1.isLoggedIn;
-  const [likedProducts,setLikedProducts]=useState("")
+  const likedProducts=userContext1.likedProducts
+  let setLikedProducts= userContext1.setLikedProducts
   const [addtoFavoriteButton, setAddtoFavoriteButton] =
     useState("Add to Favorite");
   let arr4;
@@ -37,7 +38,10 @@ const Dashboard = () => {
   let arr3;
   let arr5;
   let arr6
-  const [arr2, setarr2] = useState("");
+  let arr2=userContext1.arr2 
+  let setarr2=userContext1.setarr2 
+  let arr7=userContext1.arr7 
+  let setarr7=userContext1.setarr7
   const [pagination, setPagination] = useState(10);
   const myFunction = () => {
     let popup = document.getElementById("like");
@@ -53,7 +57,7 @@ const Dashboard = () => {
       .get(`http://localhost:5000/product/${pagination}`)
       .then((response) => {
         setProducts(response.data.products);
-        console.log(response.data.products)
+        
       })
       .catch((err) => {
         console.log(err);
@@ -79,18 +83,19 @@ const Dashboard = () => {
       });
   };
   const getLikedProducts = () => {
-    axios.get(`http://localhost:5000/product/like/get/`,{
+    axios.get(`http://localhost:5000/product/like/get/${user}`,{
       headers: {
         authorization: "Bearer " + token,
       },
     }
     ).then((response)=>{
       setLikedProducts(response.data)
-      console.log(response.data)
-      arr5=likedProducts&&likedProducts.map((elem,index)=>{
+      arr5= likedProducts && likedProducts.map((elem,index)=>{
         return elem.product
       })
-      console.log(arr5)
+      setarr7(arr5)
+    
+     
     }).catch((err)=>{
       console.log(err)
     });}
@@ -103,8 +108,8 @@ const Dashboard = () => {
   }, [favoritesProducts]);
   useEffect(() => {
     getLikedProducts();
-  }, []);
-  
+  }, [arr7,likedProducts]);
+
 
   return (
     <>
@@ -175,6 +180,14 @@ const Dashboard = () => {
                   </button>
                 )}
 
+               {arr7.includes(elem._id) && (
+                  <button  className="item_card_likes_dashboard">
+                    <i className="fas fa-star"></i> Liked {elem.likes}
+                  </button>
+                )}
+                
+
+                {!arr7.includes(elem._id) && (
                 <button
                   className="item_card_likes_dashboard"
                   onClick={() => {
@@ -214,7 +227,7 @@ const Dashboard = () => {
                               console.log(err.message);
                             });}}>
                   <i className="fas fa-thumbs-up"></i>Like {elem.likes}
-                </button>
+                </button>)}
               </div>
             );
           })}
