@@ -113,7 +113,7 @@ const getProductsByType = (req, res) => {
     });
 };
 const getProductsBySearch = (req, res) => {
-  const searchWord = req.params.search;
+  const searchWord = req.params.search
   productModel
     .find({ title: { $regex: `${searchWord}` } })
     .populate("userId", `image firstName  lastName`)

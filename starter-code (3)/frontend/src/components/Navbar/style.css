@@ -2,6 +2,7 @@
   width: 1500px;
   height: 120px;
   display: grid;
+  
   grid-template-columns: repeat(10, 1fr);
   background-color: rgb(240, 240, 240);
   margin-bottom: 300px;
@@ -9,22 +10,34 @@
   position: fixed;
   z-index: 1;
 }
-.navbar_container * {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+.navbar_container p,
+select,
+input,
+button {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-decoration: none;
   color: black;
   font-weight: 900;
-  font-size: 18px
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.navbar_container select:hover {
+  background-color: #4090d237;
+}
+.navbar_container input:hover {
+  background-color: #4090d237;
 }
 .navbar_login {
   grid-column: 3;
   grid-row: 1;
   transition: 0.3s;
   cursor: pointer;
-  
 }
 .navbar_login:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 
 .navbar_register {
@@ -41,18 +54,19 @@
 }
 .userProducts_productType:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 
 .navbar_register:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
-.navbar_logo{
+.navbar_logo {
   margin-left: 40px;
   margin-top: 10px;
   grid-column: 1;
   grid-row: 1/3;
-  width:100px;
-
+  width: 100px;
 }
 .navbar_dashboard {
   grid-column: 2;
@@ -62,6 +76,7 @@
 }
 .navbar_dashboard:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 
 .navbar_favorite {
@@ -73,6 +88,7 @@
 
 .navbar_favorite:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 
 .navbar_logout {
@@ -83,6 +99,7 @@
 }
 .navbar_logout:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 
 .car_productType {
@@ -94,6 +111,7 @@
 
 .car_productType:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 
 .pickup_productType {
@@ -105,6 +123,7 @@
 
 .pickup_productType:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 .bus_productType {
   grid-column: 4;
@@ -115,10 +134,11 @@
 
 .bus_productType:hover {
   margin-top: 5px;
+  color: #4091d2;
 }
 .search_dashboard {
   grid-column: 8/10;
-  grid-row: 2;
+  grid-row: 1/3;
   width: 150px;
   height: 30px;
   border: 2px solid rgba(121, 110, 110, 0.511);
@@ -129,40 +149,69 @@
 }
 
 .navbar_filter {
-  margin-top: 8px;
+border-top: 2px solid rgba(255, 255, 255, 0.974);
+  
   grid-column: 1/11;
   background-color: rgb(240, 240, 240);
-  border: 2px solid rgba(128, 128, 128, 0.162);
-  border-radius: 4px;
   grid-row: 3;
 }
-.navbar_filter *{
- font-size: 13px;
+.navbar_filter * {
+  font-size: 13px;
 }
 .navbar_filter select {
   background-color: rgba(240, 240, 240, 0.288);
+  border: 2px solid rgba(221, 212, 212, 0.974);
   margin: 10px;
   width: 180px;
-  height: 25px;
+  height: 30px;
   border-radius: 3px;
 }
 .navbar_filter button {
   background-color: rgba(240, 240, 240, 0.333);
-  border: 2px solid rgba(121, 110, 110, 0.974);
+  border: 2px solid rgba(221, 212, 212, 0.974);
   margin: 10px;
   width: 90px;
-  height: 25px;
   border-radius: 3px;
   width: 130px;
-  height: 25px;
+  height: 31px;
   font-size: 16px;
 }
 
 .search_dashboard_button {
   grid-column: 10;
-  grid-row: 2;
-  width: 60px;
+  grid-row: 1/3;
+  width: 40px;
   height: 35px;
- 
 }
 
+.search_dashboard_button {
+  background-color: rgba(237, 237, 237, 0.379);
+  border: none;
+  text-align: center;
+  color: rgb(107, 104, 104);
+}
+
+.search_dashboard_button:hover {
+  background-color: #4090d282;
+  border: none;
+  border-radius: 2px;
+}
+.filter_button {
+  background-color: rgba(237, 237, 237, 0.379);
+  border: 1px solid rgba(243, 211, 211, 0.16);
+  margin: 10px;
+  margin-top: 100px;
+  grid-column: 4;
+  grid-row: 5;
+  width: 170px;
+  height: 35px;
+  font-size: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: rgb(107, 104, 104);
+}
+.filter_button:hover {
+  background-color: #4090d282;
+  border: none;
+  border-radius: 2px;
+}

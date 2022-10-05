@@ -180,7 +180,7 @@
 
 .comment_container{
     border: 1px solid rgba(205, 202, 202, 0.771);
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(240, 240, 240, 0.455);
     border-radius: 6px;
     grid-column: 6/8;
     grid-row:1/8;
@@ -200,8 +200,12 @@
     padding-left: 10px;
     margin:6px
 }
-.Comment input{
-    font-size: 20px;
+.AddCommentInput{
+    font-size: 16px;
+    margin-left: 5px;
+    margin-top: 10px;
+
+
 }
 .fa-comment{
     font-size: 20px;

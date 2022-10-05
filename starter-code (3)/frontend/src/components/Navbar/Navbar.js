@@ -41,6 +41,8 @@ const Navbar = () => {
   let setSearchButtonStatus = userContext1.setSearchButtonStatus;
   let typeProducts = userContext1.typeProducts;
   let setTypeProducts = userContext1.setTypeProducts;
+  let favoritesProducts = userContext1.favoritesProducts
+  let userProducts = userContext1.userProducts;
   const axios = require("axios");
 
   return (
@@ -84,10 +86,10 @@ const Navbar = () => {
         </p>
 
         {isLoggedIn && (
-          <p className="navbar_favorite"   onClick={() => {
+          <p className="navbar_favorite" onClick={() => {
             navigate("/favorite");
           }}>
-        My Favorites
+        My Favorites {favoritesProducts.length}
           </p>
         )}
         {isLoggedIn && (
@@ -158,8 +160,9 @@ const Navbar = () => {
             setSearchButtonStatus(!searchButtonStatus);
           }}
         >
-          Search
+        <i class="fa fa-search"></i>
         </button>
+        
 
         {isLoggedIn && (
           <p
@@ -168,7 +171,7 @@ const Navbar = () => {
               navigate("/userProducts");
             }}
           >
-            My Products
+            My Products{userProducts.length}
           </p>
         )}
 
@@ -265,7 +268,7 @@ const Navbar = () => {
             <option value="Electric">Electric</option>
           </select>
 
-          <button
+          <button className="filter_button"
             onClick={() => {
               navigate("/filterProducts");
               console.log(filterCity);

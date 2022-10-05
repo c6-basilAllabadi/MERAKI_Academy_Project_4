@@ -29,19 +29,21 @@ const Dashboard = () => {
   let favoritesProducts = userContext1.favoritesProducts;
   let setFavoriteProducts = userContext1.setFavoriteProducts;
   let isLoggedIn = userContext1.isLoggedIn;
-  const likedProducts=userContext1.likedProducts
-  let setLikedProducts= userContext1.setLikedProducts
+  const likedProducts = userContext1.likedProducts;
+  let setLikedProducts = userContext1.setLikedProducts;
   const [addtoFavoriteButton, setAddtoFavoriteButton] =
     useState("Add to Favorite");
+  const [changeLiked, setChangeLiked] = useState(true);
+  const [changeFavorite, setChangeFavorite] = useState(true);
   let arr4;
   let arr1;
   let arr3;
   let arr5;
-  let arr6
-  let arr2=userContext1.arr2 
-  let setarr2=userContext1.setarr2 
-  let arr7=userContext1.arr7 
-  let setarr7=userContext1.setarr7
+  let arr6;
+  let arr2 = userContext1.arr2;
+  let setarr2 = userContext1.setarr2;
+  let arr7 = userContext1.arr7;
+  let setarr7 = userContext1.setarr7;
   const [pagination, setPagination] = useState(10);
   const myFunction = () => {
     let popup = document.getElementById("like");
@@ -57,7 +59,6 @@ const Dashboard = () => {
       .get(`http://localhost:5000/product/${pagination}`)
       .then((response) => {
         setProducts(response.data.products);
-        
       })
       .catch((err) => {
         console.log(err);
@@ -83,33 +84,36 @@ const Dashboard = () => {
       });
   };
   const getLikedProducts = () => {
-    axios.get(`http://localhost:5000/product/like/get/${user}`,{
-      headers: {
-        authorization: "Bearer " + token,
-      },
-    }
-    ).then((response)=>{
-      setLikedProducts(response.data)
-      arr5= likedProducts && likedProducts.map((elem,index)=>{
-        return elem.product
+    axios
+      .get(`http://localhost:5000/product/like/get/${user}`, {
+        headers: {
+          authorization: "Bearer " + token,
+        },
       })
-      setarr7(arr5)
-    
-     
-    }).catch((err)=>{
-      console.log(err)
-    });}
+      .then((response) => {
+        setLikedProducts(response.data);
+        arr5 =
+          likedProducts &&
+          likedProducts.map((elem, index) => {
+            return elem.product;
+          });
+
+        setarr7(arr5);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     getAllProducts();
   }, [pagination]);
 
   useEffect(() => {
     getFavoritesProducts();
-  }, [favoritesProducts]);
+  }, [changeFavorite]);
   useEffect(() => {
     getLikedProducts();
   }, [arr7,likedProducts]);
-
 
   return (
     <>
@@ -170,6 +174,7 @@ const Dashboard = () => {
                           arr4 = favoritesProducts.concat(elem);
                           console.log(arr4);
                           setFavoriteProducts(arr4);
+                          setChangeFavorite(!changeFavorite);
                         })
                         .catch((err) => {
                           console.log(err.message);
@@ -180,54 +185,61 @@ const Dashboard = () => {
                   </button>
                 )}
 
-               {arr7.includes(elem._id) && (
-                  <button  className="item_card_likes_dashboard">
+                {arr7.includes(elem._id) && (
+                  <button className="item_card_likes_dashboard">
                     <i className="fas fa-star"></i> Liked {elem.likes}
                   </button>
                 )}
-                
 
                 {!arr7.includes(elem._id) && (
-                <button
-                  className="item_card_likes_dashboard"
-                  onClick={() => {
-                    !isLoggedIn && myFunction();
-                    !isLoggedIn && setTimeout(myFunction, 8000);
-                   
-                          axios
-                            .post(
-                              "http://localhost:5000/product/like/",
-                              { product: `${elem._id}`, liker: `${user}` },
-                              {
-                                headers: {
-                                  authorization: "Bearer " + token,
-                                },
-                              }
-                            )
-                            .then((response) => {
-                              console.log(response);
-                            })
-                            .catch((err) => {
-                              console.log(err);
-                            });
-                          axios
-                            .put(
-                              `http://localhost:5000/product/${elem._id}`,
-                              { likes: `${elem.likes + 1}` },
-                              {
-                                headers: {
-                                  authorization: "Bearer " + token,
-                                },
-                              }
-                            )
-                            .then((response) => {
-                              elem.likes = elem.likes + 1;
-                            })
-                            .catch((err) => {
-                              console.log(err.message);
-                            });}}>
-                  <i className="fas fa-thumbs-up"></i>Like {elem.likes}
-                </button>)}
+                  <button
+                    className="item_card_likes_dashboard"
+                    onClick={() => {
+                     
+                      !isLoggedIn && myFunction();
+                      !isLoggedIn && setTimeout(myFunction, 8000);
+
+                      axios
+                        .post(
+                          "http://localhost:5000/product/like/",
+                          { product: `${elem._id}`, liker: `${user}` },
+                          {
+                            headers: {
+                              authorization: "Bearer " + token,
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          console.log(response);
+                        
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
+                      axios
+                        .put(
+                          `http://localhost:5000/product/${elem._id}`,
+                          { likes: `${elem.likes + 1}` },
+                          {
+                            headers: {
+                              authorization: "Bearer " + token,
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          elem.likes = elem.likes + 1;
+                          
+                        })
+                        .catch((err) => {
+                          console.log(err.message);
+                        });
+
+                
+                    }}
+                  >
+                    <i className="fas fa-thumbs-up"></i>Like {elem.likes}
+                  </button>
+                )}
               </div>
             );
           })}
@@ -242,6 +254,7 @@ const Dashboard = () => {
         Explore More Results
       </button>
     </>
-  );}
+  );
+};
 
 export default Dashboard;

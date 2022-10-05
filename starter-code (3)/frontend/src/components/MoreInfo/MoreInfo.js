@@ -127,6 +127,7 @@ let setUserNameMoreInfoId = userContext1.setUserNameMoreInfoId
           })}
 
           <input
+          className="AddCommentInput"
             placeholder="Add Comment"
             onChange={(e) => {
               setNewComment(e.target.value);

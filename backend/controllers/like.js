@@ -30,7 +30,7 @@ const addNewLike= (req, res) => {
   const getAllLikes =(req,res)=>{
     const liker = req.params.userId
     likesModel.find({liker:liker}).then((response)=>{
-        console.log(response)
+        
         res.json(response)
     }).catch((err)=>{
         res.json(err.message)
@@ -42,7 +42,7 @@ const getUserLikes = (req,res)=>{
     const liker = req.query.liker
  
     likesModel.find({product:product,liker:liker}).then((response)=>{
-        console.log(response)
+        
         res.json(response)
     }).catch((err)=>{
         res.json(err.message)

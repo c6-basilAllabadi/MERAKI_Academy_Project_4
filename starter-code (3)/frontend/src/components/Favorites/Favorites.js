@@ -95,7 +95,18 @@ return (
           Likes: {elem.likes}
         </p>
         
-    
+        <button className = "item_card_Remove_moreInfo" onClick={()=>{
+
+axios.put(`http://localhost:5000/favorite/${elem._id}`,{},{
+    headers: {
+      authorization: "Bearer " + token,
+    },
+  }).then((response)=>{
+    console.log(response.data.message)
+}).catch((err)=>{
+    console.log(err.message)
+})
+}}>Remove From Favorites</button>
             </div>
           );
         })}

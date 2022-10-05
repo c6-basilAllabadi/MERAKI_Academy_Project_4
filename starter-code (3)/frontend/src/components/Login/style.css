@@ -15,7 +15,9 @@ grid-template-columns: 1fr 1fr;
     top:300px;
     border-right: 2px solid rgba(0, 0, 0, 0.488);
 }
-
+.login_form h2{
+    color:rgba(0, 0, 0, 0.758)
+}
 .login_form *{
 
     width:400px;
@@ -57,5 +59,7 @@ grid-template-columns: 1fr 1fr;
 }
 .register_now_p{
     position: relative;
-    top:-30px
+    top:-30px;
+    color:rgba(0, 0, 0, 0.758)
+
 }

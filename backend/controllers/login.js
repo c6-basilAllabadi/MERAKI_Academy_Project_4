@@ -30,7 +30,7 @@ const login =async (req,res)=>{
       userId: user._id,
       role: user.role
     };
-  console.log(payload)
+  
     const SECRET = process.env.SECRET;
     const options = {
       expiresIn: '1h',
@@ -77,7 +77,7 @@ const login =async (req,res)=>{
       userId: user._id,
       role: user.role
     };
-  console.log(payload)
+ 
     const SECRET = process.env.SECRET;
     const options = {
       expiresIn: '1h',
