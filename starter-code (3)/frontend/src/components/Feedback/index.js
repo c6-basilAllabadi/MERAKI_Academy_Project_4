@@ -23,12 +23,12 @@ return(
     <div className='feedback_container'>
   
 <div className='feedback_form'>
-  <input type ="text" placeholder='Full Name' id = 'fullName' required onChange={(e)=>{
+  <input type ="text" placeholder='Enter Your Full Name' id = 'fullName' required onChange={(e)=>{
   setValue1(e.target.value)
   }}></input><br />
-  <input type="email" placeholder='Email Id' id='email_id'  onChange={(e)=>{
+  <input type="email" placeholder='Enter Your Email' id='email_id'  onChange={(e)=>{
   setValue2(e.target.value)}} required></input><br />
-  <textarea placeholder='Message' id ="message" required onChange={(e)=>{
+  <textarea placeholder='Enter Your Feedback' id ="message" required onChange={(e)=>{
   setValue3(e.target.value)}} ></textarea><br />
   <button onClick={()=>{
     SendMail()

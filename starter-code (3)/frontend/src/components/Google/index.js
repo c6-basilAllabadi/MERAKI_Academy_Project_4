@@ -4,17 +4,32 @@ import "./style.css";
 import { useState } from "react";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import { userContext } from "../../App.js";
+import { useNavigate }from 'react-router-dom'
+import { useContext } from "react";
+
 
 const Google = () => {
   const [googleLoginInfo, setGoogleLoginInfo] = useState("");
   const [googleFirstName, setGoogleFirstName] = useState("");
   const [googleEmail, setGoogleEmail] = useState("");
-
+  const userContext1 = useContext(userContext)
+  let setLoginEmail = userContext1.setLoginEmail
+  let setLoginPassword = userContext1.setLoginPassword
+  let loginemail = userContext1.loginemail
+  let loginpassword = userContext1.loginpassword
+  let isLoggedIn = userContext1.isLoggedIn
+  let setIsLoggedIn = userContext1.setIsLoggedIn
+  let token =userContext1.token
+  let setToken = userContext1.setToken
+  let user =userContext1.user
+  let setUser=userContext1.setUser
+  const [loginMessage,setLoginMessage]=useState("")
 const [code,setCode]=useState("")
   const [googleLastName, setGoogleLastName] = useState("");
 const [decoded,setDecoded]=useState("")
   const [googleImage, setGoogleImage] = useState("");
-
+  const navigate = useNavigate()
   return (
     <div className="googleLogin">
       <GoogleOAuthProvider clientId="1051135409617-k2pttkrl0j8jtmh40184b9d1dm3vnetf.apps.googleusercontent.com">
@@ -52,6 +67,14 @@ const [decoded,setDecoded]=useState("")
           role:"633093bb93da1efda1bded0e",
         }).then((response)=>{
           console.log(response.data)
+          setLoginMessage("login Success")
+      setIsLoggedIn(true)
+      setToken(response.data.token)
+      localStorage.setItem("Token", JSON.stringify(response.data.token))
+    localStorage.setItem("loggedIn",JSON.stringify(true))
+      setUser(response.data.userId)
+      localStorage.setItem("user1",JSON.stringify(response.data.userId))
+      navigate("/dashboard")
           
           console.log(response);
           console.log("success");
