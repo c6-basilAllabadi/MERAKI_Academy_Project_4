@@ -55,43 +55,43 @@ return (
     {favoritesProducts &&
         favoritesProducts.map((elem, index) => {
           return (
-            <div className="item_card_moreInfo">
+            <div className="item_card_moreInfo_favorites">
         <img
           src={elem.image}
-          className="item_card_image_moreInfo"
+          className="item_card_image_moreInfo_favorites"
         ></img>
-        <h3 className="item_card_title_moreInfo" onClick={() => {}}>
+        <h3 className="item_card_title_moreInfo_favorites" onClick={() => {}}>
           {elem.title}
         </h3>
-        <h3 className="item_card_price_moreInfo">{elem.price} $</h3>
-        <p className="item_card_type_moreInfo">Type: {elem.type}</p>
-        <p className="item_card_city_moreInfo">City: {elem.city}</p>
-        <p className="item_card_carmake_moreInfo">
+        <h3 className="item_card_price_moreInfo_favorites">{elem.price} $</h3>
+        <p className="item_card_type_moreInfo_favorites">Type: {elem.type}</p>
+        <p className="item_card_city_moreInfo_favorites">City: {elem.city}</p>
+        <p className="item_card_carmake_moreInfo_favorites">
           Carmake: {elem.carmake}
         </p>
-        <p className="item_card_model_moreInfo">
+        <p className="item_card_model_moreInfo_favorites">
           Model: {elem.model}
         </p>
-        <p className="item_card_year_moreInfo">Year: {elem.year}</p>
-        <p className="item_card_transmission_moreInfo">
+        <p className="item_card_year_moreInfo_favorites">Year: {elem.year}</p>
+        <p className="item_card_transmission_moreInfo_favorites">
           Transmission: {elem.transmission}
         </p>
-        <p className="item_card_fuel_moreInfo">Fuel: {elem.fuel}</p>
-        <p className="item_card_color_moreInfo">
+        <p className="item_card_fuel_moreInfo_favorites">Fuel: {elem.fuel}</p>
+        <p className="item_card_color_moreInfo_favorites">
           Color: {elem.color}
         </p>
-        <p className="item_card_condition_moreInfo">
+        <p className="item_card_condition_moreInfo_favorites">
           Condition: {elem.condition}
         </p>
-        <p className="item_card_Kilometers_moreInfo">
+        <p className="item_card_Kilometers_moreInfo_favorites">
           Kilometers: {elem.Kilometers}
         </p>
-        <p className="item_card_status_moreInfo">
+        <p className="item_card_status_moreInfo_favorites">
           Status: {elem.status}
         </p>
         
         {/*<p className="item_card_description_moreInfo"><p>description</p>{moreInfoProduct.description}</p>*/}
-        <p className="item_card_likes_moreInfo">
+        <p className="item_card_likes_moreInfo_favorites">
           Likes: {elem.likes}
         </p>
         

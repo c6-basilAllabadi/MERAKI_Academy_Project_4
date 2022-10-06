@@ -5,8 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ProductsTypes = () => {
-  const Params = useParams();
-  console.log(Params);
+
   const userContext1 = useContext(userContext);
   let productType = userContext1.productType;
   let setProductType = userContext1.setProductType;
@@ -165,7 +164,7 @@ const ProductsTypes = () => {
                         )
                         .then((response) => {
                           arr4 = favoritesProducts.concat(elem);
-                          console.log(arr4);
+                        
                           setFavoriteProducts(arr4);
                         })
                         .catch((err) => {
@@ -202,7 +201,7 @@ const ProductsTypes = () => {
                               }
                             )
                             .then((response) => {
-                              console.log(response);
+                             
                             })
                             .catch((err) => {
                               console.log(err);

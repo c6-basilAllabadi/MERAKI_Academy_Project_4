@@ -90,6 +90,17 @@ button {
   margin-top: 5px;
   color: #4091d2;
 }
+.Feedback{
+  grid-column: 5;
+  grid-row: 1;
+  transition: 0.3s;
+  cursor: pointer;
+
+}
+.Feedback:hover{
+  margin-top: 5px;
+  color: #4091d2;
+}
 
 .navbar_logout {
   grid-column: 7;

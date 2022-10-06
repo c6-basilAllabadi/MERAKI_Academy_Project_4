@@ -89,7 +89,7 @@ const Navbar = () => {
           <p className="navbar_favorite" onClick={() => {
             navigate("/favorite");
           }}>
-        My Favorites {favoritesProducts.length}
+        My Favorites 
           </p>
         )}
         {isLoggedIn && (
@@ -118,6 +118,9 @@ const Navbar = () => {
             Please Login So You Can Add To Favorite
           </span>
         </div>
+        <p className="Feedback" onClick={()=>{
+            navigate("/feedback")
+          }}>Feedback</p>
         <p
           className="car_productType"
           onClick={() => {
@@ -171,7 +174,7 @@ const Navbar = () => {
               navigate("/userProducts");
             }}
           >
-            My Products{userProducts.length}
+            My Products 
           </p>
         )}
 

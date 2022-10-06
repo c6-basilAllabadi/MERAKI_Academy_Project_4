@@ -2,7 +2,7 @@ import "./App.css";
 import {Link , Routes , Route, Navigate} from "react-router-dom"
 import Login from "./components/Login"
 import Register from "./components/Register";
-import React , { useState, createContext } from "react";
+import React , { useState, createContext ,useEffect } from "react";
 import Dashboard from "./components/Dashboard";
 import UserProducts from "./components/UserProducts";
 import Search from "./components/Search";
@@ -15,6 +15,10 @@ import MoreInfo from "./components/MoreInfo/MoreInfo";
 import UserMoreInfo from "./components/UserMoreInfo/index"
 import AddProduct from "./components/AddProduct/index"
 import AdminPanel from "./components/AdminPanel/index"
+import Google from "./components/Google";
+import Feedback from "./components/Feedback";
+
+
 export const userContext=createContext()
 function App() {
   let Token = JSON.parse(localStorage.getItem('Token'))
@@ -51,12 +55,22 @@ function App() {
   const [arr2, setarr2] = useState("");
   const [arr7,setarr7] =useState("")
 
+
+
    return (
     <>
+    <div>
+
+<div id="signInDiv">
+
+</div>
+</div>
     <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct,favoritesProducts,setFavoriteProducts ,searchButtonStatus,setSearchButtonStatus,typeProducts,setTypeProducts,filterCondition,setFilterCondition,filterYear,setFilterYear,filterCity,setFilterCity,filterTransmition,setFilterTransmition,filterFuel,setFilterFuel,userNameMoreInfoId,setUserNameMoreInfoId,likedProducts,setLikedProducts,arr2, setarr2,arr7,setarr7}}>
     <div className="App">
 <Navbar/>
+
       <Routes>
+       
       <Route path ="/" element={<Dashboard/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
@@ -71,6 +85,8 @@ function App() {
         <Route path="/userMoreInfo" element={<UserMoreInfo/>}/>
         <Route path="/addProduct" element={<AddProduct/>}/>
         <Route path="/adminPanel" element ={<AdminPanel/>}/>
+        <Route path="/GoogleLogin" element={<Google/>}/>
+        <Route path="/feedback" element={<Feedback/>}/>
      
       </Routes>
      

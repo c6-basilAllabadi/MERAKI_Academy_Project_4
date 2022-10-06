@@ -2,11 +2,11 @@ const mongoose= require("mongoose")
 const bcrypt = require("bcrypt")
 
 const userSchema = new mongoose.Schema({
-    image:{type:String},
+image:{type:String},
 firstName:{type:String ,required:true },
-lastName:{type:String },
-email:{type:String ,required:true,unique:true },
-password:{type:String,required:true},
+lastName:{type:String ,required:true},
+email:{type:String ,required:true,unique:true},
+password:{type:String},
 age:{type:Number},
 country:{type:String },
 gender:{type:String },
@@ -18,9 +18,10 @@ likes:[{type: mongoose.Schema.Types.ObjectId, ref: "Product"}]
 })
 
 userSchema.pre("save",async function(){
+    if(this.password){
     this.password = await bcrypt.hash(this.password,10)
     this.email = await this.email.toLowerCase()
-    }
+    }}
     )
 
 module.exports = mongoose.model("User",userSchema)
