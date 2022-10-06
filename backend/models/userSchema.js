@@ -6,7 +6,7 @@ image:{type:String},
 firstName:{type:String ,required:true },
 lastName:{type:String ,required:true},
 email:{type:String ,required:true,unique:true},
-password:{type:String},
+password:{type:String,required:true},
 age:{type:Number},
 country:{type:String },
 gender:{type:String },
@@ -18,7 +18,7 @@ likes:[{type: mongoose.Schema.Types.ObjectId, ref: "Product"}]
 })
 
 userSchema.pre("save",async function(){
-    if(this.password){
+    if(this.password!="0"){
     this.password = await bcrypt.hash(this.password,10)
     this.email = await this.email.toLowerCase()
     }}

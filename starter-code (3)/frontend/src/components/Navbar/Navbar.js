@@ -107,7 +107,11 @@ const Navbar = () => {
           >
             Logout
           </p>
+          
         )}
+        <p className="navbar_contact" onClick={()=>{
+            navigate("/contact")
+          }}>Contact Us</p>
         <div class="popup">
           <span class="popuptext" id="like">
             Please Login So You Can Like

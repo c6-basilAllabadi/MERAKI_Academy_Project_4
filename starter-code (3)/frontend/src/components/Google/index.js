@@ -29,11 +29,14 @@ const [code,setCode]=useState("")
   const [googleLastName, setGoogleLastName] = useState("");
 const [decoded,setDecoded]=useState("")
   const [googleImage, setGoogleImage] = useState("");
+  let googleButton = userContext1.googleButton
+  
+  let setGoogleButton =userContext1.setGoogleButton
   const navigate = useNavigate()
   return (
     <div className="googleLogin">
-      <GoogleOAuthProvider clientId="1051135409617-k2pttkrl0j8jtmh40184b9d1dm3vnetf.apps.googleusercontent.com">
-        <GoogleLogin
+      <GoogleOAuthProvider  clientId="1051135409617-k2pttkrl0j8jtmh40184b9d1dm3vnetf.apps.googleusercontent.com">
+        <GoogleLogin 
           onSuccess={(credentialResponse) => {
             var decoded1 = jwtDecode(credentialResponse.credential)
             console.log(decoded1)
@@ -46,6 +49,7 @@ const [decoded,setDecoded]=useState("")
             setGoogleEmail(email1)
             setGoogleLastName(family_name1)
             setGoogleImage(image1)
+            console.log(decoded1)
             console.log(firstName1)
             console.log(family_name1)
             console.log(image1)
@@ -58,12 +62,14 @@ const [decoded,setDecoded]=useState("")
 
 
       </GoogleOAuthProvider>
-      <button onClick={()=>{
+      <div className="login_button_google">
+      <button className="login_button_google1" onClick={()=>{
          axios.post('http://localhost:5000/user/googleRegister',{
           image:googleImage,
           firstName: googleFirstName,
           lastName: googleLastName,
           email: googleEmail,
+          password:"0",
           role:"633093bb93da1efda1bded0e",
         }).then((response)=>{
           console.log(response.data)
@@ -75,6 +81,7 @@ const [decoded,setDecoded]=useState("")
       setUser(response.data.userId)
       localStorage.setItem("user1",JSON.stringify(response.data.userId))
       navigate("/dashboard")
+      setGoogleButton(false)
           
           console.log(response);
           console.log("success");
@@ -84,6 +91,7 @@ const [decoded,setDecoded]=useState("")
 
   
       }}>Login</button>
+      </div>
      
     </div>
 

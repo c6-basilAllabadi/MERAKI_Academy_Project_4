@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { useNavigate }from 'react-router-dom'
 import axios from "axios"
 import "./style.css"
+import Google from "../Google/index.js";
 const Login = () => {
   const userContext1 = useContext(userContext)
   let setLoginEmail = userContext1.setLoginEmail
@@ -17,14 +18,18 @@ const Login = () => {
   let user =userContext1.user
   let setUser=userContext1.setUser
   const [loginMessage,setLoginMessage]=useState("")
+  let googleButton = userContext1.googleButton
+  
+  let setGoogleButton =userContext1.setGoogleButton
 
   const navigate = useNavigate()
 
   return(
     
-  
-  <div className="login_container">
-    <div className="login_form">
+   
+    <div className="login_container">
+
+   <div className="login_form">
     <h2>Login</h2>
     <input type="email" placeholder="Enter your Email" onChange={(e)=>{
       setLoginEmail(e.target.value)
@@ -60,10 +65,15 @@ setLoginMessage(err.response.data.message)
     <p className="register_now_p">Don't Have an Account? <p className ="register_now_botton" onClick={()=>{
       navigate("/register")
     }}>Register Now</p> </p>
+     <p className="Google_login">Have an Google Account !!<p className ="register_now_botton" onClick={()=>{
+    setGoogleButton(true)
+    }}>Login By Google </p></p>
     </div>
     <img className="navbar_logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png"></img>
+    {googleButton&&<Google/>}
+    </div>
 
-    </div>)
+    )
 
 };
 export default Login;

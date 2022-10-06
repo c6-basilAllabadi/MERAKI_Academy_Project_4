@@ -1,0 +1,44 @@
+
+
+.contact_container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    
+    }
+    .contact_container p{
+        
+        
+        }
+    
+    .contact_form{
+        text-align: left;
+        padding:100px;
+        grid-column:1;
+        flex-direction: column;
+        position: relative;
+        top:100px;
+        border-right: 2px solid rgba(0, 0, 0, 0.488);
+    }
+    .contact_form svg{
+        
+       
+    }
+
+    .logo_photo{
+        position: relative;
+        top:250px;
+        grid-column: 2;
+        width:400px;
+        margin-left:200px
+    }
+  
+    .register_now_p{
+        position: relative;
+        top:-30px;
+        color:rgba(0, 0, 0, 0.758)
+    
+    }
+    .Google_login{
+        color:rgba(0, 0, 0, 0.758)
+    }
+    

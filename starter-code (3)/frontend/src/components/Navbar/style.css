@@ -85,7 +85,14 @@ button {
   transition: 0.3s;
   cursor: pointer;
 }
-
+.navbar_contact{
+  transition: 0.3s;
+  cursor: pointer;
+}
+.navbar_contact:hover {
+  margin-top: 5px;
+  color: #4091d2;
+}
 .navbar_favorite:hover {
   margin-top: 5px;
   color: #4091d2;

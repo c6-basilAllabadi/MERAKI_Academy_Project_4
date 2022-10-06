@@ -17,6 +17,7 @@ import AddProduct from "./components/AddProduct/index"
 import AdminPanel from "./components/AdminPanel/index"
 import Google from "./components/Google";
 import Feedback from "./components/Feedback";
+import Contact from "./components/Contact";
 
 
 export const userContext=createContext()
@@ -54,6 +55,7 @@ function App() {
   const [likedProducts,setLikedProducts]=useState("")
   const [arr2, setarr2] = useState("");
   const [arr7,setarr7] =useState("")
+  const [googleButton,setGoogleButton] = useState(false)
 
 
 
@@ -65,7 +67,7 @@ function App() {
 
 </div>
 </div>
-    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct,favoritesProducts,setFavoriteProducts ,searchButtonStatus,setSearchButtonStatus,typeProducts,setTypeProducts,filterCondition,setFilterCondition,filterYear,setFilterYear,filterCity,setFilterCity,filterTransmition,setFilterTransmition,filterFuel,setFilterFuel,userNameMoreInfoId,setUserNameMoreInfoId,likedProducts,setLikedProducts,arr2, setarr2,arr7,setarr7}}>
+    <userContext.Provider value={{loginemail , setLoginEmail,loginpassword , setLoginPassword,dashboardstatus , setDashboardStatus,isLoggedIn,setIsLoggedIn,token , setToken,user , setUser,userProducts ,setUserProducts,searchProducts, setSearchProducts,searchWord, setSearchWord,searchStatus,setSearchStatus,updateProduct,setUpdateProduct,productType,setProductType ,products, setProducts,filterStatus,setFilterStatus,filterPrice,setFilterprice,fliterType ,setFilterType,moreInfoProduct,setMoreInfoProduct,favoritesProducts,setFavoriteProducts ,searchButtonStatus,setSearchButtonStatus,typeProducts,setTypeProducts,filterCondition,setFilterCondition,filterYear,setFilterYear,filterCity,setFilterCity,filterTransmition,setFilterTransmition,filterFuel,setFilterFuel,userNameMoreInfoId,setUserNameMoreInfoId,likedProducts,setLikedProducts,arr2, setarr2,arr7,setarr7,googleButton,setGoogleButton}}>
     <div className="App">
 <Navbar/>
 
@@ -87,6 +89,7 @@ function App() {
         <Route path="/adminPanel" element ={<AdminPanel/>}/>
         <Route path="/GoogleLogin" element={<Google/>}/>
         <Route path="/feedback" element={<Feedback/>}/>
+        <Route path="/contact"element={<Contact/>}/>
      
       </Routes>
      

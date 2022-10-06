@@ -3,17 +3,31 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const googleRegister = async(req,res)=>{
-    const {image,firstName , lastName , email,role} = req.body
-   const user1 =  await userModel.findOne({email:email})
+    const {image,firstName , lastName , email,role ,password} = req.body
+   const user1 =  await userModel.findOne({email:email}).populate("role").exec()
    if(!user1){
-    const user = new userModel ({image,firstName , lastName , email,role })
+    const user = new userModel ({image,firstName , lastName , email,role ,password })
     user.save().then((result) => {
+      
         console.log(result)
+        const payload = {
+          userId: user1._id,
+          role: user1.role
+        };
+      
+        const SECRET = process.env.SECRET;
+        const options = {
+          expiresIn: '1h',
+        };
+        const token = jwt.sign(payload, SECRET, options);
+      
         res.status(201).json({
           success: true,
           message: `Account Created Successfully`,
           user: result,
-        });
+        }
+        
+        );
       })
       .catch((err) => {
         if (err.keyPattern) 

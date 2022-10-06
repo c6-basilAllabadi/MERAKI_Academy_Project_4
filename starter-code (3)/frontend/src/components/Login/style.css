@@ -12,7 +12,7 @@ grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
     position: relative;
-    top:300px;
+    top:250px;
     border-right: 2px solid rgba(0, 0, 0, 0.488);
 }
 .login_form h2{
@@ -62,4 +62,7 @@ grid-template-columns: 1fr 1fr;
     top:-30px;
     color:rgba(0, 0, 0, 0.758)
 
+}
+.Google_login{
+    color:rgba(0, 0, 0, 0.758)
 }

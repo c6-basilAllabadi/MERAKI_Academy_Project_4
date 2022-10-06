@@ -1,11 +1,13 @@
 
 
 .feedback_container input{
+    font-size:15px;
     width:400px
 }
 .feedback_container textarea{
     width:400px;
-    height:300px
+    height:200px;
+    font-size:15px;
 }
 
 .feedback_container{
@@ -59,4 +61,7 @@
         font-size: 14px;
         color:rgb(107, 104, 104);
     }
-  
+  .Feed_back_p{
+    color:rgba(0, 0, 0, 0.758);
+    margin-bottom:30px;
+  }
