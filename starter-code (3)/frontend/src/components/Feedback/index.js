@@ -22,7 +22,7 @@ const Feedback = ()=>{
 return(
     <div className='feedback_container'>
   
-
+<div className='feedback_form'>
   <input type ="text" placeholder='Full Name' id = 'fullName' required onChange={(e)=>{
   setValue1(e.target.value)
   }}></input><br />
@@ -33,6 +33,9 @@ return(
   <button onClick={()=>{
     SendMail()
   }}>Send</button>
+  
+</div>
+<img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Circle-icons-car.svg/1200px-Circle-icons-car.svg.png"></img>
 </div>)
 }
 
