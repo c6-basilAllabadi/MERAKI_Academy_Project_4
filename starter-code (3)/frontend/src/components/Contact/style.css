@@ -42,3 +42,29 @@
         color:rgba(0, 0, 0, 0.758)
     }
     
+    @media only screen and (max-width: 768px) {
+        .contact_container {
+         height: 700px;;
+    
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+       
+          position:relative;
+        
+      }
+      .contact_container img{
+         
+    
+        visibility: hidden;
+        
+      
+    }
+    .contact_form{
+        border:none
+    }
+      }
+      
+      

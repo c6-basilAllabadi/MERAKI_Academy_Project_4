@@ -161,7 +161,7 @@ input:focus {
 
 .popup {
   position: absolute;
-  top: 80%;
+  top: 90%;
   left: 46%;
   display: inline-block;
   cursor: pointer;
@@ -211,3 +211,11 @@ input:focus {
     opacity: 1;
   }
 }
+@media only screen and (max-width: 768px) {
+  .item_card_dashboard{
+    width:670px;
+  }
+}
+
+
+

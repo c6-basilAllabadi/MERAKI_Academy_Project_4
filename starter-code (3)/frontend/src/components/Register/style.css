@@ -62,3 +62,31 @@
         top:-30px
     }
     
+
+    @media only screen and (max-width: 768px) {
+        .register_container{
+         height: 700px;;
+         position: relative;
+         top:-100px;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+       
+          position:relative;
+        
+      }
+      .register_container img{
+         
+    
+        visibility: hidden;
+        
+      
+    }
+    .register_form{
+        border:none;
+        margin-left:130px
+    }
+      }
+      

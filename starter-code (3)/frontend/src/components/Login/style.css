@@ -66,3 +66,32 @@ grid-template-columns: 1fr 1fr;
 .Google_login{
     color:rgba(0, 0, 0, 0.758)
 }
+
+@media only screen and (max-width: 768px) {
+    .login_container{
+     height: 700px;;
+     position: relative;
+     top:-200px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+   
+      position:relative;
+    
+  }
+  .contact_container img{
+     
+
+    visibility: hidden;
+    
+  
+}
+.login_form{
+    border:none;
+    margin-left:130px
+}
+  }
+  
+  

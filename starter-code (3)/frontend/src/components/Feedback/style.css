@@ -65,3 +65,32 @@
     color:rgba(0, 0, 0, 0.758);
     margin-bottom:30px;
   }
+
+
+  @media only screen and (max-width: 768px) {
+    .feedback_container{
+     height: 700px;;
+     position: relative;
+     top:-100px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+   
+      position:relative;
+    
+  }
+  .feedback_form  img{
+     
+
+    visibility: hidden;
+    
+  
+}
+.feedback_form {
+    border:none;
+    margin-left:130px
+}
+  }
+  

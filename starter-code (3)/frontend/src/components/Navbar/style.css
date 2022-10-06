@@ -22,7 +22,10 @@ button {
   font-size: 18px;
   cursor: pointer;
 }
+.navbar_container p{
+  color:rgba(57, 52, 52, 0.926)
 
+}
 .navbar_container select:hover {
   background-color: #4090d237;
 }
@@ -144,6 +147,7 @@ button {
   color: #4091d2;
 }
 .bus_productType {
+  
   grid-column: 4;
   grid-row: 2;
   transition: 0.3s;
@@ -183,9 +187,10 @@ border-top: 2px solid rgba(255, 255, 255, 0.974);
   width: 180px;
   height: 30px;
   border-radius: 3px;
+  font-size: 12px;
 }
 .navbar_filter button {
-  background-color: rgba(240, 240, 240, 0.333);
+  background-color: #4090d237;
   border: 2px solid rgba(221, 212, 212, 0.974);
   margin: 10px;
   width: 90px;
@@ -233,3 +238,86 @@ border-top: 2px solid rgba(255, 255, 255, 0.974);
   border: none;
   border-radius: 2px;
 }
+
+@media only screen and (max-width: 768px) {
+  .navbar_container {
+    width:700px;
+    height: 400px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+    position:relative;
+    margin-bottom: -160px;
+}
+.navbar_logo{
+  grid-column: 1;
+  grid-row: 1/4;
+}
+.navbar_dashboard {
+  grid-column: 2;
+  grid-row: 1;
+}
+.navbar_login {
+  grid-column: 3;
+  grid-row: 1;
+}
+.navbar_register{
+  grid-column: 4;
+  grid-row: 1;
+}
+.navbar_favorite {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.userProducts_productType {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.Feedback{
+  grid-column: 4;
+  grid-row: 2;
+}
+.car_productType{
+  grid-column: 2;
+  grid-row: 3;
+}
+.pickup_productType{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.bus_productType{
+  grid-column: 4;
+  grid-row: 3;
+}
+.navbar_contact{
+
+  grid-column: 4;
+  grid-row: 2;
+}
+.search_dashboard{
+  grid-column: 2/4;
+  grid-row: 4;
+}
+.search_dashboard_button {
+  grid-column: 4;
+  grid-row: 4;
+}
+.navbar_filter {
+  grid-column: 1/5;
+  grid-row: 5/7;
+}
+.navbar_logout{
+  grid-column: 2;
+  grid-row: 2;
+}
+.navbar_contact{
+  grid-column: 3;
+  grid-row: 2;
+}
+
+}
+
