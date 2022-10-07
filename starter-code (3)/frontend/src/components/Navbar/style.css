@@ -239,9 +239,9 @@ border-top: 2px solid rgba(255, 255, 255, 0.974);
   border-radius: 2px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px)  and (max-width: 1023px){
   .navbar_container {
-    width:700px;
+    width:100vw;
     height: 400px;
     display: grid;
 
@@ -321,3 +321,332 @@ border-top: 2px solid rgba(255, 255, 255, 0.974);
 
 }
 
+@media only screen and (min-width: 200px) and (max-width: 479px){
+
+  .navbar_container {
+    width:200vw;
+    height: 400px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+    position:relative;
+    margin-bottom: -160px;
+}
+.navbar_logo{
+  grid-column: 1;
+  grid-row: 1/4;
+}
+.navbar_dashboard {
+  grid-column: 2;
+  grid-row: 1;
+}
+.navbar_login {
+  grid-column: 3;
+  grid-row: 1;
+}
+.navbar_register{
+  grid-column: 4;
+  grid-row: 1;
+}
+.navbar_favorite {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.userProducts_productType {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.Feedback{
+  grid-column: 4;
+  grid-row: 2;
+}
+.car_productType{
+  grid-column: 2;
+  grid-row: 3;
+}
+.pickup_productType{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.bus_productType{
+  grid-column: 4;
+  grid-row: 3;
+}
+.navbar_contact{
+
+  grid-column: 4;
+  grid-row: 2;
+}
+.search_dashboard{
+  grid-column: 2/4;
+  grid-row: 4;
+}
+.search_dashboard_button {
+  grid-column: 4;
+  grid-row: 4;
+}
+.navbar_filter {
+  grid-column: 1/5;
+  grid-row: 5/7;
+}
+.navbar_logout{
+  grid-column: 2;
+  grid-row: 2;
+}
+.navbar_contact{
+  grid-column: 3;
+  grid-row: 2;
+}
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+
+  .navbar_container {
+    width:100vw;
+    height: 400px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+    position:relative;
+    margin-bottom: -160px;
+}
+.navbar_logo{
+  grid-column: 1;
+  grid-row: 1/4;
+}
+.navbar_dashboard {
+  grid-column: 2;
+  grid-row: 1;
+}
+.navbar_login {
+  grid-column: 3;
+  grid-row: 1;
+}
+.navbar_register{
+  grid-column: 4;
+  grid-row: 1;
+}
+.navbar_favorite {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.userProducts_productType {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.Feedback{
+  grid-column: 4;
+  grid-row: 2;
+}
+.car_productType{
+  grid-column: 2;
+  grid-row: 3;
+}
+.pickup_productType{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.bus_productType{
+  grid-column: 4;
+  grid-row: 3;
+}
+.navbar_contact{
+
+  grid-column: 4;
+  grid-row: 2;
+}
+.search_dashboard{
+  grid-column: 2/4;
+  grid-row: 4;
+}
+.search_dashboard_button {
+  grid-column: 4;
+  grid-row: 4;
+}
+.navbar_filter {
+  grid-column: 1/5;
+  grid-row: 5/7;
+}
+.navbar_logout{
+  grid-column: 2;
+  grid-row: 2;
+}
+.navbar_contact{
+  grid-column: 3;
+  grid-row: 2;
+}
+
+
+
+} 
+@media only screen and (min-width: 768px) and (max-width: 1209px) {
+  .navbar_container {
+    width:100vw;
+    height: 400px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+    position:relative;
+    margin-bottom: -160px;
+}
+.navbar_logo{
+  grid-column: 1;
+  grid-row: 1/4;
+}
+.navbar_dashboard {
+  grid-column: 2;
+  grid-row: 1;
+}
+.navbar_login {
+  grid-column: 3;
+  grid-row: 1;
+}
+.navbar_register{
+  grid-column: 4;
+  grid-row: 1;
+}
+.navbar_favorite {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.userProducts_productType {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.Feedback{
+  grid-column: 4;
+  grid-row: 2;
+}
+.car_productType{
+  grid-column: 2;
+  grid-row: 3;
+}
+.pickup_productType{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.bus_productType{
+  grid-column: 4;
+  grid-row: 3;
+}
+.navbar_contact{
+
+  grid-column: 4;
+  grid-row: 2;
+}
+.search_dashboard{
+  grid-column: 2/4;
+  grid-row: 4;
+}
+.search_dashboard_button {
+  grid-column: 4;
+  grid-row: 4;
+}
+.navbar_filter {
+  grid-column: 1/5;
+  grid-row: 5/7;
+}
+.navbar_logout{
+  grid-column: 2;
+  grid-row: 2;
+}
+.navbar_contact{
+  grid-column: 3;
+  grid-row: 2;
+}
+
+}
+@media only screen and (min-width: 1210px) and (max-width: 1520px) {
+  .navbar_container {
+    width:100vw;
+    height: 400px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: auto;
+    position:relative;
+    margin-bottom: -160px;
+}
+.navbar_logo{
+  grid-column: 1;
+  grid-row: 1/4;
+}
+.navbar_dashboard {
+  grid-column: 2;
+  grid-row: 1;
+}
+.navbar_login {
+  grid-column: 3;
+  grid-row: 1;
+}
+.navbar_register{
+  grid-column: 4;
+  grid-row: 1;
+}
+.navbar_favorite {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.userProducts_productType {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.Feedback{
+  grid-column: 4;
+  grid-row: 2;
+}
+.car_productType{
+  grid-column: 2;
+  grid-row: 3;
+}
+.pickup_productType{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.bus_productType{
+  grid-column: 4;
+  grid-row: 3;
+}
+.navbar_contact{
+
+  grid-column: 4;
+  grid-row: 2;
+}
+.search_dashboard{
+  grid-column: 2/4;
+  grid-row: 4;
+}
+.search_dashboard_button {
+  grid-column: 4;
+  grid-row: 4;
+}
+.navbar_filter {
+  grid-column: 1/5;
+  grid-row: 5/7;
+}
+.navbar_logout{
+  grid-column: 2;
+  grid-row: 2;
+}
+.navbar_contact{
+  grid-column: 3;
+  grid-row: 2;
+}
+
+}
+  

@@ -67,11 +67,10 @@ grid-template-columns: 1fr 1fr;
     color:rgba(0, 0, 0, 0.758)
 }
 
-@media only screen and (max-width: 768px) {
-    .login_container{
-     height: 700px;;
-     position: relative;
-     top:-200px;
+@media only screen and (min-width: 768px) and (max-width: 1209px) {
+    .login_container {
+     width: 95vw;;
+
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
@@ -81,7 +80,7 @@ grid-template-columns: 1fr 1fr;
       position:relative;
     
   }
-  .contact_container img{
+  .login_container img{
      
 
     visibility: hidden;
@@ -90,8 +89,125 @@ grid-template-columns: 1fr 1fr;
 }
 .login_form{
     border:none;
-    margin-left:130px
+  
 }
   }
   
+  @media only screen and (min-width: 1210px) and (max-width: 1520px) {
+    .login_container {
+        width: 95vw;;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+   
+      position:relative;
+       
+     }
+     .login_form{
+        grid-column: 1/3;
+        position: relative;
+        top:200px;
+     }
+     
+     .login_container img{
+        
+   
+       visibility: hidden;
+       
+     
+   }
+   .login_form{
+       border:none
+
+   }
+    .contact_container img{
+     
+
+        visibility: hidden;
+        
+      
+    }
+  }
+
+        @media only screen and (min-width: 480px) and (max-width: 767px){
+            .login_container{
+                width: 95vw;;
+               
+
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+             
+                position:relative;
+                 
+               
+             }
+        
+             .login_form{
+               grid-column: 1/3;
+               position: relative;
+               top:200px;
+            }
+            .login_container img{
+                
+           
+               visibility: hidden;
+               
+             
+           }
+           .login_form{
+               border:none}
+           
+               .login_container img{
+     
+
+                visibility: hidden;
+                
+              
+            }}
+        
+    
+    @media only screen and (min-width: 100px) and (max-width: 479px){
+        .login_container {
+            width: 200vw;;
+           ;
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+         
+            position:relative;
+             
+         }
+         .login_container img{
+            
+       
+           visibility: hidden;
+           
+         
+       }
+       .login_form{
+        grid-column: 1/3;
+        text-align: center;
+        position: relative;
+        top:20px;
+     }
+     .login_form{
+           border:none
+       }
+       .login_container img{
+     
+
+            visibility: hidden;
+            
+          
+        }
+    }
   
