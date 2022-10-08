@@ -118,7 +118,7 @@ Now app ready to use
 
 ## User Story <a name = "#user_story"></a>
 
-Your trello board link
+Garage Sooq trello board link
 <a href='https://trello.com/b/MBJm4fLU/project-4'>Trello</a>
 
 ## Data Flow <a name = "#data_flow"></a>
