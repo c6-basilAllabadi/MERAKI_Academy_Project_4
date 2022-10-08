@@ -82,7 +82,7 @@ const Navbar = () => {
             navigate("/Dashboard");
           }}
         >
-          Dashboard
+          Home
         </p>
 
         {isLoggedIn && (
