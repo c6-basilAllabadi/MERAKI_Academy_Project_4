@@ -46,7 +46,7 @@ import "./style.css"
     
       useEffect(() => {
         getFavoritesProducts();
-      }, []);
+      }, [favoritesProducts]);
     
 return (
 
@@ -102,7 +102,7 @@ axios.put(`http://localhost:5000/favorite/${elem._id}`,{},{
       authorization: "Bearer " + token,
     },
   }).then((response)=>{
-    console.log(response.data.message)
+    
 }).catch((err)=>{
     console.log(err.message)
 })
