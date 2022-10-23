@@ -1,8 +1,9 @@
 .navbar_container {
-  width: 1500px;
+  width: 100vw;
+  margin-left: -5px;;
   height: 120px;
   display: grid;
-  
+  margin-top: -10px;
   grid-template-columns: repeat(10, 1fr);
   background-color: rgb(240, 240, 240);
   margin-bottom: 300px;

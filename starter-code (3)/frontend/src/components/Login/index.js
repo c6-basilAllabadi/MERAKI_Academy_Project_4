@@ -21,6 +21,7 @@ const Login = () => {
   let googleButton = userContext1.googleButton
   
   let setGoogleButton =userContext1.setGoogleButton
+  const btn = document.querySelector(".button");
 
   const navigate = useNavigate()
 
@@ -38,11 +39,13 @@ const Login = () => {
     <input type="password" placeholder="Enter your Password" onChange={(e)=>{
         setLoginPassword(e.target.value)
     }}></input>
-    <button onClick={async()=>{ await axios.post('http://localhost:5000/login',{email:loginemail,password:loginpassword}).then((response)=>{
-      console.log(response)
-    
+    <button className = "button" onClick={async()=>{ 
+     btn.classList.add("button--loading");
    
-    
+      setTimeout(async() => {
+      await axios.post('http://localhost:5000/login',{email:loginemail,password:loginpassword}).then((response)=>{
+      console.log(response)
+      btn.classList.remove("button--loading")
       setLoginMessage("login Success")
       setIsLoggedIn(true)
       setToken(response.data.token)
@@ -50,13 +53,12 @@ const Login = () => {
     localStorage.setItem("loggedIn",JSON.stringify(true))
       setUser(response.data.userId)
       localStorage.setItem("user1",JSON.stringify(response.data.userId))
-      navigate("/dashboard")
-     
-    }).catch((err)=>{
-console.log(err.response.data.message)
-setLoginMessage(err.response.data.message)
-    })
-
+      navigate("/dashboard")}).catch((err)=>{
+        console.log(err.response.data.message)
+       
+        setLoginMessage(err.response.data.message)
+            })
+     }, 1500); 
      
 
     }}>Login</button>
